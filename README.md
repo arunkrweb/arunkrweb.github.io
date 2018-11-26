@@ -1,5 +1,1 @@
-# arunkrweb.github.io
-
-Arun Kumar's website [https://arunkrweb.github.io](https://arunkrweb.github.io)
-
-The theme for this website has been open-sourced as [Beautiful Jekyll](https://deanattali.com/beautiful-jekyll/).
+This was forked (then detached) from the [Minimal Mistakes Jekyll Theme](https://mmistakes.github.io/minimal-mistakes/), which is © 2016 Michael Rose and released under the MIT License. See LICENSE.md.
