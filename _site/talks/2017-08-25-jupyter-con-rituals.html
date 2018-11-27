@@ -1,0 +1,391 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Jupyter and the Changing Rituals around Computation - Arun Kumar</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Arun Kumar">
+<meta property="og:title" content="Jupyter and the Changing Rituals around Computation">
+
+
+  <link rel="canonical" href="http://localhost:4000/talks/2017-08-25-jupyter-con-rituals">
+  <meta property="og:url" content="http://localhost:4000/talks/2017-08-25-jupyter-con-rituals">
+
+
+
+  <meta property="og:description" content="We (Stuart Geiger, Brittany Fiore-Gartland, and Charlotte Cabasse-Mazel) share ethnographic findings made observing and working with Jupyter notebooks, focusing on how people use Jupyter to create and deliver computational narratives in particular local contexts, like classrooms, hackathons, research collaborations, and more.">
+
+
+
+  <meta name="twitter:site" content="@staeiou">
+  <meta name="twitter:title" content="Jupyter and the Changing Rituals around Computation">
+  <meta name="twitter:description" content="We (Stuart Geiger, Brittany Fiore-Gartland, and Charlotte Cabasse-Mazel) share ethnographic findings made observing and working with Jupyter notebooks, focusing on how people use Jupyter to create and deliver computational narratives in particular local contexts, like classrooms, hackathons, research collaborations, and more.">
+  <meta name="twitter:url" content="http://localhost:4000/talks/2017-08-25-jupyter-con-rituals">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+      <meta name="twitter:image" content="http://localhost:4000/images/site-logo.png">
+    
+  
+
+  
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2017-08-25T00:00:00-07:00">
+
+
+
+
+
+
+  <meta name="google-site-verification" content="3hdu0GcCfjZ6WbPpApjcdcEGjsCPDcDn1QLtBm-DRBg" />
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Arun Kumar Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    
+
+<!-- start custom head snippets -->
+
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="msapplication-TileImage" content="http://localhost:4000/images/mstile-144x144.png?v=M44lzPylqQ">
+<meta name="msapplication-config" content="http://localhost:4000/images/browserconfig.xml?v=M44lzPylqQ">
+<meta name="theme-color" content="#ffffff">
+
+<script type="application/ld+json"> 
+{ 
+"@context": "http://schema.org",
+"@type": "Person",
+"name": "R. Stuart Geiger",
+"email": "mailto:stuart@stuartgeiger.com",
+"image": "http://stuartgeiger.com/images/oban3.jpg",
+"jobTitle": "Ethnographer",
+"name": "R. Stuart Geiger",
+"affiliation": "University of California, Berkeley",
+"alumniOf": "University of California, Berkeley",
+"birthPlace": "Nacogdoches County, TX",
+"gender": "male",
+"honorificSuffix": "PhD",
+"nationality": "United States",
+"url": "http://www.stuartgeiger.com",
+"sameAs" : [
+"http://twitter.com/staeiou",
+"http://github.com/staeiou",
+"https://orcid.org/0000-0001-7215-0532"] 
+} </script>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">Arun Kumar</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/articles/">Publications</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/talks/">Talks</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/expressions/">Expressions</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/teaching/">Teaching</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/year-archive/">Blog Posts</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/cv/">CV</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/contact/">Contact</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div>
+
+  <div class="author__avatar">
+    
+    	<img src="http://localhost:4000/images/arun.jpg" class="author__avatar" alt="Arun Kumar">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Arun Kumar</h3>
+    <p class="author__bio">Robotics and Artificial Intelligence Researcher | Project Associate at the <a style='color: black;' href='http://rbccps.org'>Robert Bosch Centere for Cyber Physical Systems, IISc</a></p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+        <li><i class="fa fa-fw fa-map-marker" aria-hidden="true"></i> Bangalore, India</li>
+      
+      
+      
+      
+      
+      
+        <li><a href="https://twitter.com/staeiou"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><a href="https://github.com/ioarun"><i class="fa fa-fw fa-github" aria-hidden="true"></i> Github</a></li>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        <li><a href="https://scholar.google.com/citations?user=0AvWi3wAAAAJ&hl=en"><i class="fa fa-fw fa-chain" aria-hidden="true"></i> Google Scholar</a></li>
+      
+      
+        <li><a href="http://orcid.org/0000-0001-7215-0532"><i class="fa fa-fw fa-chain" aria-hidden="true"></i> ORCID</a></li>
+      
+      
+        <li><a href="https://en.wikipedia.org/wiki/User:staeiou"><i class="fa fa-fw fa-chain" aria-hidden="true"></i> Wikipedia</a></li>
+      
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Jupyter and the Changing Rituals around Computation">
+    <meta itemprop="description" content="We (Stuart Geiger, Brittany Fiore-Gartland, and Charlotte Cabasse-Mazel) share ethnographic findings made observing and working with Jupyter notebooks, focusing on how people use Jupyter to create and deliver computational narratives in particular local contexts, like classrooms, hackathons, research collaborations, and more.">
+    <meta itemprop="datePublished" content="August 25, 2017">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Jupyter and the Changing Rituals around Computation
+</h1>
+          
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i>Date:</strong> <time datetime="2017-08-25T00:00:00-07:00">August 25, 2017</time></p>
+        
+          <p>Talk at JupyterCon,  New York, New York</p> 
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>In this talk, we (Stuart Geiger, Brittany Fiore-Gartland, and Charlotte Cabasse-Mazel) share ethnographic findings made observing and working with Jupyter notebooks across multiple organizations where notebooks are in heavy use. We conducted interviews about the role of Jupyter in the work done at these companies, observed how people and organizations use notebooks in practice, and worked personally with notebooks in many different contexts. This fieldwork, focused mostly around academic uses of Jupyter, represents a broad array of Jupyter engagement across different fields, programming languages, institutions, and kinds of teams.</p>
+
+<p>Our analysis draws from James Carey’s foundational theory of communication as transmission versus ritual, which is a useful way to think about the goals of Jupyter notebooks and related technologies. Communication is often understood as the transmission of information from one person to another, so good communication is achieved when the ideas inside the mind of the speaker make it into the mind of the listener. However, Carey notes that communication is also often a ritual in which people work to establish a shared context and sustain a common understanding of why we are here and what we are doing. Jupyter notebooks are certainly used to effectively communicate scientific or analytic narratives of computation. However, Jupyter also plays an important role in supporting and changing various ritual practices that take place around computational analysis.</p>
+
+<p>Some of the observed rituals have a very broad adoption and predate Jupyter, such as the ritual of presenting a slide deck at a scientific conference. In this case, tools like nbpresent help Jupyter users present their work within this established ritual. Other rituals are more specific to a particular group and have been created due to the capacities of Jupyter, such as a weekly peer learning group where learners clone a GitHub repository containing a completed notebook that the presenter is projecting on a screen, with everyone walking through the notebook together. There are also rituals that have been transformed by the use of Jupyter, such as one lab’s “chalk talks,” where scientists once gave stand-up analyses on a chalk or white board but now frequently project a blank or thinly scaffolded Jupyter notebook and live code an analysis.</p>
+
+<p>Rituals can be public and institutionalized or more private and individual, such as practices that people do before sharing a notebook to colleagues or the public. The ritual of cleaning up a messy notebook is one we have frequently observed and discussed in interviews with Jupyter users. Depending on the particular shared context someone wants to establish, these rituals of curation can look different and serve different goals. For example, in many instances people use Jupyter with the shared goal of creating an analysis that can be cleanly reproduced end to end. The “restart and run all” test is an important private ritual in this context. Yet in other instances, like with beginner-focused workshops or courses, people strategically allow for messiness in their notebook through rituals like making then fixing errors or going down less fruitful pathways. These kinds of rituals are often tied to broader social practices that signal a culture or context that values flexibility, experimentation, or learning.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/talks/2017-08-25-jupyter-con-rituals" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/talks/2017-08-25-jupyter-con-rituals" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/talks/2017-08-25-jupyter-con-rituals" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/talks/2017-08-25-jupyter-con-rituals" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/talks/2017-04-20-bclt-panel" class="pagination--pager" title="Demystifying Algorithmic Processes: The Case of Wikipedia
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/talks/2017-08-31-4s-autoethnographic-data" class="pagination--pager" title="Autoethnographic Methods for Studying Data-Driven Knowledge Production
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<a href="/sitemap/">Sitemap</a>
+<!-- end custom footer snippets -->
+
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/staeiou"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/ioarun"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+    <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Arun Kumar. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-79273-2', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+
+  </body>
+</html>
+

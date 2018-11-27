@@ -7,11 +7,11 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "R. Stuart Geiger"
+title                    : "Arun Kumar"
 title_separator          : "-"
-name                     : &name "R. Stuart Geiger"
+name                     : &name "Arun Kumar"
 description              : &description "computational ethnographer<br/>ethnographer of computation"
-url                      : https://stuartgeiger.com # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : https://arunkrweb.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "arunkrweb/arunkrweb.github.io"
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
@@ -78,10 +78,10 @@ analytics:
 
 # Site Author
 author:
-  name             : "R. Stuart Geiger"
-  avatar           : "oban3.jpg"
-  bio              : "Ethnographer of computation and computational ethnographer; research staff at the <a style='color: black;' href='http://bids.berkeley.edu'>Berkeley Institute for Data Science</a>"
-  location         : "Berkeley, CA"
+  name             : "Arun Kumar"
+  avatar           : "arun.jpg"
+  bio              : "Robotics and Artificial Intelligence Researcher | Project Associate at the <a style='color: black;' href='http://rbccps.org'>Robert Bosch Centere for Cyber Physical Systems, IISc</a>"
+  location         : "Bangalore, India"
   employer         : 
   googlescholar    : "https://scholar.google.com/citations?user=0AvWi3wAAAAJ&hl=en"
   email            :
@@ -92,7 +92,7 @@ author:
   flickr           :
   facebook         : 
   foursquare       :
-  github           : "staeiou"
+  github           : "ioarun"
   google_plus      :
   keybase          :
   instagram        : 
