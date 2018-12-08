@@ -1,7 +1,8 @@
 ---
 title: "Bipedal Walking Robot using Reinforcement Learning"
+author_profile: false
 collection: expressions
-excerpt: "We introduce IP over Xylophone Players (IPoXP), a novel Internet protocol between two computers using xylophone-based Arduino interfaces. In our implementation, human operators are situated within the lowest layer of the network, transmitting data between computers by striking designated keys. We discuss how IPoXP inverts the traditional mode of human-computer interaction, with a computer using the human as an interface to communicate with another computer"
+excerpt: "Machine learning algorithms have found several applications in the field of robotics and control systems. The control systems community has started to show interest towards several machine learning algorithms from the sub-domains such as supervised learning, imitation learning and reinforcement learning to achieve autonomous control and intelligent decision making. Amongst many complex control problems, stable bipedal walking has been the most challenging problem."
 teaser: /images/2018/biped/biped_trained.gif
-redirect_to: /articles/2012-05-02-altchi-ipoxp
+redirect_to: /articles/2018-02-bipedal-walking-robot-using-rl
 ---

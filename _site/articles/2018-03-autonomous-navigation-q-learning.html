@@ -1,0 +1,345 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Autonomous Navigation of drones using Q-Learning - Arun Kumar</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Arun Kumar">
+<meta property="og:title" content="Autonomous Navigation of drones using Q-Learning">
+
+
+  <link rel="canonical" href="http://localhost:4000/articles/2018-03-autonomous-navigation-q-learning">
+  <meta property="og:url" content="http://localhost:4000/articles/2018-03-autonomous-navigation-q-learning">
+
+
+
+  <meta property="og:description" content="Learned UAV agent autonomously navigates to the goal position using Q Learning.">
+
+
+
+  <meta name="twitter:site" content="@ioarun">
+  <meta name="twitter:title" content="Autonomous Navigation of drones using Q-Learning">
+  <meta name="twitter:description" content="Learned UAV agent autonomously navigates to the goal position using Q Learning.">
+  <meta name="twitter:url" content="http://localhost:4000/articles/2018-03-autonomous-navigation-q-learning">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+      <meta name="twitter:image" content="http://localhost:4000/images/site-logo.png">
+    
+  
+
+  
+
+
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+  <meta name="google-site-verification" content="3hdu0GcCfjZ6WbPpApjcdcEGjsCPDcDn1QLtBm-DRBg" />
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Arun Kumar Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    
+
+<!-- start custom head snippets -->
+
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="msapplication-TileImage" content="http://localhost:4000/images/mstile-144x144.png?v=M44lzPylqQ">
+<meta name="msapplication-config" content="http://localhost:4000/images/browserconfig.xml?v=M44lzPylqQ">
+<meta name="theme-color" content="#ffffff">
+
+<script type="application/ld+json"> 
+{ 
+"@context": "http://schema.org",
+"@type": "Person",
+"name": "R. Stuart Geiger",
+"email": "mailto:stuart@stuartgeiger.com",
+"image": "http://stuartgeiger.com/images/oban3.jpg",
+"jobTitle": "Ethnographer",
+"name": "R. Stuart Geiger",
+"affiliation": "University of California, Berkeley",
+"alumniOf": "University of California, Berkeley",
+"birthPlace": "Nacogdoches County, TX",
+"gender": "male",
+"honorificSuffix": "PhD",
+"nationality": "United States",
+"url": "http://www.stuartgeiger.com",
+"sameAs" : [
+"http://twitter.com/staeiou",
+"http://github.com/staeiou",
+"https://orcid.org/0000-0001-7215-0532"] 
+} </script>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">Arun Kumar</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/expressions/">Projects</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/year-archive/">Posts</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/cv/">CV</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/contact/">Contact</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+    <script type="application/ld+json">
+    {
+	"@context": "http://schema.org/",
+	"@type": "CreativeWork",
+	"author": "R. Stuart Geiger",
+        "name": "Autonomous Navigation of drones using Q-Learning",
+	"datePublished": "",
+	"description": "<p>
+Learned UAV agent autonomously navigates to the goal position using Q Learning.
+</p>
+
+"
+    }
+    </script>
+
+
+
+
+<div id="main" role="main">
+  
+
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Autonomous Navigation of drones using Q-Learning">
+    <meta itemprop="description" content="Learned UAV agent autonomously navigates to the goal position using Q Learning.">
+    
+    
+    
+
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Autonomous Navigation of drones using Q-Learning
+</h1>
+          
+        
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>
+Learned UAV agent autonomously navigates to the goal position using Q Learning.
+</p>
+
+<!-- _includes/image.html -->
+<div class="image-wrapper">
+    
+        <img align="middle" src="http://localhost:4000//images/2018/drone/drone_qlearning.gif" alt="Q Learning" />
+    
+    
+        <p align="center" class="image-caption">Autonomously navigating to the goal</p>
+    
+</div>
+
+<!-- <div style="justify-content: center;">
+<a href="http://arunkrweb.github.io/images/2018/drone/drone_qlearning.gif"><img src="/images/2018/drone/drone_qlearning.gif" style="width: 600px; height: 200px;"/></a>
+</div> -->
+<p>
+Reference paper : Pham, Huy X., Hung M. La, David Feil-Seifer, and Luan V. Nguyen. "Autonomous UAV Navigation Using Reinforcement Learning." arXiv preprint arXiv:1801.05086 (2018).
+</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/categories/#articles" class="page__taxonomy-item" rel="tag">articles</a>
+    
+    </span>
+  </p>
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/articles/2018-03-autonomous-navigation-q-learning" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/articles/2018-03-autonomous-navigation-q-learning" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/articles/2018-03-autonomous-navigation-q-learning" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/articles/2018-03-autonomous-navigation-q-learning" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/articles/2018-02-bipedal-walking-robot-using-rl" class="pagination--pager" title="Bipedal Walking Robot using Reinforcement Learning
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/articles/2018-05-28-cscw-documentation" class="pagination--pager" title="The Types, Roles, and Practices of Documentation in Data Analytics Open Source Software Libraries: A Collaborative Ethnography of Documentation Work
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<a href="/sitemap/">Sitemap</a>
+<!-- end custom footer snippets -->
+
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/ioarun"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/ioarun"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+   <!--  <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li> -->
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Arun Kumar. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+  </body>
+</html>
+

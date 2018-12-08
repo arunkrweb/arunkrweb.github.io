@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Arun Kumar"
 title_separator          : "-"
 name                     : &name "Arun Kumar"
-description              : &description "computational ethnographer<br/>ethnographer of computation"
+description              : &description "project associate<br/>rbccps.org"
 url                      : https://arunkrweb.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "arunkrweb/arunkrweb.github.io"
@@ -43,16 +43,16 @@ staticman:
       type               : "date"
       options:
         format           : "iso8601" # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
-atom_feed:
-  path                   : # blank (default) uses feed.xml
+# atom_feed:
+#   path                   : # blank (default) uses feed.xml
 read_more                : "enabled" # if enabled, adds a "read more" link to excerpts 
 future                   : true
 
 # SEO Related
-google_site_verification : "3hdu0GcCfjZ6WbPpApjcdcEGjsCPDcDn1QLtBm-DRBg"
-bing_site_verification   :
-alexa_site_verification  :
-yandex_site_verification :
+# google_site_verification : "3hdu0GcCfjZ6WbPpApjcdcEGjsCPDcDn1QLtBm-DRBg"
+# bing_site_verification   :
+# alexa_site_verification  :
+# yandex_site_verification :
 
 # Social Sharing
 twitter:

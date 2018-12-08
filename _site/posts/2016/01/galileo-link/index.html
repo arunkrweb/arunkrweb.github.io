@@ -1,0 +1,623 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Galileo-Link - Connect THINGS to Social Network - Arun Kumar</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Arun Kumar">
+<meta property="og:title" content="Galileo-Link - Connect THINGS to Social Network">
+
+
+  <link rel="canonical" href="http://localhost:4000/posts/2016/01/galileo-link/">
+  <meta property="og:url" content="http://localhost:4000/posts/2016/01/galileo-link/">
+
+
+
+  <meta property="og:description" content="Hello people!The following project is a basic implementation of what can later give rise to a dedicated social network for sensors. Have you ever wondered how would it be if all your inanimate things can talk on social network like Facebook, twitter? Green-house updating it’s health on it’s timeline? This project is an effort to give social life to the “things”.">
+
+
+
+  <meta name="twitter:site" content="@ioarun">
+  <meta name="twitter:title" content="Galileo-Link - Connect THINGS to Social Network">
+  <meta name="twitter:description" content="Hello people!The following project is a basic implementation of what can later give rise to a dedicated social network for sensors. Have you ever wondered how would it be if all your inanimate things can talk on social network like Facebook, twitter? Green-house updating it’s health on it’s timeline? This project is an effort to give social life to the “things”.">
+  <meta name="twitter:url" content="http://localhost:4000/posts/2016/01/galileo-link/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+      <meta name="twitter:image" content="http://localhost:4000/images/site-logo.png">
+    
+  
+
+  
+    <meta name="twitter:creator" content="@arun">
+  
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2016-01-01T13:56:19-08:00">
+
+
+
+
+
+
+  <meta name="google-site-verification" content="3hdu0GcCfjZ6WbPpApjcdcEGjsCPDcDn1QLtBm-DRBg" />
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Arun Kumar Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    
+
+<!-- start custom head snippets -->
+
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="msapplication-TileImage" content="http://localhost:4000/images/mstile-144x144.png?v=M44lzPylqQ">
+<meta name="msapplication-config" content="http://localhost:4000/images/browserconfig.xml?v=M44lzPylqQ">
+<meta name="theme-color" content="#ffffff">
+
+<script type="application/ld+json"> 
+{ 
+"@context": "http://schema.org",
+"@type": "Person",
+"name": "R. Stuart Geiger",
+"email": "mailto:stuart@stuartgeiger.com",
+"image": "http://stuartgeiger.com/images/oban3.jpg",
+"jobTitle": "Ethnographer",
+"name": "R. Stuart Geiger",
+"affiliation": "University of California, Berkeley",
+"alumniOf": "University of California, Berkeley",
+"birthPlace": "Nacogdoches County, TX",
+"gender": "male",
+"honorificSuffix": "PhD",
+"nationality": "United States",
+"url": "http://www.stuartgeiger.com",
+"sameAs" : [
+"http://twitter.com/staeiou",
+"http://github.com/staeiou",
+"https://orcid.org/0000-0001-7215-0532"] 
+} </script>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">Arun Kumar</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/expressions/">Projects</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/year-archive/">Posts</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/cv/">CV</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/contact/">Contact</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+    <script type="application/ld+json">
+    {
+	"@context": "http://schema.org/",
+	"@type": "CreativeWork",
+	"author": "R. Stuart Geiger",
+        "name": "Galileo-Link - Connect THINGS to Social Network",
+	"datePublished": "2016-01-01 13:56:19 -0800",
+	"description": "Hello people!The following project is a basic implementation of what can later give rise to a dedicated social network for sensors. Have you ever wondered how would it be if all your inanimate things can talk on social network like Facebook, twitter? Green-house updating it’s health on it’s timeline? This project is an effort to give social life to the “things”."
+    }
+    </script>
+
+
+
+
+<div id="main" role="main">
+  
+
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Galileo-Link - Connect THINGS to Social Network">
+    <meta itemprop="description" content="Hello people!The following project is a basic implementation of what can later give rise to a dedicated social network for sensors. Have you ever wondered how would it be if all your inanimate things can talk on social network like Facebook, twitter? Green-house updating it’s health on it’s timeline? This project is an effort to give social life to the “things”.">
+    <meta itemprop="datePublished" content="January 01, 2016">
+    
+    
+
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Galileo-Link - Connect THINGS to Social Network
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  4 minute read
+	
+</p>
+          
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2016-01-01T13:56:19-08:00">January 01, 2016</time></p>
+        
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>Hello people!The following project is a basic implementation of what can later give rise to a dedicated social network for sensors. Have you ever wondered how would it be if all your inanimate things can talk on social network like Facebook, twitter? Green-house updating it’s health on it’s timeline? This project is an effort to give social life to the “things”.
+<!--more--></p>
+
+<!-- _includes/image.html -->
+<div class="image-wrapper">
+    
+        <img align="middle" src="http://localhost:4000/images/2016/galileo-link/2016-01-01-galileo-link.jpg" alt="CIFAR-10 example images" />
+    
+    
+        <p align="center" class="image-caption">Galileo-link posts room temperature and light values on it's timeline</p>
+    
+</div>
+
+<p>I have implemented the project using Intel Galileo board as the sensor gateway, you can use any other board running Linux OS with python installed. I tried making my home talk. That is, posting sensors data installed on Intel Galileo kept in my room to the Facebook account by name “Galileo Link” wall. So all we need is access to Facebook Graph API and a python script.</p>
+
+<p>To access the Graph API, we need to create a Facebook App on <a href="https://developers.facebook.com/apps">facebook developers</a> page.Now follow these steps:</p>
+<ol>
+  <li>Click <code class="highlighter-rouge">Add a New App</code> -&gt; <code class="highlighter-rouge">Choose platform WWW</code> -&gt; <code class="highlighter-rouge">Choose a new name for your app</code> -&gt; Click <code class="highlighter-rouge">Create New Facebook App ID</code> -&gt; <code class="highlighter-rouge">Create a New App ID</code> -&gt; <code class="highlighter-rouge">Choose Category</code> -&gt; Click <code class="highlighter-rouge">Create App ID</code> again.</li>
+</ol>
+
+<p>2.Go back to Apps Dashboard -&gt; <code class="highlighter-rouge">Select the new app</code> -&gt; <code class="highlighter-rouge">Settings</code> -&gt; <code class="highlighter-rouge">Basic</code> -&gt; <code class="highlighter-rouge">Enter Contact Email</code>.</p>
+
+<p>3.Go to <code class="highlighter-rouge">Status &amp; Review</code> -&gt; <code class="highlighter-rouge">Do you want to make this app and all its live features available to the general public?</code> -&gt; Toggle the button to <code class="highlighter-rouge">Yes</code> -&gt; <code class="highlighter-rouge">Make App Public?</code> -&gt; <code class="highlighter-rouge">Yes</code>. This will enable others to see posts by your app in their timelines – otherwise, only you will see the wall posts by the app.</p>
+
+<p>4.Now – you should see a green dot next to app’s name, and the text <code class="highlighter-rouge">This app is public and available to all users</code>.</p>
+
+<p>5.Make a note of the <code class="highlighter-rouge">App ID</code> and <code class="highlighter-rouge">App Secret</code> (Click Show next to it; you will be asked to re-enter your Facebook password). Now that the app has been created, the next step is to get Facebook OAuth Token.</p>
+
+<h2 id="steps-to-get-facebook-oauth-token-">Steps to get Facebook OAuth Token :</h2>
+
+<ul>
+  <li>
+    <p>Go to <a href="https://developers.facebook.com/tools/explorer/">Graph API Explorer</a>-&gt; In the Application drop down -&gt; Select the app created -&gt; Click <code class="highlighter-rouge">Get Access Token</code> -&gt; In Permissions popup go to <code class="highlighter-rouge">Extended Permissions</code> tab -&gt; Select <code class="highlighter-rouge">manage_pages</code>, and <code class="highlighter-rouge">publish_actions</code>.These permissions will allow your app to publish posts acting as the page -&gt; Click <code class="highlighter-rouge">Get Access Token</code> -&gt; You will see a message saying <code class="highlighter-rouge">{App} would like to post publicly to Facebook for you. Who do you want to share these posts with?</code> -&gt; I chose <code class="highlighter-rouge">Public for maximum visibility</code> – as I wanted to post to a public page.</p>
+  </li>
+  <li>
+    <p>Make a note of the short-lived token shown in Graph API Explorer.</p>
+  </li>
+  <li>
+    <p>Facebook has deprecated offline access, the next best thing is long-lived token which expires in 60 days. We will convert the short-lived access token noted above to a long-lived token. For that, fill in the values in the URL below and open it in a browser:</p>
+  </li>
+</ul>
+
+<p><a href="https://graph.facebook.com/oauth/access_token?client_id{APP_ID}&amp;client_secret{APP_SECRET}&amp;grant_type=fb_exchange_token&amp; fb_exchange_token={EXISTING_ACCESS_TOKEN}">https://graph.facebook.com/oauth/access_token?client_id{APP_ID}&amp;client_secret{APP_SECRET}&amp;grant_type=fb_exchange_token&amp; fb_exchange_token={EXISTING_ACCESS_TOKEN}</a></p>
+
+<p>Replace the values in {}.</p>
+
+<ul>
+  <li>
+    <p>You should see <code class="highlighter-rouge">access_token={...}&amp;expires={...}</code>. This new <code class="highlighter-rouge">access_token</code> is the long-lived token we will use in our Python script.</p>
+  </li>
+  <li>
+    <p>Long-lived token will also expire eventually, be prepared to perform this Step 3 again before that happens!</p>
+  </li>
+  <li>
+    <p>We will use <a href="https://github.com/pythonforfacebook/facebook-sdk">Facebook Python SDK</a> to access Facebook’s Graph API. You can install it using pip: <code class="highlighter-rouge">pip install facebook-sdk</code>.</p>
+  </li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">facebook</span>
+<span class="k">print</span> <span class="n">facebook</span><span class="o">.</span><span class="n">__path__</span>
+
+</code></pre></div></div>
+<p>The path to the facebook will be displayed.Go to the directory delete facebook packages and then re-install it again.Problem solved!</p>
+
+<p>Now the next important thing is the page ID which can be found in About tab of the Facebook account (usually it is a big number). Finally the code on Intel Galileo will post to Facebook wall of the Account.
+Follow this <a href="https://github.com/ioarun/galileo-link">link</a> to my github and find the python script for this project.
+Here is the <a href="https://www.facebook.com/profile.php?id=100009541012933">link</a> to my Galileo-Link!
+Do follow for more interesting posts!</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/tags/#intel-galileo" class="page__taxonomy-item" rel="tag">intel-galileo</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#iot" class="page__taxonomy-item" rel="tag">iot</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/categories/#academic-works" class="page__taxonomy-item" rel="tag">Academic Works</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/categories/#unpublished" class="page__taxonomy-item" rel="tag">Unpublished</a>
+    
+    </span>
+  </p>
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/posts/2016/01/galileo-link/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/posts/2016/01/galileo-link/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/posts/2016/01/galileo-link/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/posts/2016/01/galileo-link/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="#" class="pagination--pager disabled">Previous</a>
+    
+    
+      <a href="http://localhost:4000/posts/2016/05/physical-web/" class="pagination--pager" title="Implementing Physical Web using Eddystone
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item">
+    
+
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2017/04/robotic-car/" rel="permalink">Build a 2D Robotic Car!
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  7 minute read
+	
+</p>
+    
+    
+    
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-04-03T14:56:19-07:00">April 03, 2017</time></p>
+    
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>In the last blog post I explained what is a particle filter and how we can build one using pygame and python.In this post, I will walk you through the steps to build a 2D robotic car and get it running using PD control.
+<u><strong><a href="http://localhost:4000/posts/2017/04/robotic-car/" rel="permalink"> Read more</a></strong></u></p></p>
+    
+
+    
+    
+
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item">
+    
+
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2017/03/particle-filter/" rel="permalink">Robot Localization using Particle Filter
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  7 minute read
+	
+</p>
+    
+    
+    
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-03-07T13:56:19-08:00">March 07, 2017</time></p>
+    
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Robot world is exciting! For people completely unaware of what goes inside the robots and how they manage to do what they do, it seems almost magical.In this post, with the help of an implementation, I will try to scratch the surface of one very important part of robotics called robot localization.
+<u><strong><a href="http://localhost:4000/posts/2017/03/particle-filter/" rel="permalink"> Read more</a></strong></u></p></p>
+    
+
+    
+    
+
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item">
+    
+
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2017/01/cnn/" rel="permalink">Convolutional Neural Network Architecture
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  10 minute read
+	
+</p>
+    
+    
+    
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-01-30T13:56:19-08:00">January 30, 2017</time></p>
+    
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Convolutional Neural Networks or ConvNets or CNNs are biologically inspired varients of Multilayer Perceptrons(MLPs).They are probably the biggest reasons why AI agents are able to play ATARI games, are creating master piece artwork and cars have learnt to drive by themselves.Not only this, they are also being used in Natural language processing and text classification.
+<u><strong><a href="http://localhost:4000/posts/2017/01/cnn/" rel="permalink"> Read more</a></strong></u></p></p>
+    
+
+    
+    
+
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item">
+    
+
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2017/01/htm/" rel="permalink">Understanding Hierarchical Temporal Memory
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  9 minute read
+	
+</p>
+    
+    
+    
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-01-15T13:56:19-08:00">January 15, 2017</time></p>
+    
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Last year I did one project on Cognitive Healthcare which used Hierarchical Temporal Memory or HTM.Through this post, I have tried to put down my understanding of <a href="http://numenta.org/">Numenta</a>’s HTM. Before getting to it, it is important to understand the functioning of the neocortex to process sensory inputs from the physical world because HTM is inspired by the same.
+<u><strong><a href="http://localhost:4000/posts/2017/01/htm/" rel="permalink"> Read more</a></strong></u></p></p>
+    
+
+    
+    
+
+    
+
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<a href="/sitemap/">Sitemap</a>
+<!-- end custom footer snippets -->
+
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/ioarun"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/ioarun"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+   <!--  <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li> -->
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Arun Kumar. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+  </body>
+</html>
+

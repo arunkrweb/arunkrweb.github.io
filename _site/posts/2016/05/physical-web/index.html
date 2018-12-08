@@ -1,0 +1,805 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Implementing Physical Web using Eddystone - Arun Kumar</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Arun Kumar">
+<meta property="og:title" content="Implementing Physical Web using Eddystone">
+
+
+  <link rel="canonical" href="http://localhost:4000/posts/2016/05/physical-web/">
+  <meta property="og:url" content="http://localhost:4000/posts/2016/05/physical-web/">
+
+
+
+  <meta property="og:description" content="Hi everyone! This blog post is about a project I did couple of months ago on Physical Web.I will not go deep into the literature and will dive straight into the implementation part.For more information on Physical Web follow this link.">
+
+
+
+  <meta name="twitter:site" content="@ioarun">
+  <meta name="twitter:title" content="Implementing Physical Web using Eddystone">
+  <meta name="twitter:description" content="Hi everyone! This blog post is about a project I did couple of months ago on Physical Web.I will not go deep into the literature and will dive straight into the implementation part.For more information on Physical Web follow this link.">
+  <meta name="twitter:url" content="http://localhost:4000/posts/2016/05/physical-web/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+      <meta name="twitter:image" content="http://localhost:4000/images/site-logo.png">
+    
+  
+
+  
+    <meta name="twitter:creator" content="@arun">
+  
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2016-05-05T14:56:19-07:00">
+
+
+
+
+
+
+  <meta name="google-site-verification" content="3hdu0GcCfjZ6WbPpApjcdcEGjsCPDcDn1QLtBm-DRBg" />
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Arun Kumar Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    
+
+<!-- start custom head snippets -->
+
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="msapplication-TileImage" content="http://localhost:4000/images/mstile-144x144.png?v=M44lzPylqQ">
+<meta name="msapplication-config" content="http://localhost:4000/images/browserconfig.xml?v=M44lzPylqQ">
+<meta name="theme-color" content="#ffffff">
+
+<script type="application/ld+json"> 
+{ 
+"@context": "http://schema.org",
+"@type": "Person",
+"name": "R. Stuart Geiger",
+"email": "mailto:stuart@stuartgeiger.com",
+"image": "http://stuartgeiger.com/images/oban3.jpg",
+"jobTitle": "Ethnographer",
+"name": "R. Stuart Geiger",
+"affiliation": "University of California, Berkeley",
+"alumniOf": "University of California, Berkeley",
+"birthPlace": "Nacogdoches County, TX",
+"gender": "male",
+"honorificSuffix": "PhD",
+"nationality": "United States",
+"url": "http://www.stuartgeiger.com",
+"sameAs" : [
+"http://twitter.com/staeiou",
+"http://github.com/staeiou",
+"https://orcid.org/0000-0001-7215-0532"] 
+} </script>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">Arun Kumar</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/expressions/">Projects</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/year-archive/">Posts</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/cv/">CV</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/contact/">Contact</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+    <script type="application/ld+json">
+    {
+	"@context": "http://schema.org/",
+	"@type": "CreativeWork",
+	"author": "R. Stuart Geiger",
+        "name": "Implementing Physical Web using Eddystone",
+	"datePublished": "2016-05-05 14:56:19 -0700",
+	"description": "Hi everyone! This blog post is about a project I did couple of months ago on Physical Web.I will not go deep into the literature and will dive straight into the implementation part.For more information on Physical Web follow this [link](https://google.github.io/physical-web/)."
+    }
+    </script>
+
+
+
+
+<div id="main" role="main">
+  
+
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Implementing Physical Web using Eddystone">
+    <meta itemprop="description" content="Hi everyone! This blog post is about a project I did couple of months ago on Physical Web.I will not go deep into the literature and will dive straight into the implementation part.For more information on Physical Web follow this link.">
+    <meta itemprop="datePublished" content="May 05, 2016">
+    
+    
+
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Implementing Physical Web using Eddystone
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  7 minute read
+	
+</p>
+          
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2016-05-05T14:56:19-07:00">May 05, 2016</time></p>
+        
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>Hi everyone! This blog post is about a project I did couple of months ago on Physical Web.I will not go deep into the literature and will dive straight into the implementation part.For more information on Physical Web follow this <a href="https://google.github.io/physical-web/">link</a>.
+<!--more--></p>
+
+<p>Choosing hardware – Any BLE 4.0+ chip would do.In our project we have used Read Bear Lab’s
+BLE Shield which incorporates Nrf8001 bluetooth low energy chip.</p>
+
+<!-- _includes/image.html -->
+<div class="image-wrapper">
+    
+        <img align="middle" src="http://localhost:4000/images/2016/physical-web/one.png" alt="one" />
+    
+    
+        <p align="center" class="image-caption">Red Bear Lab BLE Shield</p>
+    
+</div>
+
+<h2 id="how-to-create-a-beacon">How To Create a Beacon?</h2>
+
+<p>Beacons are tiny modules which broadcast radio signals continuously or after regular intervals of
+time( in our case it is 100 ms).In this project we have used the above mentioned shield and Arduino
+Mega board to <em>create</em> a beacon.</p>
+
+<!-- _includes/image.html -->
+<div class="image-wrapper">
+    
+        <img align="middle" src="http://localhost:4000/images/2016/physical-web/two.jpg" alt="two" />
+    
+    
+        <p align="center" class="image-caption">Arduino Mega</p>
+    
+</div>
+
+<h2 id="library-used--bleperipheral-by-sandeep-mistry">Library Used : BLEPeripheral by Sandeep Mistry</h2>
+
+<p>This library has number of examples, one of which is Eddystone.h Including this header in our arduino code, we were able to create our arduino + BLE Sheild into a beacon. Ofcourse the practical implementation required us to rewrite basic implementation to suit our own use case.Starting point of this use case was how we broadcast a simple URL.
+Before going further, note that Eddystone frame format supports three ( now four) frames – URL, UID, TLM.</p>
+
+<h2 id="eddystone-url">Eddystone URL:</h2>
+<p>Eddystone allows for 31 Bytes of data to be transmitted in one frame.So if your URL exceeds 31 Bytes, you can use google shortner to shorten the URL.</p>
+
+<ul>
+  <li>Every Eddystone frame has to have 16 bit Service UUID <em>0xFEAA</em> which will be used by any scanner application to know that the incoming frame is an eddystone.</li>
+  <li>This then will be followed by 1 Byte of frame specific identifier i.e, <em>0x00</em> for UID, <em>0x10</em> for URL, <em>0x20</em> for TLM.</li>
+  <li>
+    <p>After this follows the actual data.We will be transmitting our URL in this slot.There is a rule by which we encode our URL into the frame.More can be found out <a href="https://github.com/google/eddystone/tree/master/eddystone-url">here</a></p>
+  </li>
+  <li>Basic code :</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="c1">// Import libraries (EddystonBeacon depends on SPI)
+</span><span class="cp">#include &lt;SPI.h&gt;
+#include &lt;EddystoneBeacon.h&gt;
+</span>
+<span class="c1">//define pins (varies per shield/board)
+// Adafruit Bluefruit LE     10, 2, 9
+// Blend                      9, 8, UNUSED
+// Blend  Micro               6, 7, 4
+// RBL BLE Shield             9, 8, UNUSED
+</span>
+<span class="n">EddystoneBeacon</span> <span class="n">eddystoneBeacon</span> <span class="o">=</span>  <span class="n">EddystoneBeacon</span><span class="p">(</span><span class="n">EDDYSTONE_BEACON_REQ</span><span class="p">,</span> 
+	<span class="n">EDDYSTONE_BEACON_RDY</span><span class="p">,</span> <span class="n">EDDYSTONE_BEACON_RST</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+
+	<span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+
+	<span class="n">eddystoneBeacon</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="o">-</span><span class="mi">18</span><span class="p">,</span> <span class="s">"http://goo.gl/TTY3vU"</span><span class="p">);</span>
+
+	<span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="s">"Eddystone URL Beacon"</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="n">loop</span><span class="p">(){</span>
+	<span class="n">eddystoneBeacon</span><span class="p">.</span><span class="n">loop</span><span class="p">();</span>
+<span class="p">}</span></code></pre></figure>
+
+<ul>
+  <li>EddystoneBeacon eddystoneBeacon = EddystoneBeacon(…) makes an object of the class with three arguments which are the pins.The actual definition inside the library ( <em>EddystoneBeacon.cpp</em> ) looks as follows:</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="n">EddystoneBeacon</span><span class="o">::</span><span class="n">EddystoneBeacon</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">req</span><span class="p">,</span> <span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">rdy</span><span class="p">,</span> 
+	<span class="kt">unsigned</span> <span class="kt">char</span> <span class="n">rst</span><span class="p">)</span> <span class="o">:</span>
+  <span class="n">BLEPeripheral</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">rdy</span><span class="p">,</span> <span class="n">rst</span><span class="p">),</span>
+  <span class="n">_bleService</span><span class="p">(</span><span class="s">"feaa"</span><span class="p">),</span>
+  <span class="n">_bleCharacteristic</span><span class="p">(</span><span class="s">"feab"</span><span class="p">,</span> <span class="n">BLERead</span> <span class="o">|</span> <span class="n">BLEBroadcast</span><span class="p">,</span> <span class="n">MAX_SERVICE_DATA_SIZE</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">setAdvertisedServiceUuid</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_bleService</span><span class="p">.</span><span class="n">uuid</span><span class="p">());</span>
+
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">setConnectable</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span>
+
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">addAttribute</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_bleService</span><span class="p">);</span>
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">addAttribute</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">_bleCharacteristic</span><span class="p">);</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>There are couple of important things inside this definition.</p>
+
+<p><em>Services</em> and <em>Characteristics</em>- A call to this constructor initializes our beacon with service and characteristics.Service is a 128 bit data which acts as an identity of the eddystone frame.Next comes the characteristics which can be considered the main elements that give certain properties to your BLE device.You can customize in any which way you want to. Just that at the scanning end you have to already know this data.It acts as a carrier of the information.We can similarly create characteristic for transmission and reception.</p>
+
+<p><em>SetConnectable</em> is false because initially our beacon is in broadcast only mode</p>
+
+<ul>
+  <li><code class="highlighter-rouge">EddystoneBeacon.begin(...)</code> will begin broadcasting the power and URL data.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-cpp" data-lang="cpp"><span class="kt">void</span> <span class="n">EddystoneBeacon</span><span class="o">::</span><span class="n">begin</span><span class="p">(</span><span class="kt">char</span> <span class="n">power</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span><span class="o">*</span> <span class="n">uri</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">_power</span> <span class="o">=</span> <span class="n">power</span><span class="p">;</span>
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">setURI</span><span class="p">(</span><span class="n">uri</span><span class="p">);</span>
+
+  <span class="n">BLEPeripheral</span><span class="o">::</span><span class="n">begin</span><span class="p">();</span>
+
+  <span class="k">this</span><span class="o">-&gt;</span><span class="n">_bleCharacteristic</span><span class="p">.</span><span class="n">broadcast</span><span class="p">();</span>
+<span class="p">}</span></code></pre></figure>
+
+<ul>
+  <li><code class="highlighter-rouge">EddystoneBeacon.loop()</code> will poll infinitely.</li>
+</ul>
+
+<h2 id="use-case--smart-meter">Use Case : Smart Meter</h2>
+
+<p>We created a setup which consists of an electronic valve( 230V) , one 5V relay, one Push Button , an LED and the beacon.
+The idea was to simulate a scenario where a bike driver when in the vicinity of a petrol pump, will get notified on his/her smarphone about it.He/she can then approach the pump, tap on the notification and get redirected to a web-page/web-application which enabled him/her to interact with the petrol pump.Once he sees the webpage, he can pair his phone to the petrol pump( beacon ) and enter the volume of the fluid to be filled in his phone.On sending the command to fill, the beacon recieves it and turns the valve ON till the said amount is filled.
+At last, this guy can disconnect from the beacon.</p>
+
+<!-- _includes/image.html -->
+<div class="image-wrapper">
+    
+        <img align="middle" src="http://localhost:4000/images/2016/physical-web/three.png" alt="three" />
+    
+    
+        <p align="center" class="image-caption">Block Diagram</p>
+    
+</div>
+
+<h2 id="web-bluetooth-api-and-the-web-application">Web Bluetooth API and the Web Application</h2>
+
+<p>To use google’s web bluetooth API, we need to have chrome 49 and above.Since we will be viewing  our web application on android phone, one more constraint is that it should be Android 6+.
+A web application was made on IBM Bluemix with route <a href="https://thislinknolongerworks.mybluemix.net">https://thislinknolongerworks.mybluemix.net</a>.
+The web application runs a node server at the back end.In the front end, what we see is html consisting of javascript.This is where we write our Web Bluetooth code.</p>
+
+<ul>
+  <li>Requesting the bluetooth adaptor</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">	  <span class="nx">bluetoothDevice</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">writeButton</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'#fillUp'</span><span class="p">);</span>
+    <span class="nb">navigator</span><span class="p">.</span><span class="nx">bluetooth</span><span class="p">.</span><span class="nx">requestDevice</span><span class="p">({</span> <span class="na">filters</span><span class="p">:</span> <span class="p">[{</span> <span class="na">services</span><span class="p">:</span> 
+    <span class="p">[</span> <span class="s1">'713d0000-503e-4c75-ba94-3148f18d941e'</span> <span class="p">]</span> <span class="p">}]</span> <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">device</span> <span class="o">=&gt;</span> <span class="p">{</span></code></pre></figure>
+
+<p>Notice here <em>[{services: […]}]</em> is the serivice number for BLE tx and rx.</p>
+
+<ul>
+  <li>Connect to the GATT Server.This call will return a server object that will be used to connect to BLE Service.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">	<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">device</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">bluetoothDevice</span> <span class="o">=</span> <span class="nx">device</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">bluetoothDevice</span><span class="p">.</span><span class="nx">connectGATT</span><span class="p">();</span>
+      <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">server</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="c1">// Getting Service...</span>
+        <span class="k">return</span> <span class="nx">server</span><span class="p">.</span><span class="nx">getPrimaryService</span><span class="p">(</span><span class="s1">'713d0000-503e-4c75-ba94-3148f18d941e'</span><span class="p">);</span>
+      <span class="p">})</span></code></pre></figure>
+
+<ul>
+  <li>After this, the object returned will be used to seperately access the Tx and Rx Characteristics.We will add an eventlistner and handler function to the Tx Characteristic and will send the commands to our beacon using Rx Characteristic.</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">	<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">service</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">bleService</span> <span class="o">=</span> <span class="nx">service</span><span class="p">;</span>
+        <span class="c1">//alert("primaryService passed!");</span>
+        <span class="c1">// Getting Characteristic...</span>
+        <span class="k">return</span> <span class="nx">bleService</span><span class="p">.</span><span class="nx">getCharacteristic</span><span class="p">(</span><span class="s1">'713d0003-503e-4c75-ba94-3148f18d941e'</span><span class="p">);</span>
+      <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">characteristic</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">writeCharacteristic</span> <span class="o">=</span> <span class="nx">characteristic</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">bleService</span><span class="p">.</span><span class="nx">getCharacteristic</span><span class="p">(</span><span class="s1">'713d0002-503e-4c75-ba94-3148f18d941e'</span><span class="p">);</span>
+      <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">characteristic</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">myCharacteristic</span> <span class="o">=</span> <span class="nx">characteristic</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nx">myCharacteristic</span><span class="p">.</span><span class="nx">startNotifications</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">myCharacteristic</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'characteristicvaluechanged'</span><span class="p">,</span>
+          <span class="nx">handleNotifications</span><span class="p">);</span>
+        <span class="p">});</span>
+      <span class="p">})</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s1">'Ready.'</span><span class="p">);</span>
+      <span class="p">})</span>
+
+    <span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="nx">alert</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span></code></pre></figure>
+
+<ul>
+  <li>Handler Function</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">	<span class="kd">function</span> <span class="nx">handleNotifications</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">textDecoder</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TextDecoder</span><span class="p">();</span>
+        <span class="c1">//alert(textDecoder.decode(value));</span>
+        <span class="c1">//document.getElementById("setVolume").value = textDecoder.decode(value);</span>
+        <span class="kd">var</span> <span class="nx">setVal</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">textDecoder</span><span class="p">.</span><span class="nx">decode</span><span class="p">(</span><span class="nx">value</span><span class="p">));</span>
+        <span class="nx">setVal</span> <span class="o">=</span><span class="p">((</span> <span class="nx">setVal</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">)</span> <span class="o">*</span> <span class="mi">10</span><span class="p">);</span>
+        <span class="c1">//DONUT CHART</span>
+        <span class="kd">var</span> <span class="nx">donut</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Morris</span><span class="p">.</span><span class="nx">Donut</span><span class="p">({</span>
+          <span class="na">element</span><span class="p">:</span> <span class="s1">'setVolume'</span><span class="p">,</span>
+          <span class="na">resize</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="na">colors</span><span class="p">:</span> <span class="p">[</span><span class="s2">"#3c8dbc"</span><span class="p">,</span> <span class="s2">"#f56954"</span><span class="p">],</span>
+          <span class="na">data</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span><span class="na">label</span><span class="p">:</span> <span class="s2">"Full%"</span><span class="p">,</span> <span class="na">value</span><span class="p">:</span> <span class="nx">setVal</span><span class="p">},</span>
+            <span class="p">{</span><span class="na">label</span><span class="p">:</span> <span class="s2">"Empty%"</span><span class="p">,</span> <span class="na">value</span><span class="p">:</span> <span class="mi">100</span><span class="o">-</span><span class="nx">setVal</span><span class="p">}</span>
+          <span class="p">],</span>
+          <span class="na">hideHover</span><span class="p">:</span> <span class="s1">'auto'</span>
+        <span class="p">});</span>
+    <span class="p">}</span></code></pre></figure>
+
+<ul>
+  <li>Writing data to beacon/Sending Commands</li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js">  	<span class="nx">writeButton</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'click'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+          <span class="c1">// Get the bytes for the text</span>
+        <span class="kd">let</span> <span class="nx">input</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"inputValue"</span><span class="p">).</span><span class="nx">value</span><span class="p">;</span>
+        <span class="kd">let</span> <span class="nx">encoder</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TextEncoder</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">);</span>
+        <span class="kd">let</span> <span class="nx">text</span> <span class="o">=</span> <span class="nx">encoder</span><span class="p">.</span><span class="nx">encode</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span>
+        <span class="nx">writeCharacteristic</span><span class="p">.</span><span class="nx">writeValue</span><span class="p">(</span><span class="nx">text</span><span class="p">);</span>
+    <span class="p">});</span></code></pre></figure>
+
+<h2 id="workflow-overview">Workflow overview:</h2>
+
+<ul>
+  <li>Beacon –broadcasts–&gt; URL</li>
+  <li>Smartphone Scans for the URL.</li>
+  <li>User taps on it.</li>
+  <li>Opens a web application.</li>
+  <li>User pushes the button on beacon to enter it in read/write mode.</li>
+  <li>On web app, user touches toggle button to connect to beacon.</li>
+  <li>Pairs it with beacon.</li>
+  <li>Enters volume in the text field.Hits Fill Up.</li>
+  <li>Beacon is listening to the data.</li>
+  <li>Recieves volume related data.</li>
+  <li>Goes into a loop and sends integers 0 to 9 at a regular interval decided by the volume related data it just recieved.</li>
+  <li>Meanwhile, LED and electronic valve is ON till last integer 9 is sent back to the web application.</li>
+  <li>Disconnect.</li>
+</ul>
+
+<p>Check out all the codes <a href="https://github.com/ioarun/eddystoneBeacon">here</a> and if you liked the post do follow for future updates!</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/tags/#cnn" class="page__taxonomy-item" rel="tag">cnn</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#convolutional-neural-networks" class="page__taxonomy-item" rel="tag">convolutional-neural-networks</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#machine-learning" class="page__taxonomy-item" rel="tag">machine-learning</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/categories/#academic-works" class="page__taxonomy-item" rel="tag">Academic Works</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/categories/#unpublished" class="page__taxonomy-item" rel="tag">Unpublished</a>
+    
+    </span>
+  </p>
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/posts/2016/05/physical-web/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/posts/2016/05/physical-web/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/posts/2016/05/physical-web/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/posts/2016/05/physical-web/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/posts/2016/01/galileo-link/" class="pagination--pager" title="Galileo-Link - Connect THINGS to Social Network
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/posts/2017/01/htm/" class="pagination--pager" title="Understanding Hierarchical Temporal Memory
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item">
+    
+
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2017/04/robotic-car/" rel="permalink">Build a 2D Robotic Car!
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  7 minute read
+	
+</p>
+    
+    
+    
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-04-03T14:56:19-07:00">April 03, 2017</time></p>
+    
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>In the last blog post I explained what is a particle filter and how we can build one using pygame and python.In this post, I will walk you through the steps to build a 2D robotic car and get it running using PD control.
+<u><strong><a href="http://localhost:4000/posts/2017/04/robotic-car/" rel="permalink"> Read more</a></strong></u></p></p>
+    
+
+    
+    
+
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item">
+    
+
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2017/03/particle-filter/" rel="permalink">Robot Localization using Particle Filter
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  7 minute read
+	
+</p>
+    
+    
+    
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-03-07T13:56:19-08:00">March 07, 2017</time></p>
+    
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Robot world is exciting! For people completely unaware of what goes inside the robots and how they manage to do what they do, it seems almost magical.In this post, with the help of an implementation, I will try to scratch the surface of one very important part of robotics called robot localization.
+<u><strong><a href="http://localhost:4000/posts/2017/03/particle-filter/" rel="permalink"> Read more</a></strong></u></p></p>
+    
+
+    
+    
+
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item">
+    
+
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2017/01/cnn/" rel="permalink">Convolutional Neural Network Architecture
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  10 minute read
+	
+</p>
+    
+    
+    
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-01-30T13:56:19-08:00">January 30, 2017</time></p>
+    
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Convolutional Neural Networks or ConvNets or CNNs are biologically inspired varients of Multilayer Perceptrons(MLPs).They are probably the biggest reasons why AI agents are able to play ATARI games, are creating master piece artwork and cars have learnt to drive by themselves.Not only this, they are also being used in Natural language processing and text classification.
+<u><strong><a href="http://localhost:4000/posts/2017/01/cnn/" rel="permalink"> Read more</a></strong></u></p></p>
+    
+
+    
+    
+
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item">
+    
+
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2017/01/htm/" rel="permalink">Understanding Hierarchical Temporal Memory
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  9 minute read
+	
+</p>
+    
+    
+    
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-01-15T13:56:19-08:00">January 15, 2017</time></p>
+    
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Last year I did one project on Cognitive Healthcare which used Hierarchical Temporal Memory or HTM.Through this post, I have tried to put down my understanding of <a href="http://numenta.org/">Numenta</a>’s HTM. Before getting to it, it is important to understand the functioning of the neocortex to process sensory inputs from the physical world because HTM is inspired by the same.
+<u><strong><a href="http://localhost:4000/posts/2017/01/htm/" rel="permalink"> Read more</a></strong></u></p></p>
+    
+
+    
+    
+
+    
+
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<a href="/sitemap/">Sitemap</a>
+<!-- end custom footer snippets -->
+
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/ioarun"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/ioarun"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+   <!--  <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li> -->
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Arun Kumar. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+  </body>
+</html>
+

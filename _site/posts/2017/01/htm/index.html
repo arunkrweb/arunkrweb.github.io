@@ -1,0 +1,678 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Understanding Hierarchical Temporal Memory - Arun Kumar</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Arun Kumar">
+<meta property="og:title" content="Understanding Hierarchical Temporal Memory">
+
+
+  <link rel="canonical" href="http://localhost:4000/posts/2017/01/htm/">
+  <meta property="og:url" content="http://localhost:4000/posts/2017/01/htm/">
+
+
+
+  <meta property="og:description" content="Last year I did one project on Cognitive Healthcare which used Hierarchical Temporal Memory or HTM.Through this post, I have tried to put down my understanding of Numenta’s HTM. Before getting to it, it is important to understand the functioning of the neocortex to process sensory inputs from the physical world because HTM is inspired by the same.">
+
+
+
+  <meta name="twitter:site" content="@ioarun">
+  <meta name="twitter:title" content="Understanding Hierarchical Temporal Memory">
+  <meta name="twitter:description" content="Last year I did one project on Cognitive Healthcare which used Hierarchical Temporal Memory or HTM.Through this post, I have tried to put down my understanding of Numenta’s HTM. Before getting to it, it is important to understand the functioning of the neocortex to process sensory inputs from the physical world because HTM is inspired by the same.">
+  <meta name="twitter:url" content="http://localhost:4000/posts/2017/01/htm/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+      <meta name="twitter:image" content="http://localhost:4000/images/site-logo.png">
+    
+  
+
+  
+    <meta name="twitter:creator" content="@arun">
+  
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2017-01-15T13:56:19-08:00">
+
+
+
+
+
+
+  <meta name="google-site-verification" content="3hdu0GcCfjZ6WbPpApjcdcEGjsCPDcDn1QLtBm-DRBg" />
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Arun Kumar Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    
+
+<!-- start custom head snippets -->
+
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="msapplication-TileImage" content="http://localhost:4000/images/mstile-144x144.png?v=M44lzPylqQ">
+<meta name="msapplication-config" content="http://localhost:4000/images/browserconfig.xml?v=M44lzPylqQ">
+<meta name="theme-color" content="#ffffff">
+
+<script type="application/ld+json"> 
+{ 
+"@context": "http://schema.org",
+"@type": "Person",
+"name": "R. Stuart Geiger",
+"email": "mailto:stuart@stuartgeiger.com",
+"image": "http://stuartgeiger.com/images/oban3.jpg",
+"jobTitle": "Ethnographer",
+"name": "R. Stuart Geiger",
+"affiliation": "University of California, Berkeley",
+"alumniOf": "University of California, Berkeley",
+"birthPlace": "Nacogdoches County, TX",
+"gender": "male",
+"honorificSuffix": "PhD",
+"nationality": "United States",
+"url": "http://www.stuartgeiger.com",
+"sameAs" : [
+"http://twitter.com/staeiou",
+"http://github.com/staeiou",
+"https://orcid.org/0000-0001-7215-0532"] 
+} </script>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">Arun Kumar</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/expressions/">Projects</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/year-archive/">Posts</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/cv/">CV</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/contact/">Contact</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+    <script type="application/ld+json">
+    {
+	"@context": "http://schema.org/",
+	"@type": "CreativeWork",
+	"author": "R. Stuart Geiger",
+        "name": "Understanding Hierarchical Temporal Memory",
+	"datePublished": "2017-01-15 13:56:19 -0800",
+	"description": "Last year I did one project on Cognitive Healthcare which used Hierarchical Temporal Memory or HTM.Through this post, I have tried to put down my understanding of [Numenta](http://numenta.org/)'s HTM. Before getting to it, it is important to understand the functioning of the neocortex to process sensory inputs from the physical world because HTM is inspired by the same."
+    }
+    </script>
+
+
+
+
+<div id="main" role="main">
+  
+
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Understanding Hierarchical Temporal Memory">
+    <meta itemprop="description" content="Last year I did one project on Cognitive Healthcare which used Hierarchical Temporal Memory or HTM.Through this post, I have tried to put down my understanding of Numenta’s HTM. Before getting to it, it is important to understand the functioning of the neocortex to process sensory inputs from the physical world because HTM is inspired by the same.">
+    <meta itemprop="datePublished" content="January 15, 2017">
+    
+    
+
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Understanding Hierarchical Temporal Memory
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  8 minute read
+	
+</p>
+          
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-01-15T13:56:19-08:00">January 15, 2017</time></p>
+        
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>Last year I did one project on Cognitive Healthcare which used Hierarchical Temporal Memory or HTM.Through this post, I have tried to put down my understanding of <a href="http://numenta.org/">Numenta</a>’s HTM.
+Before getting to it, it is important to understand the functioning of the neocortex to process sensory inputs from the physical world because HTM is inspired by the same.
+<!--more--></p>
+
+<h2 id="htm-is-inspired-by-neocortex">HTM is inspired by neocortex</h2>
+
+<!-- _includes/image.html -->
+<div class="image-wrapper">
+    
+        <img align="middle" src="http://localhost:4000/images/2017/htm/brain-five-lobes.jpg" alt="neocortex" />
+    
+    
+        <p align="center" class="image-caption">Human Neocortex</p>
+    
+</div>
+
+<p>Broadly speaking, a brain is divided into four major lobes:</p>
+
+<ul>
+  <li>the frontal lobe (associated with reward, attention, short-term memory tasks, planning, and motivation)</li>
+  <li>the parietal lobe (involved in integrating sensory information from the various senses, and in the manipulation of objects in determining spatial sense and navigation)</li>
+  <li>the occipital lobe (visual)</li>
+  <li>the temporal lobe (involved with the senses of smell and sound, the processing of semantics in both speech and vision, including the processing of complex stimuli like faces and scenes, and plays a key role in the formation of long-term memory)</li>
+</ul>
+
+<p>In humans, the neocortex is the size of a dinner napkin 2.5 mm thick and it is folded to fit inside our skull. Older parts of the brain that are below the neocortex are involved in the basic functions of life like eating, sleeping, and getting emotional. But that is not where intelligence resides.  The neocortex is the part that gives you memory and stores all the lessons that you learned.</p>
+
+<h2 id="structure-of-neocortex">Structure of neocortex</h2>
+
+<p>The neocortex is generally said to have six layers. Five of the layers contain cells and one layer is mostly connections. The image below (from <a href="https://en.wikipedia.org/wiki/Santiago_Ram%C3%B3n_y_Cajal">Santiago Ramon y Cajal</a>) shows a small slice of neocortex exposed using three different staining methods. The vertical axis spans the thickness of the neocortex, approximately 2mm. The left side of the image indicates the six layers. Layer 1, at the top, is the non-cellular level. The “WM” at the bottom indicates the beginning of the white matter, where axons from cells travel to other parts of the neocortex and other parts of the brain.</p>
+
+<!-- _includes/image.html -->
+<div class="image-wrapper">
+    
+        <img align="middle" src="http://localhost:4000/images/2017/htm/cajal_cortex.jpeg" alt="cajal neocortex" />
+    
+    
+</div>
+
+<ul>
+  <li>Although Layer 2 and 3 look easily distinguished they are normally considered as one layer i.e, Layer 2/3.</li>
+  <li>Layer 4 is the most well defined in those neocortical regions which are closest to the sensory organs.</li>
+  <li>Layer 5 has the largest cells in the cortex.</li>
+  <li>Layer 6 projects different sub-cortical areas and sends feedback to the thalamus.</li>
+</ul>
+
+<p>If you cut out any portion of neocortex and observe at cellular level, every portion looks alike no matter from where you cut it out from – visual, auditory, or any other part of brain – all the same.
+<em>This tells us that the brain deals with the sensory inputs in an almost identical manner</em> . It uses the same sets of algorithms for every kind of information.
+There is one more specialty about the structure of the neorocortex. It is observed that the neurons are aligned vertically in columns. And the neurons in the same column respond to the same type of input.</p>
+
+<!-- _includes/image.html -->
+<div class="image-wrapper">
+    
+        <img align="middle" src="http://localhost:4000/images/2017/htm/columnar.jpeg" alt="columnar architecture" />
+    
+    
+</div>
+
+<h2 id="mapping-the-neocortex-to-the-htm-model">Mapping the Neocortex to the HTM Model</h2>
+
+<p>As there is a hierarchy of layers in neocortex, so is the case in HTM. The raw data is sensed by the lower levels and then the processed data is feed-forwarded to the next higher level in the hierarchy.</p>
+
+<!-- _includes/image.html -->
+<div class="image-wrapper">
+    
+        <img align="middle" src="http://localhost:4000/images/2017/htm/heirarchy.jpg" alt="hierarchical view" />
+    
+    
+</div>
+
+<p>An HTM can be composed of just one region, or several regions with data being fed through them. The region itself is comprised of interconnected cells that can be in one of three states:
+*Active from feed-forward input.
+*Active from lateral input (a prediction)
+*Inactive.</p>
+
+<p>The cells are stacked on top of each other in vertical columns forming a three dimensional grid:</p>
+
+<!-- _includes/image.html -->
+<div class="image-wrapper">
+    
+        <img align="middle" src="http://localhost:4000/images/2017/htm/prediction.jpg" alt="prediction" />
+    
+    
+</div>
+
+<p>The HTM cortical learning algorithm shows that a layer of cells organized in columns can be a high-capacity memory of variable order state transitions. Stated more simply, a layer of cells can learn a lot of sequences.
+Columns of cells that share the same feed-forward response are the key mechanism for learning variable-order transitions.</p>
+
+<h2 id="sparse-distributed-representations">Sparse Distributed Representations</h2>
+
+<p>The human cortex has about 20 – 30 billion neurons. At any point of time, the active neurons are just 2% of that number. Thus, information in the brain is always represented by a small percentage of active neurons within a large population of neurons. This kind of encoding is called a sparse distributed representation (SDR). HTM also uses SDRs. The input to an HTM region is always a distributed representation, but it may not be sparse, so the first thing an HTM region does is convert its input into a sparse distributed representation.
+<em>We can represent an input as a SDR by an array of 1’s and 0’s</em> . Each bit in the array represents a neuron or cell.</p>
+
+<h2 id="how-are-the-predictions-made">How are the predictions made?</h2>
+
+<p>The cells are grouped in vertical columns, and all the cells in a column get the same feed-forward input (either directly from the data, or the output from a lower HTM region). The input, as mentioned previously, is converted to a sparse distributed representation, and then each column gets a unique subset of that input (usually overlapping with other columns, but never the exact same subset). Cells also receive lateral input from other columns of cells.
+Which cells get activated within a column depends on a variety of factors, and the use of columns allows the HTM to create temporal contexts. This <a href="http://numenta.com/assets/pdf/whitepapers/hierarchical-temporal-memory-cortical-learning-algorithm-0.2.1-en.pdf">white</a> paper explains:</p>
+
+<p><em>By selecting different active cells in each active column, we can represent the exact same input differently in different contexts. A specific example might help. Say every column has 4 cells and the representation of every input consists of 100 active columns. If only one cell per column is active at a time, we have 4^100 ways of representing the exact same input. The same input will always result in the same 100 columns being active, but in different contexts different cells in those columns will be active.</em></p>
+
+<p>Which cells in a column become active depends on the current activation state of those cells:</p>
+
+<p><em>When a column becomes active, it looks at all the cells in the column. If one or more cells in the column are already in the predictive state, only those cells become active. If no cells in the column are in the predictive state, then all the cells become active. You can think of it this way, if an input pattern is expected then the system confirms that expectation by activating only the cells in the predictive state. If the input pattern is unexpected then the system activates all cells in the column as if to say “the input occurred unexpectedly so all possible interpretations are valid”.</em></p>
+
+<p>Real neural networks contain inhibitory signals as well as excitatory ones. The same concept is applied in HTM regions as part of the lateral input that cells receive from their neighboring columns:</p>
+
+<p><em>The columns with the strongest activation inhibit, or deactivate, the columns with weaker activation. (The inhibition occurs within a radius that can span from very local to the entire region.) The sparse representation of the input is encoded by which columns are active and which are inactive after inhibition. The inhibition function is defined to achieve a relatively constant percentage of columns to be active, even when the number of input bits that are active varies significantly.</em></p>
+
+<p>Lateral input can inhibit as well as excite cells, and this is how HTM regions form predictions:</p>
+
+<p><em>When input patterns change over time, different sets of columns and cells become active in sequence. When a cell becomes active, it forms connections to a subset of the cells nearby that were active immediately prior. These connections can be formed quickly or slowly depending on the learning rate required by the application. Later, all a cell needs to do is to look at these connections for coincident activity. If the connections become active, the cell can expect that it might become active shortly and enters a predictive state. Thus the feed-forward activation of a set of cells will lead to the predictive activation of other sets of cells that typically follow. Think of this as the moment when you recognize a song and start predicting the next notes.</em></p>
+
+<p>The influence one cell has on another is moderated by the strength of the a virtual synapse between, which can have a decimal value between 0 and 1.</p>
+
+<h2 id="tools-to-implement-htm--nupic">Tools to implement HTM : NuPIC</h2>
+
+<p>Numenta Platform for Intelligent Computing or <a href="http://numenta.org/">NuPIC</a> is an open source project based on HTM.It learns the time-based patterns in data , predicts future values and detects anomalies.You can very easily follow the instructions given on their website and start building your own application around NuPIC.</p>
+
+<p>I hope you found this blog helpful.Cheers!</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/tags/#cnn" class="page__taxonomy-item" rel="tag">cnn</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#convolutional-neural-networks" class="page__taxonomy-item" rel="tag">convolutional-neural-networks</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#machine-learning" class="page__taxonomy-item" rel="tag">machine-learning</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/categories/#academic-works" class="page__taxonomy-item" rel="tag">Academic Works</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/categories/#unpublished" class="page__taxonomy-item" rel="tag">Unpublished</a>
+    
+    </span>
+  </p>
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/posts/2017/01/htm/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/posts/2017/01/htm/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/posts/2017/01/htm/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/posts/2017/01/htm/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/posts/2016/05/physical-web/" class="pagination--pager" title="Implementing Physical Web using Eddystone
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/posts/2017/01/cnn/" class="pagination--pager" title="Convolutional Neural Network Architecture
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item">
+    
+
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2017/04/robotic-car/" rel="permalink">Build a 2D Robotic Car!
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  7 minute read
+	
+</p>
+    
+    
+    
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-04-03T14:56:19-07:00">April 03, 2017</time></p>
+    
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>In the last blog post I explained what is a particle filter and how we can build one using pygame and python.In this post, I will walk you through the steps to build a 2D robotic car and get it running using PD control.
+<u><strong><a href="http://localhost:4000/posts/2017/04/robotic-car/" rel="permalink"> Read more</a></strong></u></p></p>
+    
+
+    
+    
+
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item">
+    
+
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2017/03/particle-filter/" rel="permalink">Robot Localization using Particle Filter
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  7 minute read
+	
+</p>
+    
+    
+    
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-03-07T13:56:19-08:00">March 07, 2017</time></p>
+    
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Robot world is exciting! For people completely unaware of what goes inside the robots and how they manage to do what they do, it seems almost magical.In this post, with the help of an implementation, I will try to scratch the surface of one very important part of robotics called robot localization.
+<u><strong><a href="http://localhost:4000/posts/2017/03/particle-filter/" rel="permalink"> Read more</a></strong></u></p></p>
+    
+
+    
+    
+
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item">
+    
+
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2017/01/cnn/" rel="permalink">Convolutional Neural Network Architecture
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  10 minute read
+	
+</p>
+    
+    
+    
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-01-30T13:56:19-08:00">January 30, 2017</time></p>
+    
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Convolutional Neural Networks or ConvNets or CNNs are biologically inspired varients of Multilayer Perceptrons(MLPs).They are probably the biggest reasons why AI agents are able to play ATARI games, are creating master piece artwork and cars have learnt to drive by themselves.Not only this, they are also being used in Natural language processing and text classification.
+<u><strong><a href="http://localhost:4000/posts/2017/01/cnn/" rel="permalink"> Read more</a></strong></u></p></p>
+    
+
+    
+    
+
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item">
+    
+
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2016/05/physical-web/" rel="permalink">Implementing Physical Web using Eddystone
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  7 minute read
+	
+</p>
+    
+    
+    
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2016-05-05T14:56:19-07:00">May 05, 2016</time></p>
+    
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Hi everyone! This blog post is about a project I did couple of months ago on Physical Web.I will not go deep into the literature and will dive straight into the implementation part.For more information on Physical Web follow this <a href="https://google.github.io/physical-web/">link</a>.
+<u><strong><a href="http://localhost:4000/posts/2016/05/physical-web/" rel="permalink"> Read more</a></strong></u></p></p>
+    
+
+    
+    
+
+    
+
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<a href="/sitemap/">Sitemap</a>
+<!-- end custom footer snippets -->
+
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/ioarun"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/ioarun"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+   <!--  <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li> -->
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Arun Kumar. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+  </body>
+</html>
+

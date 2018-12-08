@@ -1,0 +1,744 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Convolutional Neural Network Architecture - Arun Kumar</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Arun Kumar">
+<meta property="og:title" content="Convolutional Neural Network Architecture">
+
+
+  <link rel="canonical" href="http://localhost:4000/posts/2017/01/cnn/">
+  <meta property="og:url" content="http://localhost:4000/posts/2017/01/cnn/">
+
+
+
+  <meta property="og:description" content="Convolutional Neural Networks or ConvNets or CNNs are biologically inspired varients of Multilayer Perceptrons(MLPs).They are probably the biggest reasons why AI agents are able to play ATARI games, are creating master piece artwork and cars have learnt to drive by themselves.Not only this, they are also being used in Natural language processing and text classification.">
+
+
+
+  <meta name="twitter:site" content="@ioarun">
+  <meta name="twitter:title" content="Convolutional Neural Network Architecture">
+  <meta name="twitter:description" content="Convolutional Neural Networks or ConvNets or CNNs are biologically inspired varients of Multilayer Perceptrons(MLPs).They are probably the biggest reasons why AI agents are able to play ATARI games, are creating master piece artwork and cars have learnt to drive by themselves.Not only this, they are also being used in Natural language processing and text classification.">
+  <meta name="twitter:url" content="http://localhost:4000/posts/2017/01/cnn/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+      <meta name="twitter:image" content="http://localhost:4000/images/site-logo.png">
+    
+  
+
+  
+    <meta name="twitter:creator" content="@arun">
+  
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2017-01-30T13:56:19-08:00">
+
+
+
+
+
+
+  <meta name="google-site-verification" content="3hdu0GcCfjZ6WbPpApjcdcEGjsCPDcDn1QLtBm-DRBg" />
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Arun Kumar Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    
+
+<!-- start custom head snippets -->
+
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="msapplication-TileImage" content="http://localhost:4000/images/mstile-144x144.png?v=M44lzPylqQ">
+<meta name="msapplication-config" content="http://localhost:4000/images/browserconfig.xml?v=M44lzPylqQ">
+<meta name="theme-color" content="#ffffff">
+
+<script type="application/ld+json"> 
+{ 
+"@context": "http://schema.org",
+"@type": "Person",
+"name": "R. Stuart Geiger",
+"email": "mailto:stuart@stuartgeiger.com",
+"image": "http://stuartgeiger.com/images/oban3.jpg",
+"jobTitle": "Ethnographer",
+"name": "R. Stuart Geiger",
+"affiliation": "University of California, Berkeley",
+"alumniOf": "University of California, Berkeley",
+"birthPlace": "Nacogdoches County, TX",
+"gender": "male",
+"honorificSuffix": "PhD",
+"nationality": "United States",
+"url": "http://www.stuartgeiger.com",
+"sameAs" : [
+"http://twitter.com/staeiou",
+"http://github.com/staeiou",
+"https://orcid.org/0000-0001-7215-0532"] 
+} </script>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">Arun Kumar</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/expressions/">Projects</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/year-archive/">Posts</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/cv/">CV</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/contact/">Contact</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+    <script type="application/ld+json">
+    {
+	"@context": "http://schema.org/",
+	"@type": "CreativeWork",
+	"author": "R. Stuart Geiger",
+        "name": "Convolutional Neural Network Architecture",
+	"datePublished": "2017-01-30 13:56:19 -0800",
+	"description": "Convolutional Neural Networks or ConvNets or CNNs are biologically inspired varients of Multilayer Perceptrons(MLPs).They are probably the biggest reasons why AI agents are able to play ATARI games, are creating master piece artwork and cars have learnt to drive by themselves.Not only this, they are also being used in Natural language processing and text classification."
+    }
+    </script>
+
+
+
+
+<div id="main" role="main">
+  
+
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Convolutional Neural Network Architecture">
+    <meta itemprop="description" content="Convolutional Neural Networks or ConvNets or CNNs are biologically inspired varients of Multilayer Perceptrons(MLPs).They are probably the biggest reasons why AI agents are able to play ATARI games, are creating master piece artwork and cars have learnt to drive by themselves.Not only this, they are also being used in Natural language processing and text classification.">
+    <meta itemprop="datePublished" content="January 30, 2017">
+    
+    
+
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Convolutional Neural Network Architecture
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  9 minute read
+	
+</p>
+          
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-01-30T13:56:19-08:00">January 30, 2017</time></p>
+        
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <h2 id="introduction">Introduction</h2>
+
+<p>Convolutional Neural Networks or ConvNets or CNNs are biologically inspired varients of Multilayer Perceptrons(MLPs).They are probably the biggest reasons why AI agents are able to play ATARI games, are creating master piece artwork and cars have learnt to drive by themselves.Not only this, they are also being used in Natural language processing and text classification.</p>
+
+<!--more-->
+
+<p>In this post, I will try to explain the basic architecture of the CNN.Much of the following content is derived from <a href="http://cs231n.github.io/convolutional-networks/">CS231n</a>.It’s a great course and helps build the intuition of the working of CNN.Let me start by why is there a need for CNN and why it is becoming so popular.</p>
+
+<h2 id="regular-neural-nets-do-not-scale">Regular Neural Nets do not scale</h2>
+
+<p>Suppose we have a <code class="highlighter-rouge">200x200x3</code> size image(<code class="highlighter-rouge">3</code> is the number of channels - R, G, B) and we input it to our first hidden layer in the regular neural nets.This would lead to a total of <code class="highlighter-rouge">200x200x3 = 120,000</code> weights.And that is just one layer.As we consider more number of layers, the parameters would add up quickly.Clearly, this full connectivity is wasteful and the huge number of parameters would quickly lead to overfitting.</p>
+
+<!-- _includes/image.html -->
+<div class="image-wrapper">
+    
+        <img align="middle" src="http://localhost:4000/images/2017/cnn/comparing-regular-and-cnn.jpeg" alt="Regular Neural Net" />
+    
+    
+        <p align="center" class="image-caption"> A regular 3-layer Neural Network</p>
+    
+</div>
+
+<h2 id="3d-volumes-of-neurons">3D Volumes of Neurons</h2>
+
+<p>In particular, unlike a regular Neural Network, the layers of a ConvNet have neurons arranged in <code class="highlighter-rouge">3</code> dimensions: width, height, depth. (Note that the word depth here refers to the third dimension of an activation volume, not to the depth of a full Neural Network, which can refer to the total number of layers in a network.) For example, the input images in CIFAR-10 are an input volume of activations, and the volume has dimensions <code class="highlighter-rouge">32x32x3</code> (width, height, depth respectively). The neurons in a layer will only be connected to a small region of the layer before it, instead of all of the neurons in a fully-connected manner. This model is actually found in animal visual cortex.Individual cortical neurons respond to stimuli in a restricted region of space known as the receptive field. The receptive fields of different neurons partially overlap such that they tile the visual field. The response of an individual neuron to stimuli within its receptive field can be approximated mathematically by a convolution operation.</p>
+
+<!-- _includes/image.html -->
+<div class="image-wrapper">
+    
+        <img align="middle" src="http://localhost:4000/images/2017/cnn/comparing-regular-and-cnn2.jpeg" alt="Convolutional Neural Net" />
+    
+    
+        <p align="center" class="image-caption">Every layer of a ConvNet transforms the 3D input volume to a 3D output volume of neuron activations. In this example, the red input layer holds the image, so its width and height would be the dimensions of the image, and the depth would be `3` (Red, Green, Blue channels).</p>
+    
+</div>
+
+<h2 id="what-is-convolution">What is convolution?</h2>
+
+<p>Convolution can be thought of as a sliding window function applied to a matrix.This sliding window is called as <em>filter</em>, <em>kernel</em> or <em>feature extractor</em>.</p>
+
+<!-- _includes/image.html -->
+<div class="image-wrapper">
+    
+        <img align="middle" src="http://localhost:4000/images/2017/cnn/Convolution_schematic.gif" alt="convolution" />
+    
+    
+        <p align="center" class="image-caption">Convolution operation - elementwise multiplication and then adding the results</p>
+    
+</div>
+
+<h1 id="cnn-architecture">CNN Architecture</h1>
+
+<p>Let’s take each component one by one.</p>
+
+<h2 id="input-layer">Input layer</h2>
+
+<p>Unlike regular neural nets where we have one-dimensional input vector, here we have 3D image as the input.The three dimensions are <code class="highlighter-rouge">height</code>, <code class="highlighter-rouge">width</code> and <code class="highlighter-rouge">channels</code> (<code class="highlighter-rouge">3</code> if RGB image, <code class="highlighter-rouge">1</code> if grayscale.)</p>
+
+<h2 id="filter">Filter</h2>
+
+<p>A filter is a matrix of weights which slides over the input image and does dot product with the image matrix just below it simultaneously.It then passes the result through a ReLU or tanH activation neuron thus outputting single element of <em>activation map</em>.The dimensions of a filter depend on the input <em>thickness</em>. If the input image/layer has <code class="highlighter-rouge">3</code> channels/thickness, the filter dimension would be something like 5x5x3.</p>
+
+<h2 id="convolution-layer">Convolution layer</h2>
+
+<p>As we slide the filter over the input image, we get activations and all of them as a whole form one layer of activation map.The convolution layer is made up of these activation maps and each neuron on the activation map has a <em>local connectivity</em> with a local region in the input volume.Imagine flashing a torch on a flat transparent surface in a dark room with a condition that the light(yellow in color) doesn’t scatter as it penetrates the depth.<em>The volume under this light would look like the part of the input volume that a convolution layer neuron is connected to at this particular moment</em>.Sure, as we move our filter, the volume shifts accordingly but the dimensions and the <em>weights</em> remain the same. Let’s calculate the total number of weights connected to each neuron in each activation map.For a <code class="highlighter-rouge">5x5x3</code> filter, a input volume of <code class="highlighter-rouge">32x32x3</code> will produce <code class="highlighter-rouge">5x5x3 = 75</code> wights in one layer.</p>
+
+<p>These weights are shared among all the other neurons in one activation map.If the output layer has 6 activation maps of dimension <code class="highlighter-rouge">28x28</code>, then <code class="highlighter-rouge">75</code> weights will be shared by all the other <code class="highlighter-rouge">783</code> neurons on one activation map.This is called as <em>parameter sharing</em>.What about depth then?Are these weights also shared with each neuron accross the depth dimension.No, they are not.Infact there will be as many sets of weights as their are activation maps/filters.Imagine the torch light exampled I gave above.Now we have another torch that flashes a different color light say green.This torch would be just below the first one and covering the same area and volume.BUT, it’s a different color now.Similar is the case with activation maps in convolution layer.Each map has it’s own set of weights which are different than the maps above and below it but are shared among the neurons on the same map.The torch analogy might be a wrong example to state here but I hope this clears the picture a little.Following figure may make things clearer.</p>
+
+<!-- _includes/image.html -->
+<div class="image-wrapper">
+    
+        <img align="middle" src="http://localhost:4000/images/2017/cnn/neurons-in-conv.jpeg" alt="Convolution layer" />
+    
+    
+        <p align="center" class="image-caption">A 32x32x3 volume input connected to a neuron in convolutional layer</p>
+    
+</div>
+
+<p>There is a simple math involved as to calculate the dimensions of output activation map depending on the the input and filter dimensions and quantity.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Output size = (N - F)/Stride + 1
+</code></pre></div></div>
+<p>where  <code class="highlighter-rouge">N</code> = input spatial dimension (eg. a <code class="highlighter-rouge">32x32x3</code> image would have <code class="highlighter-rouge">N = 32</code>),
+<code class="highlighter-rouge">F</code> = filter dimension (eg. <code class="highlighter-rouge">3x3</code>, <code class="highlighter-rouge">5x5</code>, <code class="highlighter-rouge">11x11</code> )</p>
+
+<p>The depth of the activation map or number of layers in the output(slices of activation maps) depend on the number of filters we are using.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Activation map depth = Number of filters used.
+</code></pre></div></div>
+<p>But what are <em>strides</em> ? Strides are the number of steps to move while sliding over input.
+There is one more thing left which is padding.Let’s look at the significance of padding by an example.Suppose we have a 32x32 image and we are using a filter of size <code class="highlighter-rouge">5x5</code>.Taking stride as <code class="highlighter-rouge">1</code>, what will be the dimension of the output after one convolution?</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(N-F)/S + 1 = (32-5)/1 + 1 = 28
+</code></pre></div></div>
+<p>Okay, now let’s use this output as an input to out next convolution.The result will be <code class="highlighter-rouge">24</code>. So we see that the output shrinks gradually at the beginning.This was just an example.In real life scenario, it shrinks even faster.Padding helps us avoid this situation by keeping the output dimension either same or more.It is a process in which the input is padded with <code class="highlighter-rouge">0's</code> on height and width sides.For an example,in the following image, a <code class="highlighter-rouge">7x7</code> image has been padded with <code class="highlighter-rouge">1</code> pixel border.What is the corresponding output dimension?</p>
+
+<!-- _includes/image.html -->
+<div class="image-wrapper">
+    
+        <img align="middle" src="http://localhost:4000/images/2017/cnn/padding.png" alt="Padding" />
+    
+    
+        <p align="center" class="image-caption">Padding helps maintain the output dimension(spatially)</p>
+    
+</div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>N = 9, F = 3, S = 1
+(N-F)/S + 1 = (9-3)/1 + 1 = 7
+</code></pre></div></div>
+<p>That’s same as the input! Thus we see that we can control the shrinking of our output by padding.We can also modify about formula to add padding.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>(N−F+2P)/S + 1
+where P is padding(0,1,2,3...)
+</code></pre></div></div>
+<p>Following formulae from <a href="http://cs231n.github.io/convolutional-networks/">CS231</a> summarize the convolution layer very well.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Input (W2xH2xD2) ---convolution--&gt; Output (W2xH2xD2)
+
+where W2 = (W1-F+2P)/S + 1
+H2 = (H1-F+2P)/S + 1
+D2 = K
+
+Total number of weights per filter = FxFxD1 
+Total number of weights in a convolution layer = (FxFxD1)xK + K biases
+</code></pre></div></div>
+
+<h2 id="pooling">Pooling</h2>
+
+<!-- _includes/image.html -->
+<div class="image-wrapper">
+    
+        <img align="middle" src="http://localhost:4000/images/2017/cnn/downsampling.jpeg" alt="Downsampling" />
+    
+    
+        <p align="center" class="image-caption">In this example, the input volume of size [224x224x64] is pooled with filter size 2, stride 2 into
+output volume of size [112x112x64]</p>
+    
+</div>
+
+<p>Pooling let’s us control the spatial size of the output layer and thus controlling the number of parameters.It is usually inserted between two convolution layers.It is done one each activation map independently and preserves the depth dimension.In <em>max pooling</em> operation, a filter (eg. 2x2, stride 2) slides over one activation map and downsamples it to half of it’s previous dimensions.Following figure shows the max pooling operation.</p>
+
+<!-- _includes/image.html -->
+<div class="image-wrapper">
+    
+        <img align="middle" src="http://localhost:4000/images/2017/cnn/max-pooling.jpeg" alt="max-pooling" />
+    
+    
+        <p align="center" class="image-caption">A very common max pooling operation done over a slice of activation map.Max operation is performed over 4 numbers at a time when a filter of 2x2 makes stride of 2</p>
+    
+</div>
+
+<h2 id="fully-connected-layer">Fully connected layer</h2>
+
+<p>The neuron activations from the final convolution layers are flattened to produce a vector which acts as an input to a regular neural network called fully connected network.This network finally produces outputs like scores or probabilities associated with our original input volume.</p>
+
+<!-- _includes/image.html -->
+<div class="image-wrapper">
+    
+        <img align="middle" src="http://localhost:4000/images/2017/cnn/fc-cnn.jpeg" alt="Fully connected layer" />
+    
+    
+        <p align="center" class="image-caption"></p>
+    
+</div>
+
+<h1 id="putting-it-all-together">Putting it all together</h1>
+
+<p>Though I have not covered all the details of a CNN network, above mentioned components are pretty much what is required for building a basic CNN network like handwritten digits classifier.In general, the full CNN architecture can be summarized by the following formula:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>INPUT -&gt; [[CONV -&gt; RELU]*N -&gt; POOL?]*M -&gt; [FC -&gt; RELU]*K -&gt; FC
+</code></pre></div></div>
+<p>where the <code class="highlighter-rouge">*</code> indicates repetition, and the <code class="highlighter-rouge">POOL?</code> indicates an optional pooling layer.
+Moreover, <code class="highlighter-rouge">N &gt;= 0</code> (and usually <code class="highlighter-rouge">N &lt;= 3</code> ), <code class="highlighter-rouge">M &gt;= 0</code> , <code class="highlighter-rouge">K &gt;= 0</code> (and usually <code class="highlighter-rouge">K &lt; 3</code> ).</p>
+
+<!-- _includes/image.html -->
+<div class="image-wrapper">
+    
+        <img align="middle" src="http://localhost:4000/images/2017/cnn/cnn-title-image.jpeg" alt="LeNet" />
+    
+    
+        <p align="center" class="image-caption">LeNet-5[LeCun et al., 1998] had CONV-POOL-CONV-POOL-CONV-FC architecture</p>
+    
+</div>
+
+<p>I hope this post was useful in some way.Please follow for more interesting updates!</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/tags/#cnn" class="page__taxonomy-item" rel="tag">cnn</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#convolutional-neural-networks" class="page__taxonomy-item" rel="tag">convolutional-neural-networks</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#machine-learning" class="page__taxonomy-item" rel="tag">machine-learning</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/categories/#academic-works" class="page__taxonomy-item" rel="tag">Academic Works</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/categories/#unpublished" class="page__taxonomy-item" rel="tag">Unpublished</a>
+    
+    </span>
+  </p>
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/posts/2017/01/cnn/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/posts/2017/01/cnn/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/posts/2017/01/cnn/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/posts/2017/01/cnn/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/posts/2017/01/htm/" class="pagination--pager" title="Understanding Hierarchical Temporal Memory
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/posts/2017/03/particle-filter/" class="pagination--pager" title="Robot Localization using Particle Filter
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item">
+    
+
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2017/04/robotic-car/" rel="permalink">Build a 2D Robotic Car!
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  7 minute read
+	
+</p>
+    
+    
+    
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-04-03T14:56:19-07:00">April 03, 2017</time></p>
+    
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>In the last blog post I explained what is a particle filter and how we can build one using pygame and python.In this post, I will walk you through the steps to build a 2D robotic car and get it running using PD control.
+<u><strong><a href="http://localhost:4000/posts/2017/04/robotic-car/" rel="permalink"> Read more</a></strong></u></p></p>
+    
+
+    
+    
+
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item">
+    
+
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2017/03/particle-filter/" rel="permalink">Robot Localization using Particle Filter
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  7 minute read
+	
+</p>
+    
+    
+    
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-03-07T13:56:19-08:00">March 07, 2017</time></p>
+    
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Robot world is exciting! For people completely unaware of what goes inside the robots and how they manage to do what they do, it seems almost magical.In this post, with the help of an implementation, I will try to scratch the surface of one very important part of robotics called robot localization.
+<u><strong><a href="http://localhost:4000/posts/2017/03/particle-filter/" rel="permalink"> Read more</a></strong></u></p></p>
+    
+
+    
+    
+
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item">
+    
+
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2017/01/htm/" rel="permalink">Understanding Hierarchical Temporal Memory
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  8 minute read
+	
+</p>
+    
+    
+    
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-01-15T13:56:19-08:00">January 15, 2017</time></p>
+    
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Last year I did one project on Cognitive Healthcare which used Hierarchical Temporal Memory or HTM.Through this post, I have tried to put down my understanding of <a href="http://numenta.org/">Numenta</a>’s HTM. Before getting to it, it is important to understand the functioning of the neocortex to process sensory inputs from the physical world because HTM is inspired by the same.
+<u><strong><a href="http://localhost:4000/posts/2017/01/htm/" rel="permalink"> Read more</a></strong></u></p></p>
+    
+
+    
+    
+
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item">
+    
+
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2016/05/physical-web/" rel="permalink">Implementing Physical Web using Eddystone
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  7 minute read
+	
+</p>
+    
+    
+    
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2016-05-05T14:56:19-07:00">May 05, 2016</time></p>
+    
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Hi everyone! This blog post is about a project I did couple of months ago on Physical Web.I will not go deep into the literature and will dive straight into the implementation part.For more information on Physical Web follow this <a href="https://google.github.io/physical-web/">link</a>.
+<u><strong><a href="http://localhost:4000/posts/2016/05/physical-web/" rel="permalink"> Read more</a></strong></u></p></p>
+    
+
+    
+    
+
+    
+
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<a href="/sitemap/">Sitemap</a>
+<!-- end custom footer snippets -->
+
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/ioarun"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/ioarun"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+   <!--  <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li> -->
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Arun Kumar. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+  </body>
+</html>
+

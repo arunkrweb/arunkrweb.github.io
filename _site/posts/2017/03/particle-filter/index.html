@@ -1,0 +1,657 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Robot Localization using Particle Filter - Arun Kumar</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Arun Kumar">
+<meta property="og:title" content="Robot Localization using Particle Filter">
+
+
+  <link rel="canonical" href="http://localhost:4000/posts/2017/03/particle-filter/">
+  <meta property="og:url" content="http://localhost:4000/posts/2017/03/particle-filter/">
+
+
+
+  <meta property="og:description" content="Robot world is exciting! For people completely unaware of what goes inside the robots and how they manage to do what they do, it seems almost magical.In this post, with the help of an implementation, I will try to scratch the surface of one very important part of robotics called robot localization.">
+
+
+
+  <meta name="twitter:site" content="@ioarun">
+  <meta name="twitter:title" content="Robot Localization using Particle Filter">
+  <meta name="twitter:description" content="Robot world is exciting! For people completely unaware of what goes inside the robots and how they manage to do what they do, it seems almost magical.In this post, with the help of an implementation, I will try to scratch the surface of one very important part of robotics called robot localization.">
+  <meta name="twitter:url" content="http://localhost:4000/posts/2017/03/particle-filter/">
+
+  
+    <meta name="twitter:card" content="summary">
+    
+      <meta name="twitter:image" content="http://localhost:4000/images/site-logo.png">
+    
+  
+
+  
+    <meta name="twitter:creator" content="@arun">
+  
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2017-03-07T13:56:19-08:00">
+
+
+
+
+
+
+  <meta name="google-site-verification" content="3hdu0GcCfjZ6WbPpApjcdcEGjsCPDcDn1QLtBm-DRBg" />
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Arun Kumar Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    
+
+<!-- start custom head snippets -->
+
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="msapplication-TileImage" content="http://localhost:4000/images/mstile-144x144.png?v=M44lzPylqQ">
+<meta name="msapplication-config" content="http://localhost:4000/images/browserconfig.xml?v=M44lzPylqQ">
+<meta name="theme-color" content="#ffffff">
+
+<script type="application/ld+json"> 
+{ 
+"@context": "http://schema.org",
+"@type": "Person",
+"name": "R. Stuart Geiger",
+"email": "mailto:stuart@stuartgeiger.com",
+"image": "http://stuartgeiger.com/images/oban3.jpg",
+"jobTitle": "Ethnographer",
+"name": "R. Stuart Geiger",
+"affiliation": "University of California, Berkeley",
+"alumniOf": "University of California, Berkeley",
+"birthPlace": "Nacogdoches County, TX",
+"gender": "male",
+"honorificSuffix": "PhD",
+"nationality": "United States",
+"url": "http://www.stuartgeiger.com",
+"sameAs" : [
+"http://twitter.com/staeiou",
+"http://github.com/staeiou",
+"https://orcid.org/0000-0001-7215-0532"] 
+} </script>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/">Arun Kumar</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/expressions/">Projects</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/year-archive/">Posts</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/cv/">CV</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/contact/">Contact</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+    <script type="application/ld+json">
+    {
+	"@context": "http://schema.org/",
+	"@type": "CreativeWork",
+	"author": "R. Stuart Geiger",
+        "name": "Robot Localization using Particle Filter",
+	"datePublished": "2017-03-07 13:56:19 -0800",
+	"description": "Robot world is exciting! For people completely unaware of what goes inside the robots and how they manage to do what they do, it seems almost magical.In this post, with the help of an implementation, I will try to scratch the surface of one very important part of robotics called robot localization."
+    }
+    </script>
+
+
+
+
+<div id="main" role="main">
+  
+
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Robot Localization using Particle Filter">
+    <meta itemprop="description" content="Robot world is exciting! For people completely unaware of what goes inside the robots and how they manage to do what they do, it seems almost magical.In this post, with the help of an implementation, I will try to scratch the surface of one very important part of robotics called robot localization.">
+    <meta itemprop="datePublished" content="March 07, 2017">
+    
+    
+
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Robot Localization using Particle Filter
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  7 minute read
+	
+</p>
+          
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-03-07T13:56:19-08:00">March 07, 2017</time></p>
+        
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>Robot world is exciting! For people completely unaware of what goes inside the robots and how they manage to do what they do, it seems almost magical.In this post, with the help of an implementation, I will try to scratch the surface of one very important part of robotics called robot localization.</p>
+
+<!--more-->
+
+<h2 id="what-is-localization">What is localization?</h2>
+
+<p>Imagine that you are blind folded and somehow all you know about the surrounding is as far as you can stretch out your hands to touch the surrounding obstacles.This would give you an approximation of the distance of an obstacle from you in the surrounding but not your orientation in global coordinate system(surrounding).This information is not sufficient to know your exact location in the surrounding.</p>
+
+<p>Trying to find the near exact location of the robot in a given space using noisy sensor data is called as <em>localization</em></p>
+
+<p>Take another example of a moving car.The GPS might show the car coordinates pretty well but when it comes to relying on just GPS values for autonomous driving, it is not that pretty.The error may go as far as 10 meters which can be fatal to the car.</p>
+
+<p>Localization makes sure that we reduce this error by as much as possible from the given sensor information and dynamics of the car.</p>
+
+<h2 id="particle-filter">Particle Filter</h2>
+
+<p>Consider the first example where you had to examine the surrounding by your hands.Suppose there are N of you and are randomly spread out in the surrounding and each of you have a distance vector which contains the distances from each of the obstacles.Since there are 1000 of yous, many of them would be in the vicinity of you near the same obstacle.Ofcourse the orientation may vary.Currently all the human beings are uniformally distributed.Until the next step which is called resampling.In resampling process only the humans near you would remain and others will disappear.You are said to be somewhat localized.</p>
+
+<p>Formally, a particle is a discrete guess of where a robot may be located.Also, regularly, these particles are resampled from the distribution so that the particles consistent with the measurements <em>survive</em>.After successfull localization, the particles are collected in a region of high probability of the robot.</p>
+
+<h2 id="localize-a-car">Localize a Car!</h2>
+
+<p>Having taken the CS373 course on Udacity on AI for robotics, I had an urge to build my own robotic self-driving car.I am in the process to build it in simulation.This post is one part of it.I tried to build a 2D demo of robot-car localization using Python and Pygame.You can find the source code <a href="https://github.com/ioarun/pygame-robotics/blob/master/particle-filter/particle-filter-2.py">here</a>.</p>
+
+<h3 id="the-robot-class">The robot class</h3>
+
+<p>This class contains robot specific methods like</p>
+<ul>
+  <li><code class="highlighter-rouge">set()</code> -  to set x, y and orientation</li>
+  <li><code class="highlighter-rouge">set_noise()</code> - to set forward motion noise, turn noise and bearing noise</li>
+  <li><code class="highlighter-rouge">move()</code> - to move robot</li>
+  <li><code class="highlighter-rouge">sense()</code> - to sense the bearing angle (angle between heading of robot and landmark location)</li>
+</ul>
+
+<p>Instantiation of the robot class creates an object with random location and orientation.Let’s call this object <code class="highlighter-rouge">car</code>. Then we will create <code class="highlighter-rouge">particles</code>. Make an empty list called <code class="highlighter-rouge">particles</code> and append it with the robot objects called <code class="highlighter-rouge">particle</code>.I created 1000 such particles.</p>
+
+<!-- _includes/image.html -->
+<div class="image-wrapper">
+    
+        <img align="middle" src="http://localhost:4000/images/2017/particle-filter/initial_condition.png" alt="Initial state of particles" />
+    
+    
+        <p align="center" class="image-caption">1000 particles distributed uniformly in the space</p>
+    
+</div>
+
+<p>The figure above is a screen shot of my pygame screen.The blue circles are the landmarks.The car sprite is located in the center of the screen in the initial state and particles (green dots) are uniformly distributed on the screen.</p>
+
+<p>At this current frame, several things are happening.The car <em>senses</em> the landmarks and generates a <em>measurements</em> vector with as many values as their are landmarks.These measurements are <em>bearing angles</em> or the angle between car heading and the landmark location.Ofcourse our sensors are noisy.So a bearing noise which is a guassian around mean 0 is added to these measurements.</p>
+
+<h3 id="weights">Weights</h3>
+
+<p>Since the particles are uniformly distributed, some would be closer to the car and some would be far.So the particles nearby car are good estimate of the car’s location.<em>Weights</em> are the measure of how important the particles are.The larger the weight, the more important it is.
+Next we allow the particles to survive at random, but the probability of survival will be proportional to the weights. That is, a particle with a larger weight will survive at a higher proportion than a particle with a small weight. This means that after resampling, which is randomly drawing new particles from the old ones with
+replacement in proportion to the importance weight, the particles with a higher importance weight will live on, while the smaller ones will die out.With replacement means high probability particle would be drawn multiple number of times.So at any time there will be total 1000 particles.</p>
+
+<p>There is one <em>measurement_prob()</em> method provided in the course that Sebastian Thrun, the course instructor wrote which finds these weights proportional to likelihood of the measurement.The argument consists of single <em>measurements</em> vector.Based on the difference in the actual measurement by the car and the predicted measurement by the particle into consideration and the Gaussian the method returns the likelihood of the particle.This is repeated for all the 1000 particles.</p>
+
+<h3 id="resampling">Resampling</h3>
+
+<p>In the resampling process, highly weighted particles are selected with a high probability than the ones with low weights.These weights are <em>normalized</em> weights meaning, they are divided by the sum total of all the weights.Suppose we have 6 particles - p1, p2, p3, p4, p5, p6 and p3 and p6 have higher weights than the other four particles.We will run a resampling cycle 6 times.So, let’s say the first time p6 was chosen.Second time again p6 was chosen, next p1 was chosen followed by p3, p3 and p5.So the new particles list will look like - p1, p3, p3, p5, p6, p6.Eventually after many iterations, the list may look like p6, p6, p6, p6, p6, p6.And we will see 6 of these particles approximately at the car location and will say that our car/robot is localized.</p>
+
+<!-- _includes/image.html -->
+<div class="image-wrapper">
+    
+        <img align="middle" src="http://localhost:4000/images/2017/particle-filter/next_condition.png" alt="Localized car" />
+    
+    
+        <p align="center" class="image-caption">Small green dot is actually 1000 particles on top of each other localizing the car.</p>
+    
+</div>
+
+<p><em>Resampling wheel</em> is one way to implement resampling.It is very efficient 10 lines of code.We represent all the particles and their weights on a big wheel.Each slice on the wheel is proportional to the corresponding weights.Now we chose any index from 0 to 999 at random.Let’s say we chose <code class="highlighter-rouge">W6</code> randomly.Create a variable <code class="highlighter-rouge">beta</code> and assign a value <code class="highlighter-rouge">2*max(weights)</code> to it.Now, we follow following steps until the value of <code class="highlighter-rouge">beta</code> is less than the weight at running index.Subtract <code class="highlighter-rouge">weight[index]</code> from <code class="highlighter-rouge">beta</code> and increment <code class="highlighter-rouge">index</code>.As soon as <code class="highlighter-rouge">beta</code> drops below the running weight, loop terminates and the particle associated with running index is appended to the new particle list.</p>
+
+<p>Above steps are repeated till all the 1000 particles are not appended to the new particles list.</p>
+
+<!-- _includes/image.html -->
+<div class="image-wrapper">
+    
+        <img align="middle" src="http://localhost:4000/images/2017/particle-filter/resampling-wheel.jpeg" alt="Resampling wheel" />
+    
+    
+        <p align="center" class="image-caption">[Source: Udacity]Resampling wheel</p>
+    
+</div>
+
+<h2 id="next-steps">Next steps!</h2>
+
+<p>That was just one frame or instant.In the next frame, the car moves and so do the particles.These particles are the ones from previous step of resampling.The process of localization starts again and repeats as explained above.</p>
+
+<!-- _includes/image.html -->
+<div class="image-wrapper">
+    
+        <img align="middle" src="http://localhost:4000/images/2017/particle-filter/particle-filter.gif" alt="Particle Filter Localization" />
+    
+    
+        <p align="center" class="image-caption">Particle Filter Localization</p>
+    
+</div>
+
+<p>That’s it for now guys.I had fun implementing the particle filter.I am aiming to build a basic implementation of self driving car in pygame.More posts on the same soon.Do follow for updates!</p>
+
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/tags/#artificial-intelligence" class="page__taxonomy-item" rel="tag">artificial-intelligence</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#robotics" class="page__taxonomy-item" rel="tag">robotics</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/categories/#academic-works" class="page__taxonomy-item" rel="tag">Academic Works</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/categories/#unpublished" class="page__taxonomy-item" rel="tag">Unpublished</a>
+    
+    </span>
+  </p>
+
+
+      </footer>
+
+      
+
+<section class="page__share">
+  
+    <h4 class="page__share-title">Share on</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/posts/2017/03/particle-filter/" class="btn btn--twitter" title="Share on Twitter"><i class="fa fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/posts/2017/03/particle-filter/" class="btn btn--facebook" title="Share on Facebook"><i class="fa fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://plus.google.com/share?url=http://localhost:4000/posts/2017/03/particle-filter/" class="btn btn--google-plus" title="Share on Google Plus"><i class="fa fa-fw fa-google-plus" aria-hidden="true"></i><span> Google+</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/posts/2017/03/particle-filter/" class="btn btn--linkedin" title="Share on LinkedIn"><i class="fa fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+      
+
+
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/posts/2017/01/cnn/" class="pagination--pager" title="Convolutional Neural Network Architecture
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/posts/2017/04/robotic-car/" class="pagination--pager" title="Build a 2D Robotic Car!
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item">
+    
+
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2017/04/robotic-car/" rel="permalink">Build a 2D Robotic Car!
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  7 minute read
+	
+</p>
+    
+    
+    
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-04-03T14:56:19-07:00">April 03, 2017</time></p>
+    
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>In the last blog post I explained what is a particle filter and how we can build one using pygame and python.In this post, I will walk you through the steps to build a 2D robotic car and get it running using PD control.
+<u><strong><a href="http://localhost:4000/posts/2017/04/robotic-car/" rel="permalink"> Read more</a></strong></u></p></p>
+    
+
+    
+    
+
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item">
+    
+
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2017/01/cnn/" rel="permalink">Convolutional Neural Network Architecture
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  9 minute read
+	
+</p>
+    
+    
+    
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-01-30T13:56:19-08:00">January 30, 2017</time></p>
+    
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Convolutional Neural Networks or ConvNets or CNNs are biologically inspired varients of Multilayer Perceptrons(MLPs).They are probably the biggest reasons why AI agents are able to play ATARI games, are creating master piece artwork and cars have learnt to drive by themselves.Not only this, they are also being used in Natural language processing and text classification.
+<u><strong><a href="http://localhost:4000/posts/2017/01/cnn/" rel="permalink"> Read more</a></strong></u></p></p>
+    
+
+    
+    
+
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item">
+    
+
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2017/01/htm/" rel="permalink">Understanding Hierarchical Temporal Memory
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  8 minute read
+	
+</p>
+    
+    
+    
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2017-01-15T13:56:19-08:00">January 15, 2017</time></p>
+    
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Last year I did one project on Cognitive Healthcare which used Hierarchical Temporal Memory or HTM.Through this post, I have tried to put down my understanding of <a href="http://numenta.org/">Numenta</a>’s HTM. Before getting to it, it is important to understand the functioning of the neocortex to process sensory inputs from the physical world because HTM is inspired by the same.
+<u><strong><a href="http://localhost:4000/posts/2017/01/htm/" rel="permalink"> Read more</a></strong></u></p></p>
+    
+
+    
+    
+
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item">
+    
+
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/posts/2016/05/physical-web/" rel="permalink">Implementing Physical Web using Eddystone
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  7 minute read
+	
+</p>
+    
+    
+    
+      <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2016-05-05T14:56:19-07:00">May 05, 2016</time></p>
+    
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>Hi everyone! This blog post is about a project I did couple of months ago on Physical Web.I will not go deep into the literature and will dive straight into the implementation part.For more information on Physical Web follow this <a href="https://google.github.io/physical-web/">link</a>.
+<u><strong><a href="http://localhost:4000/posts/2016/05/physical-web/" rel="permalink"> Read more</a></strong></u></p></p>
+    
+
+    
+    
+
+    
+
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<a href="/sitemap/">Sitemap</a>
+<!-- end custom footer snippets -->
+
+        
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="https://twitter.com/ioarun"><i class="fa fa-fw fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+    
+    
+    
+      <li><a href="http://github.com/ioarun"><i class="fa fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+   <!--  <li><a href="http://localhost:4000/feed.xml"><i class="fa fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li> -->
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2018 Arun Kumar. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/assets/js/main.min.js"></script>
+
+
+
+
+
+  </body>
+</html>
+
