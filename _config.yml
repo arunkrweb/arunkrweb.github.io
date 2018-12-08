@@ -56,7 +56,7 @@ yandex_site_verification :
 
 # Social Sharing
 twitter:
-  username               : &twitter "staeiou"
+  username               : &twitter "ioarun"
 facebook:
   username               : 
   app_id                 :
@@ -69,10 +69,10 @@ social:
   name                   : # If the user or organization name differs from the site's name
   links: # An array of links to social media profiles
 # Analytics
-analytics:
-  provider               :  "google-universal" # false (default), "google", "google-universal", "custom"
-  google:
-    tracking_id          : "UA-79273-2"
+# analytics:
+#   provider               :  "google-universal" # false (default), "google", "google-universal", "custom"
+#   google:
+#     tracking_id          : "UA-79273-2"
 
 
 
@@ -80,10 +80,10 @@ analytics:
 author:
   name             : "Arun Kumar"
   avatar           : "arun.jpg"
-  bio              : "Robotics and Artificial Intelligence Researcher | Project Associate at the <a style='color: black;' href='http://rbccps.org'>Robert Bosch Centere for Cyber Physical Systems, IISc</a>"
+  bio              : "Project Associate at the <a style='color: black;' href='http://rbccps.org'>Robert Bosch Centere for Cyber Physical Systems, IISc</a>"
   location         : "Bangalore, India"
   employer         : 
-  googlescholar    : "https://scholar.google.com/citations?user=0AvWi3wAAAAJ&hl=en"
+  googlescholar    : "https://scholar.google.co.in/citations?user=0rD8-OIAAAAJ&hl=en"
   email            :
   uri              : 
   bitbucket        :
@@ -98,7 +98,7 @@ author:
   instagram        : 
   lastfm           :
   linkedin         :
-  orcid            : "http://orcid.org/0000-0001-7215-0532"
+  orcid            : 
   pinterest        :
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username
@@ -109,7 +109,7 @@ author:
   weibo            :
   xing             :
   youtube          :
-  wikipedia        : "staeiou"
+  wikipedia        :
 
 
 # Reading Files
