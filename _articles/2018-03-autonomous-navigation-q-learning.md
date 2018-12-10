@@ -13,7 +13,7 @@ This project implements autonomous navigation of an ARDrone in Gazebo simulator.
 <!-- <div style="justify-content: center;">
 <a href="http://arunkrweb.github.io/images/2018/drone/drone_qlearning.gif"><img src="/images/2018/drone/drone_qlearning.gif" style="width: 600px; height: 200px;"/></a>
 </div> -->
-<p>
+<p style="font-size: 14px;">
 Reference paper : Pham, Huy X., Hung M. La, David Feil-Seifer, and Luan V. Nguyen. "Autonomous UAV Navigation Using Reinforcement Learning." arXiv preprint arXiv:1801.05086 (2018).
 </p>
 
