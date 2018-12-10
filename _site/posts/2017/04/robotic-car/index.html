@@ -75,8 +75,6 @@
 
 
 
-  <meta name="google-site-verification" content="3hdu0GcCfjZ6WbPpApjcdcEGjsCPDcDn1QLtBm-DRBg" />
-
 
 
 
@@ -157,6 +155,9 @@
             <li class="masthead__menu-item"><a href="http://localhost:4000/year-archive/">Posts</a></li>
           
             
+            <li class="masthead__menu-item"><a href="http://localhost:4000/fun/">Fun</a></li>
+          
+            
             <li class="masthead__menu-item"><a href="http://localhost:4000/cv/">CV</a></li>
           
             
@@ -230,14 +231,16 @@
 <p>Our robotic car has two fixed rear wheels and two front steereable wheels.The vehicle motion can be explained by splitting the vehicle vertically so that we get something called a bicycle model as shown below.</p>
 
 <!-- _includes/image.html -->
+<center>
 <div class="image-wrapper">
     
-        <img align="middle" src="http://localhost:4000/images/2017/robotic-car/bicycle-model1.png" alt="Bicycle Model" />
+        <img align="middle" src="http://localhost:4000/images/2017/robotic-car/bicycle-model1.png" alt="Bicycle Model" style="border: 2px solid black;" />
     
     
         <p align="center" class="image-caption">Bicycle model - local coordinates</p>
     
 </div>
+</center>
 
 <p>This model is useful in understanding the vehicle motion especially when taking a turn.Let’s say our car starts to take a right turn. Assuming the steering angle to be <code class="highlighter-rouge">alpha</code>, the radius of the circle that the rear wheel makes while taking the turn to be <code class="highlighter-rouge">R</code>, and the distance between the front and rear wheel be <code class="highlighter-rouge">L</code>.Then the radius <code class="highlighter-rouge">R</code> can be clearly stated as follows.</p>
 
@@ -252,15 +255,16 @@
 <html>
 
 <!-- _includes/image.html -->
+<center>
 <div class="image-wrapper">
     
-        <img align="middle" src="http://localhost:4000/images/2017/robotic-car/bicycle-model2.png" alt="Bicycle Model" />
+        <img align="middle" src="http://localhost:4000/images/2017/robotic-car/bicycle-model2.png" alt="Bicycle Model" style="border: 2px solid black;" />
     
     
         <p align="center" class="image-caption">Bicycle model - global coordinates</p>
     
 </div>
-
+</center>
 
 We are interested in finding what would be the position and orientation of our car after it rotates by an angle `beta`.Let initial orientation with respect to a global `x = 0` be `theta` and the initial position be `(x, y)`.Then from the above figure, it is clear that the center of the circle which the car makes while steering, can be written as -
 
@@ -383,15 +387,16 @@ The car body is a 80px by 60px yellow trianlge with four 20px by 6px wheels.In t
 You can find the implementation code and the racetrack image that I have used <a href="https://github.com/ioarun/ai-for-robotics-udacity/blob/master/visual-implementation/racetrack-control.py">here</a>.I hope you found this post helpful.Until next time!
 
 <!-- _includes/image.html -->
+<center>
 <div class="image-wrapper">
     
-        <img align="middle" src="http://localhost:4000/images/2017/robotic-car/racetrack-control.gif" alt="Robotic Car" />
+        <img align="middle" src="http://localhost:4000/images/2017/robotic-car/racetrack-control.gif" alt="Robotic Car" style="border: 2px solid black;" />
     
     
         <p align="center" class="image-caption">Robotic car in motion! Observe how PD control is acting on steering wheels.</p>
     
 </div>
-
+</center>
 
 
 </html></head></head></html></html></head></head></html></html></head></head></html></html></head></head></html></html></head></head></html>
@@ -561,7 +566,7 @@ You can find the implementation code and the racetrack image that I have used <a
 
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="http://localhost:4000/posts/2017/01/cnn/" rel="permalink">Convolutional Neural Network Architecture
+        <a href="http://localhost:4000/posts/2017/01/cnn/" rel="permalink">Convolutional Neural Network
 </a>
       
     </h2>

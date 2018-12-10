@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-12-09T22:10:47-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Arun Kumar</title><subtitle>computational ethnographer&lt;br/&gt;ethnographer of computation</subtitle><author><name>Arun Kumar</name></author><entry><title type="html">Build a 2D Robotic Car!</title><link href="http://localhost:4000/posts/2017/04/robotic-car/" rel="alternate" type="text/html" title="Build a 2D Robotic Car!" /><published>2017-04-03T14:56:19-07:00</published><updated>2017-04-03T14:56:19-07:00</updated><id>http://localhost:4000/posts/2017/04/build-2d-robotic-car</id><content type="html" xml:base="http://localhost:4000/posts/2017/04/robotic-car/">&lt;p&gt;In the last blog post I explained what is a particle filter and how we can build one using pygame and python.In this post, I will walk you through the steps to build a 2D robotic car and get it running using PD control.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-12-10T03:46:02-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Arun Kumar</title><subtitle>project associate&lt;br/&gt;rbccps.org</subtitle><author><name>Arun Kumar</name></author><entry><title type="html">Build a 2D Robotic Car!</title><link href="http://localhost:4000/posts/2017/04/robotic-car/" rel="alternate" type="text/html" title="Build a 2D Robotic Car!" /><published>2017-04-03T14:56:19-07:00</published><updated>2017-04-03T14:56:19-07:00</updated><id>http://localhost:4000/posts/2017/04/build-2d-robotic-car</id><content type="html" xml:base="http://localhost:4000/posts/2017/04/robotic-car/">&lt;p&gt;In the last blog post I explained what is a particle filter and how we can build one using pygame and python.In this post, I will walk you through the steps to build a 2D robotic car and get it running using PD control.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -9,14 +9,16 @@
 &lt;p&gt;Our robotic car has two fixed rear wheels and two front steereable wheels.The vehicle motion can be explained by splitting the vehicle vertically so that we get something called a bicycle model as shown below.&lt;/p&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/robotic-car/bicycle-model1.png&quot; alt=&quot;Bicycle Model&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/robotic-car/bicycle-model1.png&quot; alt=&quot;Bicycle Model&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot;&gt;Bicycle model - local coordinates&lt;/p&gt;
     
 &lt;/div&gt;
+&lt;/center&gt;
 
 &lt;p&gt;This model is useful in understanding the vehicle motion especially when taking a turn.Let’s say our car starts to take a right turn. Assuming the steering angle to be &lt;code class=&quot;highlighter-rouge&quot;&gt;alpha&lt;/code&gt;, the radius of the circle that the rear wheel makes while taking the turn to be &lt;code class=&quot;highlighter-rouge&quot;&gt;R&lt;/code&gt;, and the distance between the front and rear wheel be &lt;code class=&quot;highlighter-rouge&quot;&gt;L&lt;/code&gt;.Then the radius &lt;code class=&quot;highlighter-rouge&quot;&gt;R&lt;/code&gt; can be clearly stated as follows.&lt;/p&gt;
 
@@ -31,15 +33,16 @@
 &lt;html&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/robotic-car/bicycle-model2.png&quot; alt=&quot;Bicycle Model&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/robotic-car/bicycle-model2.png&quot; alt=&quot;Bicycle Model&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot;&gt;Bicycle model - global coordinates&lt;/p&gt;
     
 &lt;/div&gt;
-
+&lt;/center&gt;
 
 We are interested in finding what would be the position and orientation of our car after it rotates by an angle `beta`.Let initial orientation with respect to a global `x = 0` be `theta` and the initial position be `(x, y)`.Then from the above figure, it is clear that the center of the circle which the car makes while steering, can be written as -
 
@@ -162,15 +165,16 @@ The car body is a 80px by 60px yellow trianlge with four 20px by 6px wheels.In t
 You can find the implementation code and the racetrack image that I have used &lt;a href=&quot;https://github.com/ioarun/ai-for-robotics-udacity/blob/master/visual-implementation/racetrack-control.py&quot;&gt;here&lt;/a&gt;.I hope you found this post helpful.Until next time!
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/robotic-car/racetrack-control.gif&quot; alt=&quot;Robotic Car&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/robotic-car/racetrack-control.gif&quot; alt=&quot;Robotic Car&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot;&gt;Robotic car in motion! Observe how PD control is acting on steering wheels.&lt;/p&gt;
     
 &lt;/div&gt;
-
+&lt;/center&gt;
 
 
 &lt;/html&gt;&lt;/head&gt;&lt;/head&gt;&lt;/html&gt;&lt;/html&gt;&lt;/head&gt;&lt;/head&gt;&lt;/html&gt;&lt;/html&gt;&lt;/head&gt;&lt;/head&gt;&lt;/html&gt;&lt;/html&gt;&lt;/head&gt;&lt;/head&gt;&lt;/html&gt;&lt;/html&gt;&lt;/head&gt;&lt;/head&gt;&lt;/html&gt;</content><author><name>arun</name></author><category term="robotics" /><category term="artificial-intelligence" /><summary type="html">In the last blog post I explained what is a particle filter and how we can build one using pygame and python.In this post, I will walk you through the steps to build a 2D robotic car and get it running using PD control.</summary></entry><entry><title type="html">Robot Localization using Particle Filter</title><link href="http://localhost:4000/posts/2017/03/particle-filter/" rel="alternate" type="text/html" title="Robot Localization using Particle Filter" /><published>2017-03-07T13:56:19-08:00</published><updated>2017-03-07T13:56:19-08:00</updated><id>http://localhost:4000/posts/2017/03/particle-filter</id><content type="html" xml:base="http://localhost:4000/posts/2017/03/particle-filter/">&lt;p&gt;Robot world is exciting! For people completely unaware of what goes inside the robots and how they manage to do what they do, it seems almost magical.In this post, with the help of an implementation, I will try to scratch the surface of one very important part of robotics called robot localization.&lt;/p&gt;
@@ -210,14 +214,16 @@ You can find the implementation code and the racetrack image that I have used &l
 &lt;p&gt;Instantiation of the robot class creates an object with random location and orientation.Let’s call this object &lt;code class=&quot;highlighter-rouge&quot;&gt;car&lt;/code&gt;. Then we will create &lt;code class=&quot;highlighter-rouge&quot;&gt;particles&lt;/code&gt;. Make an empty list called &lt;code class=&quot;highlighter-rouge&quot;&gt;particles&lt;/code&gt; and append it with the robot objects called &lt;code class=&quot;highlighter-rouge&quot;&gt;particle&lt;/code&gt;.I created 1000 such particles.&lt;/p&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/particle-filter/initial_condition.png&quot; alt=&quot;Initial state of particles&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/particle-filter/initial_condition.png&quot; alt=&quot;Initial state of particles&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot;&gt;1000 particles distributed uniformly in the space&lt;/p&gt;
     
 &lt;/div&gt;
+&lt;/center&gt;
 
 &lt;p&gt;The figure above is a screen shot of my pygame screen.The blue circles are the landmarks.The car sprite is located in the center of the screen in the initial state and particles (green dots) are uniformly distributed on the screen.&lt;/p&gt;
 
@@ -236,44 +242,50 @@ replacement in proportion to the importance weight, the particles with a higher 
 &lt;p&gt;In the resampling process, highly weighted particles are selected with a high probability than the ones with low weights.These weights are &lt;em&gt;normalized&lt;/em&gt; weights meaning, they are divided by the sum total of all the weights.Suppose we have 6 particles - p1, p2, p3, p4, p5, p6 and p3 and p6 have higher weights than the other four particles.We will run a resampling cycle 6 times.So, let’s say the first time p6 was chosen.Second time again p6 was chosen, next p1 was chosen followed by p3, p3 and p5.So the new particles list will look like - p1, p3, p3, p5, p6, p6.Eventually after many iterations, the list may look like p6, p6, p6, p6, p6, p6.And we will see 6 of these particles approximately at the car location and will say that our car/robot is localized.&lt;/p&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/particle-filter/next_condition.png&quot; alt=&quot;Localized car&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/particle-filter/next_condition.png&quot; alt=&quot;Localized car&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot;&gt;Small green dot is actually 1000 particles on top of each other localizing the car.&lt;/p&gt;
     
 &lt;/div&gt;
+&lt;/center&gt;
 
 &lt;p&gt;&lt;em&gt;Resampling wheel&lt;/em&gt; is one way to implement resampling.It is very efficient 10 lines of code.We represent all the particles and their weights on a big wheel.Each slice on the wheel is proportional to the corresponding weights.Now we chose any index from 0 to 999 at random.Let’s say we chose &lt;code class=&quot;highlighter-rouge&quot;&gt;W6&lt;/code&gt; randomly.Create a variable &lt;code class=&quot;highlighter-rouge&quot;&gt;beta&lt;/code&gt; and assign a value &lt;code class=&quot;highlighter-rouge&quot;&gt;2*max(weights)&lt;/code&gt; to it.Now, we follow following steps until the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;beta&lt;/code&gt; is less than the weight at running index.Subtract &lt;code class=&quot;highlighter-rouge&quot;&gt;weight[index]&lt;/code&gt; from &lt;code class=&quot;highlighter-rouge&quot;&gt;beta&lt;/code&gt; and increment &lt;code class=&quot;highlighter-rouge&quot;&gt;index&lt;/code&gt;.As soon as &lt;code class=&quot;highlighter-rouge&quot;&gt;beta&lt;/code&gt; drops below the running weight, loop terminates and the particle associated with running index is appended to the new particle list.&lt;/p&gt;
 
 &lt;p&gt;Above steps are repeated till all the 1000 particles are not appended to the new particles list.&lt;/p&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/particle-filter/resampling-wheel.jpeg&quot; alt=&quot;Resampling wheel&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/particle-filter/resampling-wheel.jpeg&quot; alt=&quot;Resampling wheel&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot;&gt;[Source: Udacity]Resampling wheel&lt;/p&gt;
     
 &lt;/div&gt;
+&lt;/center&gt;
 
 &lt;h2 id=&quot;next-steps&quot;&gt;Next steps!&lt;/h2&gt;
 
 &lt;p&gt;That was just one frame or instant.In the next frame, the car moves and so do the particles.These particles are the ones from previous step of resampling.The process of localization starts again and repeats as explained above.&lt;/p&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/particle-filter/particle-filter.gif&quot; alt=&quot;Particle Filter Localization&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/particle-filter/particle-filter.gif&quot; alt=&quot;Particle Filter Localization&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot;&gt;Particle Filter Localization&lt;/p&gt;
     
 &lt;/div&gt;
+&lt;/center&gt;
 
-&lt;p&gt;That’s it for now guys.I had fun implementing the particle filter.I am aiming to build a basic implementation of self driving car in pygame.More posts on the same soon.Do follow for updates!&lt;/p&gt;</content><author><name>arun</name></author><category term="robotics" /><category term="artificial-intelligence" /><summary type="html">Robot world is exciting! For people completely unaware of what goes inside the robots and how they manage to do what they do, it seems almost magical.In this post, with the help of an implementation, I will try to scratch the surface of one very important part of robotics called robot localization.</summary></entry><entry><title type="html">Convolutional Neural Network Architecture</title><link href="http://localhost:4000/posts/2017/01/cnn/" rel="alternate" type="text/html" title="Convolutional Neural Network Architecture" /><published>2017-01-30T13:56:19-08:00</published><updated>2017-01-30T13:56:19-08:00</updated><id>http://localhost:4000/posts/2017/01/cnn</id><content type="html" xml:base="http://localhost:4000/posts/2017/01/cnn/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;That’s it for now guys.I had fun implementing the particle filter.I am aiming to build a basic implementation of self driving car in pygame.More posts on the same soon.Do follow for updates!&lt;/p&gt;</content><author><name>arun</name></author><category term="robotics" /><category term="artificial-intelligence" /><summary type="html">Robot world is exciting! For people completely unaware of what goes inside the robots and how they manage to do what they do, it seems almost magical.In this post, with the help of an implementation, I will try to scratch the surface of one very important part of robotics called robot localization.</summary></entry><entry><title type="html">Convolutional Neural Network</title><link href="http://localhost:4000/posts/2017/01/cnn/" rel="alternate" type="text/html" title="Convolutional Neural Network" /><published>2017-01-30T13:56:19-08:00</published><updated>2017-01-30T13:56:19-08:00</updated><id>http://localhost:4000/posts/2017/01/cnn</id><content type="html" xml:base="http://localhost:4000/posts/2017/01/cnn/">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
 
 &lt;p&gt;Convolutional Neural Networks or ConvNets or CNNs are biologically inspired varients of Multilayer Perceptrons(MLPs).They are probably the biggest reasons why AI agents are able to play ATARI games, are creating master piece artwork and cars have learnt to drive by themselves.Not only this, they are also being used in Natural language processing and text classification.&lt;/p&gt;
 
@@ -286,42 +298,48 @@ replacement in proportion to the importance weight, the particles with a higher 
 &lt;p&gt;Suppose we have a &lt;code class=&quot;highlighter-rouge&quot;&gt;200x200x3&lt;/code&gt; size image(&lt;code class=&quot;highlighter-rouge&quot;&gt;3&lt;/code&gt; is the number of channels - R, G, B) and we input it to our first hidden layer in the regular neural nets.This would lead to a total of &lt;code class=&quot;highlighter-rouge&quot;&gt;200x200x3 = 120,000&lt;/code&gt; weights.And that is just one layer.As we consider more number of layers, the parameters would add up quickly.Clearly, this full connectivity is wasteful and the huge number of parameters would quickly lead to overfitting.&lt;/p&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/comparing-regular-and-cnn.jpeg&quot; alt=&quot;Regular Neural Net&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/comparing-regular-and-cnn.jpeg&quot; alt=&quot;Regular Neural Net&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot;&gt; A regular 3-layer Neural Network&lt;/p&gt;
     
 &lt;/div&gt;
+&lt;/center&gt;
 
 &lt;h2 id=&quot;3d-volumes-of-neurons&quot;&gt;3D Volumes of Neurons&lt;/h2&gt;
 
 &lt;p&gt;In particular, unlike a regular Neural Network, the layers of a ConvNet have neurons arranged in &lt;code class=&quot;highlighter-rouge&quot;&gt;3&lt;/code&gt; dimensions: width, height, depth. (Note that the word depth here refers to the third dimension of an activation volume, not to the depth of a full Neural Network, which can refer to the total number of layers in a network.) For example, the input images in CIFAR-10 are an input volume of activations, and the volume has dimensions &lt;code class=&quot;highlighter-rouge&quot;&gt;32x32x3&lt;/code&gt; (width, height, depth respectively). The neurons in a layer will only be connected to a small region of the layer before it, instead of all of the neurons in a fully-connected manner. This model is actually found in animal visual cortex.Individual cortical neurons respond to stimuli in a restricted region of space known as the receptive field. The receptive fields of different neurons partially overlap such that they tile the visual field. The response of an individual neuron to stimuli within its receptive field can be approximated mathematically by a convolution operation.&lt;/p&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/comparing-regular-and-cnn2.jpeg&quot; alt=&quot;Convolutional Neural Net&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/comparing-regular-and-cnn2.jpeg&quot; alt=&quot;Convolutional Neural Net&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot;&gt;Every layer of a ConvNet transforms the 3D input volume to a 3D output volume of neuron activations. In this example, the red input layer holds the image, so its width and height would be the dimensions of the image, and the depth would be `3` (Red, Green, Blue channels).&lt;/p&gt;
     
 &lt;/div&gt;
+&lt;/center&gt;
 
 &lt;h2 id=&quot;what-is-convolution&quot;&gt;What is convolution?&lt;/h2&gt;
 
 &lt;p&gt;Convolution can be thought of as a sliding window function applied to a matrix.This sliding window is called as &lt;em&gt;filter&lt;/em&gt;, &lt;em&gt;kernel&lt;/em&gt; or &lt;em&gt;feature extractor&lt;/em&gt;.&lt;/p&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/Convolution_schematic.gif&quot; alt=&quot;convolution&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/Convolution_schematic.gif&quot; alt=&quot;convolution&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot;&gt;Convolution operation - elementwise multiplication and then adding the results&lt;/p&gt;
     
 &lt;/div&gt;
+&lt;/center&gt;
 
 &lt;h1 id=&quot;cnn-architecture&quot;&gt;CNN Architecture&lt;/h1&gt;
 
@@ -342,14 +360,16 @@ replacement in proportion to the importance weight, the particles with a higher 
 &lt;p&gt;These weights are shared among all the other neurons in one activation map.If the output layer has 6 activation maps of dimension &lt;code class=&quot;highlighter-rouge&quot;&gt;28x28&lt;/code&gt;, then &lt;code class=&quot;highlighter-rouge&quot;&gt;75&lt;/code&gt; weights will be shared by all the other &lt;code class=&quot;highlighter-rouge&quot;&gt;783&lt;/code&gt; neurons on one activation map.This is called as &lt;em&gt;parameter sharing&lt;/em&gt;.What about depth then?Are these weights also shared with each neuron accross the depth dimension.No, they are not.Infact there will be as many sets of weights as their are activation maps/filters.Imagine the torch light exampled I gave above.Now we have another torch that flashes a different color light say green.This torch would be just below the first one and covering the same area and volume.BUT, it’s a different color now.Similar is the case with activation maps in convolution layer.Each map has it’s own set of weights which are different than the maps above and below it but are shared among the neurons on the same map.The torch analogy might be a wrong example to state here but I hope this clears the picture a little.Following figure may make things clearer.&lt;/p&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/neurons-in-conv.jpeg&quot; alt=&quot;Convolution layer&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/neurons-in-conv.jpeg&quot; alt=&quot;Convolution layer&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot;&gt;A 32x32x3 volume input connected to a neuron in convolutional layer&lt;/p&gt;
     
 &lt;/div&gt;
+&lt;/center&gt;
 
 &lt;p&gt;There is a simple math involved as to calculate the dimensions of output activation map depending on the the input and filter dimensions and quantity.&lt;/p&gt;
 
@@ -370,14 +390,16 @@ There is one more thing left which is padding.Let’s look at the significance o
 &lt;p&gt;Okay, now let’s use this output as an input to out next convolution.The result will be &lt;code class=&quot;highlighter-rouge&quot;&gt;24&lt;/code&gt;. So we see that the output shrinks gradually at the beginning.This was just an example.In real life scenario, it shrinks even faster.Padding helps us avoid this situation by keeping the output dimension either same or more.It is a process in which the input is padded with &lt;code class=&quot;highlighter-rouge&quot;&gt;0's&lt;/code&gt; on height and width sides.For an example,in the following image, a &lt;code class=&quot;highlighter-rouge&quot;&gt;7x7&lt;/code&gt; image has been padded with &lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt; pixel border.What is the corresponding output dimension?&lt;/p&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/padding.png&quot; alt=&quot;Padding&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/padding.png&quot; alt=&quot;Padding&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot;&gt;Padding helps maintain the output dimension(spatially)&lt;/p&gt;
     
 &lt;/div&gt;
+&lt;/center&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;N = 9, F = 3, S = 1
 (N-F)/S + 1 = (9-3)/1 + 1 = 7
@@ -402,41 +424,47 @@ Total number of weights in a convolution layer = (FxFxD1)xK + K biases
 &lt;h2 id=&quot;pooling&quot;&gt;Pooling&lt;/h2&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/downsampling.jpeg&quot; alt=&quot;Downsampling&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/downsampling.jpeg&quot; alt=&quot;Downsampling&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot;&gt;In this example, the input volume of size [224x224x64] is pooled with filter size 2, stride 2 into
 output volume of size [112x112x64]&lt;/p&gt;
     
 &lt;/div&gt;
+&lt;/center&gt;
 
 &lt;p&gt;Pooling let’s us control the spatial size of the output layer and thus controlling the number of parameters.It is usually inserted between two convolution layers.It is done one each activation map independently and preserves the depth dimension.In &lt;em&gt;max pooling&lt;/em&gt; operation, a filter (eg. 2x2, stride 2) slides over one activation map and downsamples it to half of it’s previous dimensions.Following figure shows the max pooling operation.&lt;/p&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/max-pooling.jpeg&quot; alt=&quot;max-pooling&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/max-pooling.jpeg&quot; alt=&quot;max-pooling&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot;&gt;A very common max pooling operation done over a slice of activation map.Max operation is performed over 4 numbers at a time when a filter of 2x2 makes stride of 2&lt;/p&gt;
     
 &lt;/div&gt;
+&lt;/center&gt;
 
 &lt;h2 id=&quot;fully-connected-layer&quot;&gt;Fully connected layer&lt;/h2&gt;
 
 &lt;p&gt;The neuron activations from the final convolution layers are flattened to produce a vector which acts as an input to a regular neural network called fully connected network.This network finally produces outputs like scores or probabilities associated with our original input volume.&lt;/p&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/fc-cnn.jpeg&quot; alt=&quot;Fully connected layer&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/fc-cnn.jpeg&quot; alt=&quot;Fully connected layer&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot;&gt;&lt;/p&gt;
     
 &lt;/div&gt;
+&lt;/center&gt;
 
 &lt;h1 id=&quot;putting-it-all-together&quot;&gt;Putting it all together&lt;/h1&gt;
 
@@ -448,14 +476,16 @@ output volume of size [112x112x64]&lt;/p&gt;
 Moreover, &lt;code class=&quot;highlighter-rouge&quot;&gt;N &amp;gt;= 0&lt;/code&gt; (and usually &lt;code class=&quot;highlighter-rouge&quot;&gt;N &amp;lt;= 3&lt;/code&gt; ), &lt;code class=&quot;highlighter-rouge&quot;&gt;M &amp;gt;= 0&lt;/code&gt; , &lt;code class=&quot;highlighter-rouge&quot;&gt;K &amp;gt;= 0&lt;/code&gt; (and usually &lt;code class=&quot;highlighter-rouge&quot;&gt;K &amp;lt; 3&lt;/code&gt; ).&lt;/p&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/cnn-title-image.jpeg&quot; alt=&quot;LeNet&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/cnn-title-image.jpeg&quot; alt=&quot;LeNet&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot;&gt;LeNet-5[LeCun et al., 1998] had CONV-POOL-CONV-POOL-CONV-FC architecture&lt;/p&gt;
     
 &lt;/div&gt;
+&lt;/center&gt;
 
 &lt;p&gt;I hope this post was useful in some way.Please follow for more interesting updates!&lt;/p&gt;</content><author><name>arun</name></author><category term="cnn" /><category term="convolutional-neural-networks" /><category term="machine-learning" /><summary type="html">Convolutional Neural Networks or ConvNets or CNNs are biologically inspired varients of Multilayer Perceptrons(MLPs).They are probably the biggest reasons why AI agents are able to play ATARI games, are creating master piece artwork and cars have learnt to drive by themselves.Not only this, they are also being used in Natural language processing and text classification.</summary></entry><entry><title type="html">Understanding Hierarchical Temporal Memory</title><link href="http://localhost:4000/posts/2017/01/htm/" rel="alternate" type="text/html" title="Understanding Hierarchical Temporal Memory" /><published>2017-01-15T13:56:19-08:00</published><updated>2017-01-15T13:56:19-08:00</updated><id>http://localhost:4000/posts/2017/01/htm</id><content type="html" xml:base="http://localhost:4000/posts/2017/01/htm/">&lt;p&gt;Last year I did one project on Cognitive Healthcare which used Hierarchical Temporal Memory or HTM.Through this post, I have tried to put down my understanding of &lt;a href=&quot;http://numenta.org/&quot;&gt;Numenta&lt;/a&gt;’s HTM.
 Before getting to it, it is important to understand the functioning of the neocortex to process sensory inputs from the physical world because HTM is inspired by the same.
@@ -464,14 +494,16 @@ Before getting to it, it is important to understand the functioning of the neoco
 &lt;h2 id=&quot;htm-is-inspired-by-neocortex&quot;&gt;HTM is inspired by neocortex&lt;/h2&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/htm/brain-five-lobes.jpg&quot; alt=&quot;neocortex&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/htm/brain-five-lobes.jpg&quot; alt=&quot;neocortex&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot;&gt;Human Neocortex&lt;/p&gt;
     
 &lt;/div&gt;
+&lt;/center&gt;
 
 &lt;p&gt;Broadly speaking, a brain is divided into four major lobes:&lt;/p&gt;
 
@@ -489,12 +521,14 @@ Before getting to it, it is important to understand the functioning of the neoco
 &lt;p&gt;The neocortex is generally said to have six layers. Five of the layers contain cells and one layer is mostly connections. The image below (from &lt;a href=&quot;https://en.wikipedia.org/wiki/Santiago_Ram%C3%B3n_y_Cajal&quot;&gt;Santiago Ramon y Cajal&lt;/a&gt;) shows a small slice of neocortex exposed using three different staining methods. The vertical axis spans the thickness of the neocortex, approximately 2mm. The left side of the image indicates the six layers. Layer 1, at the top, is the non-cellular level. The “WM” at the bottom indicates the beginning of the white matter, where axons from cells travel to other parts of the neocortex and other parts of the brain.&lt;/p&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/htm/cajal_cortex.jpeg&quot; alt=&quot;cajal neocortex&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/htm/cajal_cortex.jpeg&quot; alt=&quot;cajal neocortex&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
 &lt;/div&gt;
+&lt;/center&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Although Layer 2 and 3 look easily distinguished they are normally considered as one layer i.e, Layer 2/3.&lt;/li&gt;
@@ -508,24 +542,28 @@ Before getting to it, it is important to understand the functioning of the neoco
 There is one more specialty about the structure of the neorocortex. It is observed that the neurons are aligned vertically in columns. And the neurons in the same column respond to the same type of input.&lt;/p&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/htm/columnar.jpeg&quot; alt=&quot;columnar architecture&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/htm/columnar.jpeg&quot; alt=&quot;columnar architecture&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
 &lt;/div&gt;
+&lt;/center&gt;
 
 &lt;h2 id=&quot;mapping-the-neocortex-to-the-htm-model&quot;&gt;Mapping the Neocortex to the HTM Model&lt;/h2&gt;
 
 &lt;p&gt;As there is a hierarchy of layers in neocortex, so is the case in HTM. The raw data is sensed by the lower levels and then the processed data is feed-forwarded to the next higher level in the hierarchy.&lt;/p&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/htm/heirarchy.jpg&quot; alt=&quot;hierarchical view&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/htm/heirarchy.jpg&quot; alt=&quot;hierarchical view&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
 &lt;/div&gt;
+&lt;/center&gt;
 
 &lt;p&gt;An HTM can be composed of just one region, or several regions with data being fed through them. The region itself is comprised of interconnected cells that can be in one of three states:
 *Active from feed-forward input.
@@ -535,12 +573,14 @@ There is one more specialty about the structure of the neorocortex. It is observ
 &lt;p&gt;The cells are stacked on top of each other in vertical columns forming a three dimensional grid:&lt;/p&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/htm/prediction.jpg&quot; alt=&quot;prediction&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/htm/prediction.jpg&quot; alt=&quot;prediction&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
 &lt;/div&gt;
+&lt;/center&gt;
 
 &lt;p&gt;The HTM cortical learning algorithm shows that a layer of cells organized in columns can be a high-capacity memory of variable order state transitions. Stated more simply, a layer of cells can learn a lot of sequences.
 Columns of cells that share the same feed-forward response are the key mechanism for learning variable-order transitions.&lt;/p&gt;
@@ -582,14 +622,16 @@ Which cells get activated within a column depends on a variety of factors, and t
 BLE Shield which incorporates Nrf8001 bluetooth low energy chip.&lt;/p&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2016/physical-web/one.png&quot; alt=&quot;one&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2016/physical-web/one.png&quot; alt=&quot;one&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot;&gt;Red Bear Lab BLE Shield&lt;/p&gt;
     
 &lt;/div&gt;
+&lt;/center&gt;
 
 &lt;h2 id=&quot;how-to-create-a-beacon&quot;&gt;How To Create a Beacon?&lt;/h2&gt;
 
@@ -598,14 +640,16 @@ time( in our case it is 100 ms).In this project we have used the above mentioned
 Mega board to &lt;em&gt;create&lt;/em&gt; a beacon.&lt;/p&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2016/physical-web/two.jpg&quot; alt=&quot;two&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2016/physical-web/two.jpg&quot; alt=&quot;two&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot;&gt;Arduino Mega&lt;/p&gt;
     
 &lt;/div&gt;
+&lt;/center&gt;
 
 &lt;h2 id=&quot;library-used--bleperipheral-by-sandeep-mistry&quot;&gt;Library Used : BLEPeripheral by Sandeep Mistry&lt;/h2&gt;
 
@@ -699,14 +743,16 @@ The idea was to simulate a scenario where a bike driver when in the vicinity of 
 At last, this guy can disconnect from the beacon.&lt;/p&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2016/physical-web/three.png&quot; alt=&quot;three&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2016/physical-web/three.png&quot; alt=&quot;three&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot;&gt;Block Diagram&lt;/p&gt;
     
 &lt;/div&gt;
+&lt;/center&gt;
 
 &lt;h2 id=&quot;web-bluetooth-api-and-the-web-application&quot;&gt;Web Bluetooth API and the Web Application&lt;/h2&gt;
 
@@ -824,14 +870,16 @@ The web application runs a node server at the back end.In the front end, what we
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;!-- _includes/image.html --&gt;
+&lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
-        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2016/galileo-link/2016-01-01-galileo-link.jpg&quot; alt=&quot;CIFAR-10 example images&quot; /&gt;
+        &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2016/galileo-link/2016-01-01-galileo-link.jpg&quot; alt=&quot;CIFAR-10 example images&quot; style=&quot;border: 2px solid black;&quot; /&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot;&gt;Galileo-link posts room temperature and light values on it's timeline&lt;/p&gt;
     
 &lt;/div&gt;
+&lt;/center&gt;
 
 &lt;p&gt;I have implemented the project using Intel Galileo board as the sensor gateway, you can use any other board running Linux OS with python installed. I tried making my home talk. That is, posting sensors data installed on Intel Galileo kept in my room to the Facebook account by name “Galileo Link” wall. So all we need is access to Facebook Graph API and a python script.&lt;/p&gt;
 

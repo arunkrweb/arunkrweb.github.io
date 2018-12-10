@@ -13,6 +13,15 @@
 <loc>http://localhost:4000/articles/2018-04-ai-for-robotics-udacity</loc>
 </url>
 <url>
+<loc>http://localhost:4000/articles/2018-05-snake-game</loc>
+</url>
+<url>
+<loc>http://localhost:4000/articles/2018-06-tank-game</loc>
+</url>
+<url>
+<loc>http://localhost:4000/articles/2018-07-openai-gym</loc>
+</url>
+<url>
 <loc>http://localhost:4000/posts/2016/01/galileo-link/</loc>
 <lastmod>2016-01-01T13:56:19-08:00</lastmod>
 </url>
@@ -419,6 +428,9 @@
 </url>
 <url>
 <loc>http://localhost:4000/expressions/</loc>
+</url>
+<url>
+<loc>http://localhost:4000/fun/</loc>
 </url>
 <url>
 <loc>http://localhost:4000/page-archive/</loc>

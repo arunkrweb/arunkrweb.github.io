@@ -75,8 +75,6 @@
 
 
 
-  <meta name="google-site-verification" content="3hdu0GcCfjZ6WbPpApjcdcEGjsCPDcDn1QLtBm-DRBg" />
-
 
 
 
@@ -155,6 +153,9 @@
           
             
             <li class="masthead__menu-item"><a href="http://localhost:4000/year-archive/">Posts</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/fun/">Fun</a></li>
           
             
             <li class="masthead__menu-item"><a href="http://localhost:4000/cv/">CV</a></li>
@@ -256,14 +257,16 @@
 <p>Instantiation of the robot class creates an object with random location and orientation.Let’s call this object <code class="highlighter-rouge">car</code>. Then we will create <code class="highlighter-rouge">particles</code>. Make an empty list called <code class="highlighter-rouge">particles</code> and append it with the robot objects called <code class="highlighter-rouge">particle</code>.I created 1000 such particles.</p>
 
 <!-- _includes/image.html -->
+<center>
 <div class="image-wrapper">
     
-        <img align="middle" src="http://localhost:4000/images/2017/particle-filter/initial_condition.png" alt="Initial state of particles" />
+        <img align="middle" src="http://localhost:4000/images/2017/particle-filter/initial_condition.png" alt="Initial state of particles" style="border: 2px solid black;" />
     
     
         <p align="center" class="image-caption">1000 particles distributed uniformly in the space</p>
     
 </div>
+</center>
 
 <p>The figure above is a screen shot of my pygame screen.The blue circles are the landmarks.The car sprite is located in the center of the screen in the initial state and particles (green dots) are uniformly distributed on the screen.</p>
 
@@ -282,42 +285,48 @@ replacement in proportion to the importance weight, the particles with a higher 
 <p>In the resampling process, highly weighted particles are selected with a high probability than the ones with low weights.These weights are <em>normalized</em> weights meaning, they are divided by the sum total of all the weights.Suppose we have 6 particles - p1, p2, p3, p4, p5, p6 and p3 and p6 have higher weights than the other four particles.We will run a resampling cycle 6 times.So, let’s say the first time p6 was chosen.Second time again p6 was chosen, next p1 was chosen followed by p3, p3 and p5.So the new particles list will look like - p1, p3, p3, p5, p6, p6.Eventually after many iterations, the list may look like p6, p6, p6, p6, p6, p6.And we will see 6 of these particles approximately at the car location and will say that our car/robot is localized.</p>
 
 <!-- _includes/image.html -->
+<center>
 <div class="image-wrapper">
     
-        <img align="middle" src="http://localhost:4000/images/2017/particle-filter/next_condition.png" alt="Localized car" />
+        <img align="middle" src="http://localhost:4000/images/2017/particle-filter/next_condition.png" alt="Localized car" style="border: 2px solid black;" />
     
     
         <p align="center" class="image-caption">Small green dot is actually 1000 particles on top of each other localizing the car.</p>
     
 </div>
+</center>
 
 <p><em>Resampling wheel</em> is one way to implement resampling.It is very efficient 10 lines of code.We represent all the particles and their weights on a big wheel.Each slice on the wheel is proportional to the corresponding weights.Now we chose any index from 0 to 999 at random.Let’s say we chose <code class="highlighter-rouge">W6</code> randomly.Create a variable <code class="highlighter-rouge">beta</code> and assign a value <code class="highlighter-rouge">2*max(weights)</code> to it.Now, we follow following steps until the value of <code class="highlighter-rouge">beta</code> is less than the weight at running index.Subtract <code class="highlighter-rouge">weight[index]</code> from <code class="highlighter-rouge">beta</code> and increment <code class="highlighter-rouge">index</code>.As soon as <code class="highlighter-rouge">beta</code> drops below the running weight, loop terminates and the particle associated with running index is appended to the new particle list.</p>
 
 <p>Above steps are repeated till all the 1000 particles are not appended to the new particles list.</p>
 
 <!-- _includes/image.html -->
+<center>
 <div class="image-wrapper">
     
-        <img align="middle" src="http://localhost:4000/images/2017/particle-filter/resampling-wheel.jpeg" alt="Resampling wheel" />
+        <img align="middle" src="http://localhost:4000/images/2017/particle-filter/resampling-wheel.jpeg" alt="Resampling wheel" style="border: 2px solid black;" />
     
     
         <p align="center" class="image-caption">[Source: Udacity]Resampling wheel</p>
     
 </div>
+</center>
 
 <h2 id="next-steps">Next steps!</h2>
 
 <p>That was just one frame or instant.In the next frame, the car moves and so do the particles.These particles are the ones from previous step of resampling.The process of localization starts again and repeats as explained above.</p>
 
 <!-- _includes/image.html -->
+<center>
 <div class="image-wrapper">
     
-        <img align="middle" src="http://localhost:4000/images/2017/particle-filter/particle-filter.gif" alt="Particle Filter Localization" />
+        <img align="middle" src="http://localhost:4000/images/2017/particle-filter/particle-filter.gif" alt="Particle Filter Localization" style="border: 2px solid black;" />
     
     
         <p align="center" class="image-caption">Particle Filter Localization</p>
     
 </div>
+</center>
 
 <p>That’s it for now guys.I had fun implementing the particle filter.I am aiming to build a basic implementation of self driving car in pygame.More posts on the same soon.Do follow for updates!</p>
 
@@ -407,7 +416,7 @@ replacement in proportion to the importance weight, the particles with a higher 
 
   <nav class="pagination">
     
-      <a href="http://localhost:4000/posts/2017/01/cnn/" class="pagination--pager" title="Convolutional Neural Network Architecture
+      <a href="http://localhost:4000/posts/2017/01/cnn/" class="pagination--pager" title="Convolutional Neural Network
 ">Previous</a>
     
     
@@ -488,7 +497,7 @@ replacement in proportion to the importance weight, the particles with a higher 
 
     <h2 class="archive__item-title" itemprop="headline">
       
-        <a href="http://localhost:4000/posts/2017/01/cnn/" rel="permalink">Convolutional Neural Network Architecture
+        <a href="http://localhost:4000/posts/2017/01/cnn/" rel="permalink">Convolutional Neural Network
 </a>
       
     </h2>

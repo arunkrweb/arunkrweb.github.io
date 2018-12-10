@@ -19,7 +19,7 @@
 
 
 
-<title>Convolutional Neural Network Architecture - Arun Kumar</title>
+<title>Convolutional Neural Network - Arun Kumar</title>
 
 
 
@@ -29,7 +29,7 @@
 
 <meta property="og:locale" content="en-US">
 <meta property="og:site_name" content="Arun Kumar">
-<meta property="og:title" content="Convolutional Neural Network Architecture">
+<meta property="og:title" content="Convolutional Neural Network">
 
 
   <link rel="canonical" href="http://localhost:4000/posts/2017/01/cnn/">
@@ -42,7 +42,7 @@
 
 
   <meta name="twitter:site" content="@ioarun">
-  <meta name="twitter:title" content="Convolutional Neural Network Architecture">
+  <meta name="twitter:title" content="Convolutional Neural Network">
   <meta name="twitter:description" content="Convolutional Neural Networks or ConvNets or CNNs are biologically inspired varients of Multilayer Perceptrons(MLPs).They are probably the biggest reasons why AI agents are able to play ATARI games, are creating master piece artwork and cars have learnt to drive by themselves.Not only this, they are also being used in Natural language processing and text classification.">
   <meta name="twitter:url" content="http://localhost:4000/posts/2017/01/cnn/">
 
@@ -74,8 +74,6 @@
 
 
 
-
-  <meta name="google-site-verification" content="3hdu0GcCfjZ6WbPpApjcdcEGjsCPDcDn1QLtBm-DRBg" />
 
 
 
@@ -157,6 +155,9 @@
             <li class="masthead__menu-item"><a href="http://localhost:4000/year-archive/">Posts</a></li>
           
             
+            <li class="masthead__menu-item"><a href="http://localhost:4000/fun/">Fun</a></li>
+          
+            
             <li class="masthead__menu-item"><a href="http://localhost:4000/cv/">CV</a></li>
           
             
@@ -176,7 +177,7 @@
 	"@context": "http://schema.org/",
 	"@type": "CreativeWork",
 	"author": "R. Stuart Geiger",
-        "name": "Convolutional Neural Network Architecture",
+        "name": "Convolutional Neural Network",
 	"datePublished": "2017-01-30 13:56:19 -0800",
 	"description": "Convolutional Neural Networks or ConvNets or CNNs are biologically inspired varients of Multilayer Perceptrons(MLPs).They are probably the biggest reasons why AI agents are able to play ATARI games, are creating master piece artwork and cars have learnt to drive by themselves.Not only this, they are also being used in Natural language processing and text classification."
     }
@@ -191,7 +192,7 @@
 
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
-    <meta itemprop="headline" content="Convolutional Neural Network Architecture">
+    <meta itemprop="headline" content="Convolutional Neural Network">
     <meta itemprop="description" content="Convolutional Neural Networks or ConvNets or CNNs are biologically inspired varients of Multilayer Perceptrons(MLPs).They are probably the biggest reasons why AI agents are able to play ATARI games, are creating master piece artwork and cars have learnt to drive by themselves.Not only this, they are also being used in Natural language processing and text classification.">
     <meta itemprop="datePublished" content="January 30, 2017">
     
@@ -201,7 +202,7 @@
     <div class="page__inner-wrap">
       
         <header>
-          <h1 class="page__title" itemprop="headline">Convolutional Neural Network Architecture
+          <h1 class="page__title" itemprop="headline">Convolutional Neural Network
 </h1>
           
             <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
@@ -232,42 +233,48 @@
 <p>Suppose we have a <code class="highlighter-rouge">200x200x3</code> size image(<code class="highlighter-rouge">3</code> is the number of channels - R, G, B) and we input it to our first hidden layer in the regular neural nets.This would lead to a total of <code class="highlighter-rouge">200x200x3 = 120,000</code> weights.And that is just one layer.As we consider more number of layers, the parameters would add up quickly.Clearly, this full connectivity is wasteful and the huge number of parameters would quickly lead to overfitting.</p>
 
 <!-- _includes/image.html -->
+<center>
 <div class="image-wrapper">
     
-        <img align="middle" src="http://localhost:4000/images/2017/cnn/comparing-regular-and-cnn.jpeg" alt="Regular Neural Net" />
+        <img align="middle" src="http://localhost:4000/images/2017/cnn/comparing-regular-and-cnn.jpeg" alt="Regular Neural Net" style="border: 2px solid black;" />
     
     
         <p align="center" class="image-caption"> A regular 3-layer Neural Network</p>
     
 </div>
+</center>
 
 <h2 id="3d-volumes-of-neurons">3D Volumes of Neurons</h2>
 
 <p>In particular, unlike a regular Neural Network, the layers of a ConvNet have neurons arranged in <code class="highlighter-rouge">3</code> dimensions: width, height, depth. (Note that the word depth here refers to the third dimension of an activation volume, not to the depth of a full Neural Network, which can refer to the total number of layers in a network.) For example, the input images in CIFAR-10 are an input volume of activations, and the volume has dimensions <code class="highlighter-rouge">32x32x3</code> (width, height, depth respectively). The neurons in a layer will only be connected to a small region of the layer before it, instead of all of the neurons in a fully-connected manner. This model is actually found in animal visual cortex.Individual cortical neurons respond to stimuli in a restricted region of space known as the receptive field. The receptive fields of different neurons partially overlap such that they tile the visual field. The response of an individual neuron to stimuli within its receptive field can be approximated mathematically by a convolution operation.</p>
 
 <!-- _includes/image.html -->
+<center>
 <div class="image-wrapper">
     
-        <img align="middle" src="http://localhost:4000/images/2017/cnn/comparing-regular-and-cnn2.jpeg" alt="Convolutional Neural Net" />
+        <img align="middle" src="http://localhost:4000/images/2017/cnn/comparing-regular-and-cnn2.jpeg" alt="Convolutional Neural Net" style="border: 2px solid black;" />
     
     
         <p align="center" class="image-caption">Every layer of a ConvNet transforms the 3D input volume to a 3D output volume of neuron activations. In this example, the red input layer holds the image, so its width and height would be the dimensions of the image, and the depth would be `3` (Red, Green, Blue channels).</p>
     
 </div>
+</center>
 
 <h2 id="what-is-convolution">What is convolution?</h2>
 
 <p>Convolution can be thought of as a sliding window function applied to a matrix.This sliding window is called as <em>filter</em>, <em>kernel</em> or <em>feature extractor</em>.</p>
 
 <!-- _includes/image.html -->
+<center>
 <div class="image-wrapper">
     
-        <img align="middle" src="http://localhost:4000/images/2017/cnn/Convolution_schematic.gif" alt="convolution" />
+        <img align="middle" src="http://localhost:4000/images/2017/cnn/Convolution_schematic.gif" alt="convolution" style="border: 2px solid black;" />
     
     
         <p align="center" class="image-caption">Convolution operation - elementwise multiplication and then adding the results</p>
     
 </div>
+</center>
 
 <h1 id="cnn-architecture">CNN Architecture</h1>
 
@@ -288,14 +295,16 @@
 <p>These weights are shared among all the other neurons in one activation map.If the output layer has 6 activation maps of dimension <code class="highlighter-rouge">28x28</code>, then <code class="highlighter-rouge">75</code> weights will be shared by all the other <code class="highlighter-rouge">783</code> neurons on one activation map.This is called as <em>parameter sharing</em>.What about depth then?Are these weights also shared with each neuron accross the depth dimension.No, they are not.Infact there will be as many sets of weights as their are activation maps/filters.Imagine the torch light exampled I gave above.Now we have another torch that flashes a different color light say green.This torch would be just below the first one and covering the same area and volume.BUT, it’s a different color now.Similar is the case with activation maps in convolution layer.Each map has it’s own set of weights which are different than the maps above and below it but are shared among the neurons on the same map.The torch analogy might be a wrong example to state here but I hope this clears the picture a little.Following figure may make things clearer.</p>
 
 <!-- _includes/image.html -->
+<center>
 <div class="image-wrapper">
     
-        <img align="middle" src="http://localhost:4000/images/2017/cnn/neurons-in-conv.jpeg" alt="Convolution layer" />
+        <img align="middle" src="http://localhost:4000/images/2017/cnn/neurons-in-conv.jpeg" alt="Convolution layer" style="border: 2px solid black;" />
     
     
         <p align="center" class="image-caption">A 32x32x3 volume input connected to a neuron in convolutional layer</p>
     
 </div>
+</center>
 
 <p>There is a simple math involved as to calculate the dimensions of output activation map depending on the the input and filter dimensions and quantity.</p>
 
@@ -316,14 +325,16 @@ There is one more thing left which is padding.Let’s look at the significance o
 <p>Okay, now let’s use this output as an input to out next convolution.The result will be <code class="highlighter-rouge">24</code>. So we see that the output shrinks gradually at the beginning.This was just an example.In real life scenario, it shrinks even faster.Padding helps us avoid this situation by keeping the output dimension either same or more.It is a process in which the input is padded with <code class="highlighter-rouge">0's</code> on height and width sides.For an example,in the following image, a <code class="highlighter-rouge">7x7</code> image has been padded with <code class="highlighter-rouge">1</code> pixel border.What is the corresponding output dimension?</p>
 
 <!-- _includes/image.html -->
+<center>
 <div class="image-wrapper">
     
-        <img align="middle" src="http://localhost:4000/images/2017/cnn/padding.png" alt="Padding" />
+        <img align="middle" src="http://localhost:4000/images/2017/cnn/padding.png" alt="Padding" style="border: 2px solid black;" />
     
     
         <p align="center" class="image-caption">Padding helps maintain the output dimension(spatially)</p>
     
 </div>
+</center>
 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>N = 9, F = 3, S = 1
 (N-F)/S + 1 = (9-3)/1 + 1 = 7
@@ -348,41 +359,47 @@ Total number of weights in a convolution layer = (FxFxD1)xK + K biases
 <h2 id="pooling">Pooling</h2>
 
 <!-- _includes/image.html -->
+<center>
 <div class="image-wrapper">
     
-        <img align="middle" src="http://localhost:4000/images/2017/cnn/downsampling.jpeg" alt="Downsampling" />
+        <img align="middle" src="http://localhost:4000/images/2017/cnn/downsampling.jpeg" alt="Downsampling" style="border: 2px solid black;" />
     
     
         <p align="center" class="image-caption">In this example, the input volume of size [224x224x64] is pooled with filter size 2, stride 2 into
 output volume of size [112x112x64]</p>
     
 </div>
+</center>
 
 <p>Pooling let’s us control the spatial size of the output layer and thus controlling the number of parameters.It is usually inserted between two convolution layers.It is done one each activation map independently and preserves the depth dimension.In <em>max pooling</em> operation, a filter (eg. 2x2, stride 2) slides over one activation map and downsamples it to half of it’s previous dimensions.Following figure shows the max pooling operation.</p>
 
 <!-- _includes/image.html -->
+<center>
 <div class="image-wrapper">
     
-        <img align="middle" src="http://localhost:4000/images/2017/cnn/max-pooling.jpeg" alt="max-pooling" />
+        <img align="middle" src="http://localhost:4000/images/2017/cnn/max-pooling.jpeg" alt="max-pooling" style="border: 2px solid black;" />
     
     
         <p align="center" class="image-caption">A very common max pooling operation done over a slice of activation map.Max operation is performed over 4 numbers at a time when a filter of 2x2 makes stride of 2</p>
     
 </div>
+</center>
 
 <h2 id="fully-connected-layer">Fully connected layer</h2>
 
 <p>The neuron activations from the final convolution layers are flattened to produce a vector which acts as an input to a regular neural network called fully connected network.This network finally produces outputs like scores or probabilities associated with our original input volume.</p>
 
 <!-- _includes/image.html -->
+<center>
 <div class="image-wrapper">
     
-        <img align="middle" src="http://localhost:4000/images/2017/cnn/fc-cnn.jpeg" alt="Fully connected layer" />
+        <img align="middle" src="http://localhost:4000/images/2017/cnn/fc-cnn.jpeg" alt="Fully connected layer" style="border: 2px solid black;" />
     
     
         <p align="center" class="image-caption"></p>
     
 </div>
+</center>
 
 <h1 id="putting-it-all-together">Putting it all together</h1>
 
@@ -394,14 +411,16 @@ output volume of size [112x112x64]</p>
 Moreover, <code class="highlighter-rouge">N &gt;= 0</code> (and usually <code class="highlighter-rouge">N &lt;= 3</code> ), <code class="highlighter-rouge">M &gt;= 0</code> , <code class="highlighter-rouge">K &gt;= 0</code> (and usually <code class="highlighter-rouge">K &lt; 3</code> ).</p>
 
 <!-- _includes/image.html -->
+<center>
 <div class="image-wrapper">
     
-        <img align="middle" src="http://localhost:4000/images/2017/cnn/cnn-title-image.jpeg" alt="LeNet" />
+        <img align="middle" src="http://localhost:4000/images/2017/cnn/cnn-title-image.jpeg" alt="LeNet" style="border: 2px solid black;" />
     
     
         <p align="center" class="image-caption">LeNet-5[LeCun et al., 1998] had CONV-POOL-CONV-POOL-CONV-FC architecture</p>
     
 </div>
+</center>
 
 <p>I hope this post was useful in some way.Please follow for more interesting updates!</p>
 
