@@ -19,7 +19,7 @@ tags:
 Hello people!The following project is a basic implementation of what can later give rise to a dedicated social network for sensors. Have you ever wondered how would it be if all your inanimate things can talk on social network like Facebook, twitter? Green-house updating it’s health on it’s timeline? This project is an effort to give social life to the “things”.
 <!--more-->
 
-{% include image.html img="images/2016/galileo-link/2016-01-01-galileo-link.jpg" title="CIFAR-10 example images" caption="Galileo-link posts room temperature and light values on it's timeline" %}
+{% include image.html img="images/2016/galileo-link/2016-01-01-galileo-link.jpg" title="CIFAR-10 example images" caption="Galileo-link posts room temperature and light values on it's timeline" url="http://arunkrweb.github.io/images/2016/galileo-link/2016-01-01-galileo-link.jpg" %}
 
 I have implemented the project using Intel Galileo board as the sensor gateway, you can use any other board running Linux OS with python installed. I tried making my home talk. That is, posting sensors data installed on Intel Galileo kept in my room to the Facebook account by name “Galileo Link” wall. So all we need is access to Facebook Graph API and a python script.
 

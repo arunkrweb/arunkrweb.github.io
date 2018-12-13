@@ -15,7 +15,6 @@ tags:
   - artificial-intelligence
 ---
 
-
 In the last blog post I explained what is a particle filter and how we can build one using pygame and python.In this post, I will walk you through the steps to build a 2D robotic car and get it running using PD control.
 
 <!--more-->
@@ -26,7 +25,7 @@ I am building visual demonstration of the problems given in Udacity's Course on 
 
 Our robotic car has two fixed rear wheels and two front steereable wheels.The vehicle motion can be explained by splitting the vehicle vertically so that we get something called a bicycle model as shown below.
 
-{% include image.html img="images/2017/robotic-car/bicycle-model1.png" title="Bicycle Model" caption="Bicycle model - local coordinates" %}
+{% include image.html img="images/2017/robotic-car/bicycle-model1.png" title="Bicycle Model" caption="Bicycle model - local coordinates" url="http://arunkrweb.github.io/images/2017/robotic-car/bicycle-model1.png" %}
 
 This model is useful in understanding the vehicle motion especially when taking a turn.Let's say our car starts to take a right turn. Assuming the steering angle to be `alpha`, the radius of the circle that the rear wheel makes while taking the turn to be `R`, and the distance between the front and rear wheel be `L`.Then the radius `R` can be clearly stated as follows.
 
@@ -41,7 +40,7 @@ This model is useful in understanding the vehicle motion especially when taking 
 </body>
 <html>
 
-{% include image.html img="images/2017/robotic-car/bicycle-model2.png" title="Bicycle Model" caption="Bicycle model - global coordinates" %}
+{% include image.html img="images/2017/robotic-car/bicycle-model2.png" title="Bicycle Model" caption="Bicycle model - global coordinates" url="http://arunkrweb.github.io/images/2017/robotic-car/bicycle-model2.png" %}
 
 We are interested in finding what would be the position and orientation of our car after it rotates by an angle `beta`.Let initial orientation with respect to a global `x = 0` be `theta` and the initial position be `(x, y)`.Then from the above figure, it is clear that the center of the circle which the car makes while steering, can be written as -
 
@@ -173,6 +172,6 @@ The car body is a 80px by 60px yellow trianlge with four 20px by 6px wheels.In t
 
 You can find the implementation code and the racetrack image that I have used <a href='https://github.com/ioarun/ai-for-robotics-udacity/blob/master/visual-implementation/racetrack-control.py'>here</a>.I hope you found this post helpful.Until next time!
 
-{% include image.html img="images/2017/robotic-car/racetrack-control.gif" title="Robotic Car" caption="Robotic car in motion! Observe how PD control is acting on steering wheels." %}
+{% include image.html img="images/2017/robotic-car/racetrack-control.gif" title="Robotic Car" caption="Robotic car in motion! Observe how PD control is acting on steering wheels." url="http://arunkrweb.github.io/images/2017/robotic-car/racetrack-control.gif" %}
 
 

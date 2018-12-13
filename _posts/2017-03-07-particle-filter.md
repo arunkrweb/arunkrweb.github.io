@@ -51,7 +51,7 @@ This class contains robot specific methods like
 
 Instantiation of the robot class creates an object with random location and orientation.Let's call this object `car`. Then we will create `particles`. Make an empty list called `particles` and append it with the robot objects called `particle`.I created 1000 such particles.
 
-{% include image.html img="images/2017/particle-filter/initial_condition.png" title="Initial state of particles" caption="1000 particles distributed uniformly in the space" %}
+{% include image.html img="images/2017/particle-filter/initial_condition.png" title="Initial state of particles" caption="1000 particles distributed uniformly in the space" url="http://arunkrweb.github.io/images/2017/particle-filter/initial_condition.png" %}
 
 The figure above is a screen shot of my pygame screen.The blue circles are the landmarks.The car sprite is located in the center of the screen in the initial state and particles (green dots) are uniformly distributed on the screen.
 
@@ -69,19 +69,19 @@ There is one *measurement_prob()* method provided in the course that Sebastian T
 
 In the resampling process, highly weighted particles are selected with a high probability than the ones with low weights.These weights are *normalized* weights meaning, they are divided by the sum total of all the weights.Suppose we have 6 particles - p1, p2, p3, p4, p5, p6 and p3 and p6 have higher weights than the other four particles.We will run a resampling cycle 6 times.So, let's say the first time p6 was chosen.Second time again p6 was chosen, next p1 was chosen followed by p3, p3 and p5.So the new particles list will look like - p1, p3, p3, p5, p6, p6.Eventually after many iterations, the list may look like p6, p6, p6, p6, p6, p6.And we will see 6 of these particles approximately at the car location and will say that our car/robot is localized.
 
-{% include image.html img="images/2017/particle-filter/next_condition.png" title="Localized car" caption="Small green dot is actually 1000 particles on top of each other localizing the car." %}
+{% include image.html img="images/2017/particle-filter/next_condition.png" title="Localized car" caption="Small green dot is actually 1000 particles on top of each other localizing the car." url="http://arunkrweb.github.io/images/2017/particle-filter/next_condition.png" %}
 
 *Resampling wheel* is one way to implement resampling.It is very efficient 10 lines of code.We represent all the particles and their weights on a big wheel.Each slice on the wheel is proportional to the corresponding weights.Now we chose any index from 0 to 999 at random.Let's say we chose `W6` randomly.Create a variable `beta` and assign a value `2*max(weights)` to it.Now, we follow following steps until the value of `beta` is less than the weight at running index.Subtract `weight[index]` from `beta` and increment `index`.As soon as `beta` drops below the running weight, loop terminates and the particle associated with running index is appended to the new particle list.
 
 Above steps are repeated till all the 1000 particles are not appended to the new particles list.
 
-{% include image.html img="images/2017/particle-filter/resampling-wheel.jpeg" title="Resampling wheel" caption="[Source: Udacity]Resampling wheel" %}
+{% include image.html img="images/2017/particle-filter/resampling-wheel.jpeg" title="Resampling wheel" caption="[Source: Udacity]Resampling wheel" url="http://arunkrweb.github.io/images/2017/particle-filter/resampling-wheel.jpeg" %}
 
 ## Next steps!
 
 That was just one frame or instant.In the next frame, the car moves and so do the particles.These particles are the ones from previous step of resampling.The process of localization starts again and repeats as explained above.
 
-{% include image.html img="images/2017/particle-filter/particle-filter.gif" title="Particle Filter Localization" caption="Particle Filter Localization" %}
+{% include image.html img="images/2017/particle-filter/particle-filter.gif" title="Particle Filter Localization" caption="Particle Filter Localization" url="http://arunkrweb.github.io/images/2017/particle-filter/particle-filter.gif" %}
 
 That's it for now guys.I had fun implementing the particle filter.I am aiming to build a basic implementation of self driving car in pygame.More posts on the same soon.Do follow for updates!
 

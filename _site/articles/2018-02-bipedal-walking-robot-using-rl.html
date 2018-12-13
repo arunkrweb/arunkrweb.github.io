@@ -37,13 +37,13 @@
 
 
 
-  <meta property="og:description" content="Machine learning algorithms have found several applications in the field of robotics and control systems. The control systems community has started to show interest towards several machine learning algorithms from the sub-domains such as supervised learning, imitation learning and reinforcement learning to achieve autonomous control and intelligent decision making. Amongst many complex control problems, stable bipedal walking has been the most challenging problem. In this paper, we present an architecture to design and simulate a planar bipedal walking robot(BWR) using a realistic robotics simulator, Gazebo. The robot demonstrates successful walking behaviour by learning through several of its trial and errors, without any prior knowledge of itself or the world dynamics. ">
+  <meta property="og:description" content="">
 
 
 
   <meta name="twitter:site" content="@ioarun">
   <meta name="twitter:title" content="Bipedal Walking Robot using Reinforcement Learning">
-  <meta name="twitter:description" content="Machine learning algorithms have found several applications in the field of robotics and control systems. The control systems community has started to show interest towards several machine learning algorithms from the sub-domains such as supervised learning, imitation learning and reinforcement learning to achieve autonomous control and intelligent decision making. Amongst many complex control problems, stable bipedal walking has been the most challenging problem. In this paper, we present an architecture to design and simulate a planar bipedal walking robot(BWR) using a realistic robotics simulator, Gazebo. The robot demonstrates successful walking behaviour by learning through several of its trial and errors, without any prior knowledge of itself or the world dynamics. ">
+  <meta name="twitter:description" content="">
   <meta name="twitter:url" content="http://localhost:4000/articles/2018-02-bipedal-walking-robot-using-rl">
 
   
@@ -171,11 +171,10 @@
     {
 	"@context": "http://schema.org/",
 	"@type": "CreativeWork",
-	"author": "R. Stuart Geiger",
+	"author": "Arun Kumar",
         "name": "Bipedal Walking Robot using Reinforcement Learning",
 	"datePublished": "",
-	"description": "<p>
-Machine learning algorithms have found several applications in the field of robotics and control systems. The control systems community has started to show interest towards several machine learning algorithms from the sub-domains such as supervised learning, imitation learning and reinforcement learning to achieve autonomous control and intelligent decision making. Amongst many complex control problems, stable bipedal walking has been the most challenging problem. In this paper, we present an architecture to design and simulate a planar bipedal walking robot(BWR) using a realistic robotics simulator, Gazebo. The robot demonstrates successful walking behaviour by learning through several of its trial and errors, without any prior knowledge of itself or the world dynamics. 
+	"description": "<p style="text-align:justify">
 
 </p>
 "
@@ -192,7 +191,7 @@ Machine learning algorithms have found several applications in the field of robo
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     <meta itemprop="headline" content="Bipedal Walking Robot using Reinforcement Learning">
-    <meta itemprop="description" content="Machine learning algorithms have found several applications in the field of robotics and control systems. The control systems community has started to show interest towards several machine learning algorithms from the sub-domains such as supervised learning, imitation learning and reinforcement learning to achieve autonomous control and intelligent decision making. Amongst many complex control problems, stable bipedal walking has been the most challenging problem. In this paper, we present an architecture to design and simulate a planar bipedal walking robot(BWR) using a realistic robotics simulator, Gazebo. The robot demonstrates successful walking behaviour by learning through several of its trial and errors, without any prior knowledge of itself or the world dynamics. ">
+    <meta itemprop="description" content="">
     
     
     
@@ -209,8 +208,11 @@ Machine learning algorithms have found several applications in the field of robo
       
 
       <section class="page__content" itemprop="text">
-        <p>
-Machine learning algorithms have found several applications in the field of robotics and control systems. The control systems community has started to show interest towards several machine learning algorithms from the sub-domains such as supervised learning, imitation learning and reinforcement learning to achieve autonomous control and intelligent decision making. Amongst many complex control problems, stable bipedal walking has been the most challenging problem. In this paper, we present an architecture to design and simulate a planar bipedal walking robot(BWR) using a realistic robotics simulator, Gazebo. The robot demonstrates successful walking behaviour by learning through several of its trial and errors, without any prior knowledge of itself or the world dynamics. 
+        <p style="text-align:justify">
+
+Machine learning algorithms have found several applications in the field of robotics and control systems. The control systems community has started to show interest towards several machine learning algorithms from the sub-domains such as supervised learning, imitation learning and reinforcement learning to achieve autonomous control and intelligent decision making. Amongst many complex control problems, stable bipedal walking has been the most challenging problem. In this paper, we present an architecture to design and simulate a planar bipedal walking robot(BWR) using a realistic robotics simulator, Gazebo. The robot demonstrates successful walking behaviour by learning through several of its trial and errors, without any prior knowledge of itself or the world dynamics. </p>
+
+<p>[<a href="https://github.com/ioarun/rl4biped">code</a>]</p>
 
 <!-- <div>
 <a href="http://arunkrweb.github.io/images/2018/biped/biped_trained.gif"><img src="/images/2018/biped/biped_trained.gif" style="width: 450px; height: 200px; align-content: center; margin-top: 10px; margin-right: 10px; margin-left: 10px; margin-bottom: 10px"/></a>
@@ -219,7 +221,11 @@ Machine learning algorithms have found several applications in the field of robo
 <center>
 <div class="image-wrapper">
     
+    <a href="http://arunkrweb.github.io/images/2018/biped/biped_trained.gif" title="Biped Walker">
+    
         <img align="middle" src="http://localhost:4000//images/2018/biped/biped_trained.gif" alt="Biped Walker" style="border: 2px solid black;" />
+    
+    </a>
     
     
         <p align="center" class="image-caption" style="font-size:14px;">BWR walking steadily after 41 hours of training</p>
@@ -227,7 +233,8 @@ Machine learning algorithms have found several applications in the field of robo
 </div>
 </center>
 
-The autonomous walking of the BWR is achieved using reinforcement learning algorithm called Deep Deterministic Policy Gradient(DDPG). DDPG is one of the algorithms for learning controls in continuous action spaces. After training the model in simulation, it was observed that, with a proper shaped reward function, the robot achieved faster walking or even rendered a running gait with an average speed of 0.83 m/s. The gait pattern of the bipedal walker was compared with the actual human walking pattern. The results show that the bipedal walking pattern had similar characteristics to that of a human walking pattern. The video presenting our experiment is available at <a href="https://www.youtube.com/watch?v=Q4N78P7cink&amp;feature=youtu.be">this https URL</a>.
+<p style="text-align:justify">
+The autonomous walking of the BWR is achieved using reinforcement learning algorithm called Deep Deterministic Policy Gradient(DDPG). DDPG is one of the algorithms for learning controls in continuous action spaces. After training the model in simulation, it was observed that, with a proper shaped reward function, the robot achieved faster walking or even rendered a running gait with an average speed of 0.83 m/s. The gait pattern of the bipedal walker was compared with the actual human walking pattern. The results show that the bipedal walking pattern had similar characteristics to that of a human walking pattern. The video presenting the project is available at <a href="https://www.youtube.com/watch?v=Q4N78P7cink&amp;feature=youtu.be">this https URL</a>.
 </p>
 
 

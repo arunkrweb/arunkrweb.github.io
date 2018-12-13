@@ -4,31 +4,67 @@ category: articles
 author_profile: false
 permalink: /articles/2018-01-target-pose-estimation-and-reaching-using-supervised-learning
 ---
-<!-- excerpt: 'We introduce IP over Xylophone Players (IPoXP), a novel Internet protocol between two computers using xylophone-based Arduino interfaces'
-date: 2012-05-02
-venue: 'Proceedings of CHI (alt.CHI)'
-citation: 'Geiger, R. Stuart, Yoon J. Jeong, and Emily Manders (2012). “Black-Boxing the User: Internet Protocol over Xylophone Players.” In Proceedings of the 2012 ACM Conference on Human-Computer Interaction (alt.CHI 2012). New York: ACM Digital Library. http://stuartgeiger.com/ipoxp.pdf' -->
 
-<p>
+<p style="text-align:justify">
 This is an ongoing project whose main goal is to teach manipulation tasks to the robot by observing humans perform the tasks. This observation is fed to the robot in the form of image sequences or a video. In this post I will try to explain some of the preliminary implementation of one part of the project that is estimating the target position.
 </p>
 
-{% include image.html img="/images/2018/imitation-learning/pose-estimation.gif" title="Pose Estimation" caption="CNN predicts the target pose for reaching task" %}
+{% include image.html img="/images/2018/imitation-learning/pose-estimation.gif" url="http://arunkrweb.github.io/images/2018/imitation-learning/pose-estimation.gif"  title="Pose Estimation" caption="CNN predicts the target pose for reaching task" %}
 
-<p> <b>Environment</b> - The simulation is set up in the Gazebo simulator. The robot being used is 7DOF Sawyer robot with an electronic gripper attached to the end-effector. A camera is placed on top of the workspace to capture images to be fed to the network. A table is also spawned in the world on top of which a blue cube randomly spawns.</p>
-
-<p> <b>Task</b> - To predict the blue cube's position on the table and reach to that position.</p>
-
-<p> <b>Architecture</b> -
-<!-- 
-150-('test cost :', 4.485624e-05, 'pred :', array([[ 0.72932047, -0.3483142 ]], dtype=float32), 'truth :', [array(['0.72', '-0.35'], dtype='|S5')  -->
-{% include image.html img="/images/2018/imitation-learning/spatial-softmax-using-cnn.jpg" title="Architecture" caption="CNN architecture to predict cube position" %}
-
-</p>
-<!-- <div style="justify-content: center;">
-<a href="http://arunkrweb.github.io/images/2018/imitation-learning/pose-estimation.gif"><img src="/images/2018/imitation-learning/pose-estimation.gif" style="width: 600px; height: 200px;"/></a>
-</div> -->
-
-
+<h3>Environment</h3>
+<p style="text-align:justify">
+ The simulation is set up in the Gazebo simulator. The robot being used is 7DOF Sawyer robot with an electronic gripper attached to the end-effector. A camera is placed on top of the workspace to capture images to be fed to the network. A table is also spawned in the world on top of which a blue cube randomly spawns.</p>
  
+<p style="text-align:justify"> <b>Task</b> <br>
+ To predict the blue cube's position on the table and reach to that position.</p>
+
+<h3>Architecture</h3>
+
+{% include image.html img="/images/2018/imitation-learning/spatial-softmax-using-cnn.jpg"  url="http://arunkrweb.github.io/images/2018/imitation-learning/spatial-softmax-using-cnn.jpg" title="Architecture" caption="CNN architecture to predict cube position" %}
+
+<p style="text-align:justify">
+
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+The network consists of 3 convolutional layers which learn a bank of filters. These filters form a hierarchy of local image features. The convolution operation is followed by a rectifying nonlinearity of the form \(a_{cij}=\max(0, z_{ij})\) for each channel <i>c</i> and each pixel coordinate \((i,j)\). The third convolutional layer contains 32 response maps. These response maps are passed through a spatial softmax function of the form \(s_{cij} = {e^{a_{cij}}}/{\sum_{i^{'} j^{'}}{e^{a_{ci^{'}j^{'}}}}}\). Each output channel of the softmax is a probability distribution over the location of a feature in the image. To convert from this distribution to a coordinate representation \((f_{cx}, f_{cy} )\), the network calculates the expected image position of each feature, yielding a 2D coordinate for each channel: \(f_{cx} = \sum_{ij}{s_{cij}x_{ij}}\) and \(f_{cy} = \sum_{ij}{s_{cij}y_{ij}}\) where \((x_{ij}, y_{ij})\) is the image-space position of the point \((i, j)\) in the response map. <br>
+
+The spatial softmax and the expected position computation serve to convert pixel-wise
+representations in the convolutional layers to spatial coordinate representations, which can be manipulated by the fully connected layers into 3D positions.
+</p>
+
+<h3>Input image during test</h3>
+
+<p style="text-align:justify">
+	For demonstration purpose, I randomly sampled two images from the test data set. As can be seen in the following figure, cube is spawned on two different positions on the table.
+</p>
+
+{% include image.html img="/images/2018/imitation-learning/input_images.jpg"  url="http://arunkrweb.github.io/images/2018/imitation-learning/input_images.jpg" title="input images" caption="Input to the CNN" %}
+
+<h3>Spatial softmax for the two inputs looks as follows</h3>
+<ul>
+	<li> Image 1 (cube on left)</li>
+
+	{% include image.html img="/images/2018/imitation-learning/150_softmax.jpg"  url="http://arunkrweb.github.io/images/2018/imitation-learning/150_softmax.jpg" title="input images" caption="Spatial softmax for image 1" %}
+
+	<li> Image 2 (cube on right)</li>
+	{% include image.html img="/images/2018/imitation-learning/156_softmax.jpg"  url="http://arunkrweb.github.io/images/2018/imitation-learning/156_softmax.jpg" title="input images" caption="Spatial softmax for image 2" %}
+</ul>
+
+<h3> Results </h3>
+
+<p style="text-align:justify;">
+ The results for image 1 are as follows: <br>
+ predicted position : [ 0.72932047, -0.3483142 ] <br>
+ true position : [0.72, -0.35]<br>
+ test loss : 4.485624e-05
+</p>
+
+<h3>Reference</h3>
+<p style="text-align:justify; font-size: 12px;">
+Levine, Sergey, Chelsea Finn, Trevor Darrell, and Pieter Abbeel. "End-to-end training of deep visuomotor policies." The Journal of Machine Learning Research 17, no. 1 (2016): 1334-1373.
+</p>
+ 
+
  

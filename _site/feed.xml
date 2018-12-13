@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-12-11T02:49:00-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Arun Kumar</title><subtitle>project associate&lt;br/&gt;rbccps.org</subtitle><author><name>Arun Kumar</name></author><entry><title type="html">Build a 2D Robotic Car!</title><link href="http://localhost:4000/posts/2017/04/robotic-car/" rel="alternate" type="text/html" title="Build a 2D Robotic Car!" /><published>2017-04-03T14:56:19-07:00</published><updated>2017-04-03T14:56:19-07:00</updated><id>http://localhost:4000/posts/2017/04/build-2d-robotic-car</id><content type="html" xml:base="http://localhost:4000/posts/2017/04/robotic-car/">&lt;p&gt;In the last blog post I explained what is a particle filter and how we can build one using pygame and python.In this post, I will walk you through the steps to build a 2D robotic car and get it running using PD control.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-12-12T23:36:43-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Arun Kumar</title><subtitle>project associate&lt;br/&gt;rbccps.org</subtitle><author><name>Arun Kumar</name></author><entry><title type="html">Build a 2D Robotic Car!</title><link href="http://localhost:4000/posts/2017/04/robotic-car/" rel="alternate" type="text/html" title="Build a 2D Robotic Car!" /><published>2017-04-03T14:56:19-07:00</published><updated>2017-04-03T14:56:19-07:00</updated><id>http://localhost:4000/posts/2017/04/build-2d-robotic-car</id><content type="html" xml:base="http://localhost:4000/posts/2017/04/robotic-car/">&lt;p&gt;In the last blog post I explained what is a particle filter and how we can build one using pygame and python.In this post, I will walk you through the steps to build a 2D robotic car and get it running using PD control.&lt;/p&gt;
 
 &lt;!--more--&gt;
 
@@ -12,7 +12,11 @@
 &lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
+    &lt;a href=&quot;http://arunkrweb.github.io/images/2017/robotic-car/bicycle-model1.png&quot; title=&quot;Bicycle Model&quot;&gt;
+    
         &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/robotic-car/bicycle-model1.png&quot; alt=&quot;Bicycle Model&quot; style=&quot;border: 2px solid black;&quot; /&gt;
+    
+    &lt;/a&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot; style=&quot;font-size:14px;&quot;&gt;Bicycle model - local coordinates&lt;/p&gt;
@@ -36,13 +40,18 @@
 &lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
+    &lt;a href=&quot;http://arunkrweb.github.io/images/2017/robotic-car/bicycle-model2.png&quot; title=&quot;Bicycle Model&quot;&gt;
+    
         &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/robotic-car/bicycle-model2.png&quot; alt=&quot;Bicycle Model&quot; style=&quot;border: 2px solid black;&quot; /&gt;
+    
+    &lt;/a&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot; style=&quot;font-size:14px;&quot;&gt;Bicycle model - global coordinates&lt;/p&gt;
     
 &lt;/div&gt;
 &lt;/center&gt;
+
 
 We are interested in finding what would be the position and orientation of our car after it rotates by an angle `beta`.Let initial orientation with respect to a global `x = 0` be `theta` and the initial position be `(x, y)`.Then from the above figure, it is clear that the center of the circle which the car makes while steering, can be written as -
 
@@ -168,13 +177,18 @@ You can find the implementation code and the racetrack image that I have used &l
 &lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
+    &lt;a href=&quot;http://arunkrweb.github.io/images/2017/robotic-car/racetrack-control.gif&quot; title=&quot;Robotic Car&quot;&gt;
+    
         &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/robotic-car/racetrack-control.gif&quot; alt=&quot;Robotic Car&quot; style=&quot;border: 2px solid black;&quot; /&gt;
+    
+    &lt;/a&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot; style=&quot;font-size:14px;&quot;&gt;Robotic car in motion! Observe how PD control is acting on steering wheels.&lt;/p&gt;
     
 &lt;/div&gt;
 &lt;/center&gt;
+
 
 
 &lt;/html&gt;&lt;/head&gt;&lt;/head&gt;&lt;/html&gt;&lt;/html&gt;&lt;/head&gt;&lt;/head&gt;&lt;/html&gt;&lt;/html&gt;&lt;/head&gt;&lt;/head&gt;&lt;/html&gt;&lt;/html&gt;&lt;/head&gt;&lt;/head&gt;&lt;/html&gt;&lt;/html&gt;&lt;/head&gt;&lt;/head&gt;&lt;/html&gt;</content><author><name>arun</name></author><category term="robotics" /><category term="artificial-intelligence" /><summary type="html">In the last blog post I explained what is a particle filter and how we can build one using pygame and python.In this post, I will walk you through the steps to build a 2D robotic car and get it running using PD control.</summary></entry><entry><title type="html">Robot Localization using Particle Filter</title><link href="http://localhost:4000/posts/2017/03/particle-filter/" rel="alternate" type="text/html" title="Robot Localization using Particle Filter" /><published>2017-03-07T13:56:19-08:00</published><updated>2017-03-07T13:56:19-08:00</updated><id>http://localhost:4000/posts/2017/03/particle-filter</id><content type="html" xml:base="http://localhost:4000/posts/2017/03/particle-filter/">&lt;p&gt;Robot world is exciting! For people completely unaware of what goes inside the robots and how they manage to do what they do, it seems almost magical.In this post, with the help of an implementation, I will try to scratch the surface of one very important part of robotics called robot localization.&lt;/p&gt;
@@ -217,7 +231,11 @@ You can find the implementation code and the racetrack image that I have used &l
 &lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
+    &lt;a href=&quot;http://arunkrweb.github.io/images/2017/particle-filter/initial_condition.png&quot; title=&quot;Initial state of particles&quot;&gt;
+    
         &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/particle-filter/initial_condition.png&quot; alt=&quot;Initial state of particles&quot; style=&quot;border: 2px solid black;&quot; /&gt;
+    
+    &lt;/a&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot; style=&quot;font-size:14px;&quot;&gt;1000 particles distributed uniformly in the space&lt;/p&gt;
@@ -245,7 +263,11 @@ replacement in proportion to the importance weight, the particles with a higher 
 &lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
+    &lt;a href=&quot;http://arunkrweb.github.io/images/2017/particle-filter/next_condition.png&quot; title=&quot;Localized car&quot;&gt;
+    
         &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/particle-filter/next_condition.png&quot; alt=&quot;Localized car&quot; style=&quot;border: 2px solid black;&quot; /&gt;
+    
+    &lt;/a&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot; style=&quot;font-size:14px;&quot;&gt;Small green dot is actually 1000 particles on top of each other localizing the car.&lt;/p&gt;
@@ -261,7 +283,11 @@ replacement in proportion to the importance weight, the particles with a higher 
 &lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
+    &lt;a href=&quot;http://arunkrweb.github.io/images/2017/particle-filter/resampling-wheel.jpeg&quot; title=&quot;Resampling wheel&quot;&gt;
+    
         &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/particle-filter/resampling-wheel.jpeg&quot; alt=&quot;Resampling wheel&quot; style=&quot;border: 2px solid black;&quot; /&gt;
+    
+    &lt;/a&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot; style=&quot;font-size:14px;&quot;&gt;[Source: Udacity]Resampling wheel&lt;/p&gt;
@@ -277,7 +303,11 @@ replacement in proportion to the importance weight, the particles with a higher 
 &lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
+    &lt;a href=&quot;http://arunkrweb.github.io/images/2017/particle-filter/particle-filter.gif&quot; title=&quot;Particle Filter Localization&quot;&gt;
+    
         &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/particle-filter/particle-filter.gif&quot; alt=&quot;Particle Filter Localization&quot; style=&quot;border: 2px solid black;&quot; /&gt;
+    
+    &lt;/a&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot; style=&quot;font-size:14px;&quot;&gt;Particle Filter Localization&lt;/p&gt;
@@ -317,7 +347,11 @@ replacement in proportion to the importance weight, the particles with a higher 
 &lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
+    &lt;a href=&quot;http://arunkrweb.github.io/images/2017/cnn/comparing-regular-and-cnn2.jpeg&quot; title=&quot;Convolutional Neural Net&quot;&gt;
+    
         &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/comparing-regular-and-cnn2.jpeg&quot; alt=&quot;Convolutional Neural Net&quot; style=&quot;border: 2px solid black;&quot; /&gt;
+    
+    &lt;/a&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot; style=&quot;font-size:14px;&quot;&gt;Every layer of a ConvNet transforms the 3D input volume to a 3D output volume of neuron activations. In this example, the red input layer holds the image, so its width and height would be the dimensions of the image, and the depth would be `3` (Red, Green, Blue channels).&lt;/p&gt;
@@ -333,7 +367,11 @@ replacement in proportion to the importance weight, the particles with a higher 
 &lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
+    &lt;a href=&quot;http://arunkrweb.github.io/images/2017/cnn/Convolution_schematic.gif&quot; title=&quot;convolution&quot;&gt;
+    
         &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/Convolution_schematic.gif&quot; alt=&quot;convolution&quot; style=&quot;border: 2px solid black;&quot; /&gt;
+    
+    &lt;/a&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot; style=&quot;font-size:14px;&quot;&gt;Convolution operation - elementwise multiplication and then adding the results&lt;/p&gt;
@@ -363,7 +401,11 @@ replacement in proportion to the importance weight, the particles with a higher 
 &lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
+    &lt;a href=&quot;http://arunkrweb.github.io/images/2017/cnn/neurons-in-conv.jpeg&quot; title=&quot;Convolution layer&quot;&gt;
+    
         &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/neurons-in-conv.jpeg&quot; alt=&quot;Convolution layer&quot; style=&quot;border: 2px solid black;&quot; /&gt;
+    
+    &lt;/a&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot; style=&quot;font-size:14px;&quot;&gt;A 32x32x3 volume input connected to a neuron in convolutional layer&lt;/p&gt;
@@ -393,7 +435,11 @@ There is one more thing left which is padding.Let’s look at the significance o
 &lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
+    &lt;a href=&quot;http://arunkrweb.github.io/images/2017/cnn/padding.png&quot; title=&quot;Padding&quot;&gt;
+    
         &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/padding.png&quot; alt=&quot;Padding&quot; style=&quot;border: 2px solid black;&quot; /&gt;
+    
+    &lt;/a&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot; style=&quot;font-size:14px;&quot;&gt;Padding helps maintain the output dimension(spatially)&lt;/p&gt;
@@ -427,7 +473,11 @@ Total number of weights in a convolution layer = (FxFxD1)xK + K biases
 &lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
+    &lt;a href=&quot;http://arunkrweb.github.io/images/2017/cnn/downsampling.jpeg&quot; title=&quot;Downsampling&quot;&gt;
+    
         &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/downsampling.jpeg&quot; alt=&quot;Downsampling&quot; style=&quot;border: 2px solid black;&quot; /&gt;
+    
+    &lt;/a&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot; style=&quot;font-size:14px;&quot;&gt;In this example, the input volume of size [224x224x64] is pooled with filter size 2, stride 2 into
@@ -458,7 +508,11 @@ output volume of size [112x112x64]&lt;/p&gt;
 &lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
+    &lt;a href=&quot;http://arunkrweb.github.io/images/2017/cnn/fc-cnn.jpeg&quot; title=&quot;Fully connected layer&quot;&gt;
+    
         &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/fc-cnn.jpeg&quot; alt=&quot;Fully connected layer&quot; style=&quot;border: 2px solid black;&quot; /&gt;
+    
+    &lt;/a&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot; style=&quot;font-size:14px;&quot;&gt;&lt;/p&gt;
@@ -479,7 +533,11 @@ Moreover, &lt;code class=&quot;highlighter-rouge&quot;&gt;N &amp;gt;= 0&lt;/code
 &lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
+    &lt;a href=&quot;http://arunkrweb.github.io/images/2017/cnn/cnn-title-image.jpeg&quot; title=&quot;LeNet&quot;&gt;
+    
         &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/cnn/cnn-title-image.jpeg&quot; alt=&quot;LeNet&quot; style=&quot;border: 2px solid black;&quot; /&gt;
+    
+    &lt;/a&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot; style=&quot;font-size:14px;&quot;&gt;LeNet-5[LeCun et al., 1998] had CONV-POOL-CONV-POOL-CONV-FC architecture&lt;/p&gt;
@@ -497,7 +555,11 @@ Before getting to it, it is important to understand the functioning of the neoco
 &lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
+    &lt;a href=&quot;http://arunkrweb.github.io/images/2017/htm/brain-five-lobes.jpg&quot; title=&quot;neocortex&quot;&gt;
+    
         &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/htm/brain-five-lobes.jpg&quot; alt=&quot;neocortex&quot; style=&quot;border: 2px solid black;&quot; /&gt;
+    
+    &lt;/a&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot; style=&quot;font-size:14px;&quot;&gt;Human Neocortex&lt;/p&gt;
@@ -524,7 +586,11 @@ Before getting to it, it is important to understand the functioning of the neoco
 &lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
+    &lt;a href=&quot;http://arunkrweb.github.io/images/2017/htm/cajal_cortex.jpeg&quot; title=&quot;cajal neocortex&quot;&gt;
+    
         &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/htm/cajal_cortex.jpeg&quot; alt=&quot;cajal neocortex&quot; style=&quot;border: 2px solid black;&quot; /&gt;
+    
+    &lt;/a&gt;
     
     
 &lt;/div&gt;
@@ -545,7 +611,11 @@ There is one more specialty about the structure of the neorocortex. It is observ
 &lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
+    &lt;a href=&quot;http://arunkrweb.github.io/images/2017/htm/columnar.jpeg&quot; title=&quot;columnar architecture&quot;&gt;
+    
         &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/htm/columnar.jpeg&quot; alt=&quot;columnar architecture&quot; style=&quot;border: 2px solid black;&quot; /&gt;
+    
+    &lt;/a&gt;
     
     
 &lt;/div&gt;
@@ -559,7 +629,11 @@ There is one more specialty about the structure of the neorocortex. It is observ
 &lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
+    &lt;a href=&quot;http://arunkrweb.github.io/images/2017/htm/heirarchy.jpg&quot; title=&quot;hierarchical view&quot;&gt;
+    
         &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/htm/heirarchy.jpg&quot; alt=&quot;hierarchical view&quot; style=&quot;border: 2px solid black;&quot; /&gt;
+    
+    &lt;/a&gt;
     
     
 &lt;/div&gt;
@@ -576,7 +650,11 @@ There is one more specialty about the structure of the neorocortex. It is observ
 &lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
+    &lt;a href=&quot;http://arunkrweb.github.io/images/2017/htm/prediction.jpg&quot; title=&quot;prediction&quot;&gt;
+    
         &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2017/htm/prediction.jpg&quot; alt=&quot;prediction&quot; style=&quot;border: 2px solid black;&quot; /&gt;
+    
+    &lt;/a&gt;
     
     
 &lt;/div&gt;
@@ -625,7 +703,11 @@ BLE Shield which incorporates Nrf8001 bluetooth low energy chip.&lt;/p&gt;
 &lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
+    &lt;a href=&quot;http://arunkrweb.github.io/images/2016/physical-web/one.png&quot; title=&quot;one&quot;&gt;
+    
         &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2016/physical-web/one.png&quot; alt=&quot;one&quot; style=&quot;border: 2px solid black;&quot; /&gt;
+    
+    &lt;/a&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot; style=&quot;font-size:14px;&quot;&gt;Red Bear Lab BLE Shield&lt;/p&gt;
@@ -643,7 +725,11 @@ Mega board to &lt;em&gt;create&lt;/em&gt; a beacon.&lt;/p&gt;
 &lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
+    &lt;a href=&quot;http://arunkrweb.github.io/images/2016/physical-web/two.jpg&quot; title=&quot;two&quot;&gt;
+    
         &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2016/physical-web/two.jpg&quot; alt=&quot;two&quot; style=&quot;border: 2px solid black;&quot; /&gt;
+    
+    &lt;/a&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot; style=&quot;font-size:14px;&quot;&gt;Arduino Mega&lt;/p&gt;
@@ -746,7 +832,11 @@ At last, this guy can disconnect from the beacon.&lt;/p&gt;
 &lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
+    &lt;a href=&quot;http://arunkrweb.github.io/images/2016/physical-web/three.png&quot; title=&quot;three&quot;&gt;
+    
         &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2016/physical-web/three.png&quot; alt=&quot;three&quot; style=&quot;border: 2px solid black;&quot; /&gt;
+    
+    &lt;/a&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot; style=&quot;font-size:14px;&quot;&gt;Block Diagram&lt;/p&gt;
@@ -873,7 +963,11 @@ The web application runs a node server at the back end.In the front end, what we
 &lt;center&gt;
 &lt;div class=&quot;image-wrapper&quot;&gt;
     
+    &lt;a href=&quot;http://arunkrweb.github.io/images/2016/galileo-link/2016-01-01-galileo-link.jpg&quot; title=&quot;CIFAR-10 example images&quot;&gt;
+    
         &lt;img align=&quot;middle&quot; src=&quot;http://localhost:4000/images/2016/galileo-link/2016-01-01-galileo-link.jpg&quot; alt=&quot;CIFAR-10 example images&quot; style=&quot;border: 2px solid black;&quot; /&gt;
+    
+    &lt;/a&gt;
     
     
         &lt;p align=&quot;center&quot; class=&quot;image-caption&quot; style=&quot;font-size:14px;&quot;&gt;Galileo-link posts room temperature and light values on it's timeline&lt;/p&gt;
