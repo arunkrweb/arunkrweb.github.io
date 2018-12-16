@@ -224,7 +224,7 @@ This is an ongoing project whose main goal is to teach manipulation tasks to the
     </a>
     
     
-        <p align="center" class="image-caption" style="font-size:14px;">CNN predicts the target pose for reaching task</p>
+        <p align="center" class="image-caption" style="font-size:14px;">Fig 1. CNN predicts the target pose for reaching task</p>
     
 </div>
 </center>
@@ -249,7 +249,7 @@ This is an ongoing project whose main goal is to teach manipulation tasks to the
     </a>
     
     
-        <p align="center" class="image-caption" style="font-size:14px;">CNN architecture to predict cube position</p>
+        <p align="center" class="image-caption" style="font-size:14px;">Fig 2. CNN architecture to predict cube position</p>
     
 </div>
 </center>
@@ -262,7 +262,7 @@ This is an ongoing project whose main goal is to teach manipulation tasks to the
 The network consists of 3 convolutional layers which learn a bank of filters. These filters form a hierarchy of local image features. The convolution operation is followed by a rectifying nonlinearity of the form \(a_{cij}=\max(0, z_{ij})\) for each channel <i>c</i> and each pixel coordinate \((i,j)\). The third convolutional layer contains 32 response maps. These response maps are passed through a spatial softmax function of the form \(s_{cij} = {e^{a_{cij}}}/{\sum_{i^{'} j^{'}}{e^{a_{ci^{'}j^{'}}}}}\). Each output channel of the softmax is a probability distribution over the location of a feature in the image. To convert from this distribution to a coordinate representation \((f_{cx}, f_{cy} )\), the network calculates the expected image position of each feature, yielding a 2D coordinate for each channel: \(f_{cx} = \sum_{ij}{s_{cij}x_{ij}}\) and \(f_{cy} = \sum_{ij}{s_{cij}y_{ij}}\) where \((x_{ij}, y_{ij})\) is the image-space position of the point \((i, j)\) in the response map. <br />
 
 The spatial softmax and the expected position computation serve to convert pixel-wise
-representations in the convolutional layers to spatial coordinate representations, which can be manipulated by the fully connected layers into 3D positions.
+representations in the convolutional layers to spatial coordinate representations, which can be manipulated by the fully connected layers into 3D positions. 
 </p>
 
 <h3>Input image during test</h3>
@@ -282,7 +282,7 @@ representations in the convolutional layers to spatial coordinate representation
     </a>
     
     
-        <p align="center" class="image-caption" style="font-size:14px;">Input to the CNN</p>
+        <p align="center" class="image-caption" style="font-size:14px;">Fig 3. Input to the CNN</p>
     
 </div>
 </center>
@@ -302,7 +302,7 @@ representations in the convolutional layers to spatial coordinate representation
     </a>
     
     
-        <p align="center" class="image-caption" style="font-size:14px;">Spatial softmax for image 1</p>
+        <p align="center" class="image-caption" style="font-size:14px;">Fig 4. Spatial softmax for image 1</p>
     
 </div>
 </center>
@@ -320,12 +320,16 @@ representations in the convolutional layers to spatial coordinate representation
     </a>
     
     
-        <p align="center" class="image-caption" style="font-size:14px;">Spatial softmax for image 2</p>
+        <p align="center" class="image-caption" style="font-size:14px;">Fig 5. Spatial softmax for image 2</p>
     
 </div>
 </center>
 
 </ul>
+
+<p style="text-align:justify;">
+	What you see in Fig 4. and Fig 5. are the results of softmax operation on the activation maps of third convolutional layers. This operation results in a probability distribution over features in each activation map. There are 32 activation maps in total because of the 32 filters used in the convolution operation. The softmax operation points to the area of maximum activation in each activation map i.e, the most important feature. The next step, as discussed before, is to calculate the expected 2D position of each feature.
+</p>
 
 <h3> Results </h3>
 
@@ -334,6 +338,9 @@ representations in the convolutional layers to spatial coordinate representation
  predicted position : [ 0.72932047, -0.3483142 ] <br />
  true position : [0.72, -0.35]<br />
  test loss : 4.485624e-05
+</p>
+<p style="text-align: justify;">
+ As can be seen from the results, the network predicts the cube's position pretty well. This acts as the target position for the robot's end effector. The IK solver calculates the joint angles to be reached and the robot's controller tries to reach this configuration. 
 </p>
 
 <h3>Reference</h3>
